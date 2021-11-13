@@ -1,6 +1,7 @@
 import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Slider from './components/Slider';
+import Menu from './components/Menu';
+import Carousel from './components/Carousel';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -9,9 +10,9 @@ function App() {
         <div>
             <Header />
 
-            <Navbar />
+            <Menu />
 
-            <Slider />
+            <Carousel />
 
 
 
@@ -633,86 +634,9 @@ function App() {
                     </div>
                 </div>
             </div>
-            <footer className="page-footer footer-bg">
-                <div className="inside-container">
-                    <div className="row footer-padd">
-                        <div className=" col-sm-6 col-lg-3 foot-col-padd">
-                            <div className="foot-logo">
-                                <img src="image/foot-logo.jpg" alt="" className="img-fluid" />
-                            </div>
-                            <div className="dream-text">
-                                <p>Got a dream and we just know now we're gonna make our dream come true. No phone no lights no motor car not a single luxury.  </p>
-                            </div>
-                            <div>
-                                <i className="fab fa-facebook-f foot-icon "></i>
-                                <i className="fab fa-twitter foot-icon "></i>
-                                <i className="fab fa-linkedin-in foot-icon "></i>
-                                <i className="fab fa-tumblr  foot-icon"></i>
-                                <i className="fab fa-vimeo-v  foot-icon"></i>
-                                <i className="fab fa-pinterest-p foot-icon "></i>
-                            </div>
-                        </div>
-                        <div className=" col-sm-6 col-lg-3 pop-col">
-                            <span>popular link</span>
-                            
-                            <div className ="row">
-                            <div className ="col-6 pop-link">
-                            <a href="#">About Us</a>
-                            <a href="#">Services</a>
-                            <a href="#">Gallery</a>
-                            <a href="#">Team</a>
-                            <a href="#">Pricing</a>
 
-                            </div>
-                            <div className =" col-6  pop-link">
-                            <a href="#">contact us </a>
-                            <a href="#"> blog</a>
-                            <a href="#"> faq</a>
-                            <a href="#"> 404</a>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-6  col-lg-3 pop-col">
-                            <span>recent news </span>
-                            
-                            <div className ="row ltl-blog row-ltl-blog">
-                            <div className ="col-3">
-                            <img src="blog/recent-post-1.jpg" alt="" className ="blog-img"/>
-                            </div>
-                            <div className ="col-9 max-award">
-                            <p> Max Printshop wins an award</p>
-                            <i className ="far fa-heart blog-icon"></i> <span> 45 </span>  <span className ="blog-vl"> | </span>
-                            <i className ="far fa-comment blog-icon"></i><span> 34 </span>
-                            </div>
-                            </div>
-                            <div className ="recent-hr">
-                                <div className ="text-center">
-                                <a href="#" className ="view-blog"> view blog</a>
-                                </div>
-                                <div className ="col-sm-6 col-lg-3 pop-col ">
-                                <span>contact us</span>
-                                </div>
-                            </div>
-                            <div className ="row contact-row-margin">
-                            <i className ="fas fa-map-marker-alt contact-icon"></i>
-                            <p> Collins Street West, King Street, Melbourne.</p>
-                            </div>
-                            <div className ="row contact-row-margin">
-                            <i className ="fas fa-phone fa-rotate-90 contact-icon"></i>
-                            <p>+(11)123 456 789</p>
-                            </div>
-                            <div className ="row contact-row-margin">
-                            <i className ="far fa-envelope contact-icon "> </i>
-                            <p> info @flamix.com </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-12 copyright-text">
-                            <p> &#169; 2019 <a href="http://digitaconnect.com/">Digital Connect</a>. All Rights Reserved </p> </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
+
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossOrigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
