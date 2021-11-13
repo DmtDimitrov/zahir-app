@@ -16,19 +16,19 @@ Registered users should have a personal area in the web application accessible a
 Your Web application should use the following technologies, frameworks, and development techniques:
 - [] At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)
 - [] Must have specific views:
-1. Catalog – list of all created records
-2. Details – information about a specific record
-- At least one collection, different from the User collection, with all CRUD operations (create, read, update, delete)
-oLogged in users – create records and request to the REST API, interaction with the records (via Likes, Dislikes, Comments, etc.)
-oLogged in (author) – to be able to Edit / Delete their records
-oA Guest should have access to basic website information (catalog, details), but not to the functional activities
-Use React.js for the client-side
-Communicate to a remote service (via REST, sockets, GraphQL, or a similar client-server technique)
-Implement authentication
-Implement client-side routing
-Demonstrate use of programming concepts, specific to the React library: stateless and state full components, bound forms, synthetic events, Component Styling, etc.
-Use a source control system, like GitHub
-It is required to have committed in GitHub for at least 3 days
+1. [] Catalog – list of all created records
+2. [] Details – information about a specific record
+- [] At least one collection, different from the User collection, with all CRUD operations (create, read, update, delete)
+1. [] Logged in users – create records and request to the REST API, interaction with the records (via Likes, Dislikes, Comments, etc.)
+2. [] **Logged in (author)** – to be able to Edit / Delete their records
+3. [] A Guest should have access to basic website information (catalog, details), but not to the functional activities
+- [] Use React.js for the client-side
+- [] Communicate to a remote service (via REST, sockets, GraphQL, or a similar client-server technique)
+- [] Implement authentication
+- [] Implement client-side routing
+- [] Demonstrate use of programming concepts, specific to the React library: stateless and state full components, bound forms, synthetic events, Component Styling, etc.
+- [] Use a source control system, like GitHub
+- [] It is required to have committed in GitHub for at least 3 days
 3.Other requirements
 Apply error handling and data validation to avoid crashes when invalid data is entered
 The application should be divided into components with separate CSS files.
