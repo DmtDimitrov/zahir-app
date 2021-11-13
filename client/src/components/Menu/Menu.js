@@ -1,6 +1,6 @@
 // import './Header.css';
 
-export default function NavBar() {
+export default function Menu() {
     return (
         <div className="main-container nav-bg-color">
             <div className="inside-container nav-contain">
