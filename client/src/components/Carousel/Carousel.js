@@ -1,6 +1,6 @@
 // import './Header.css';
 
-export default function Slider() {
+export default function Carousel() {
     return (
         <div className="main-container carousel-height">
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
