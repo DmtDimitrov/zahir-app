@@ -10,11 +10,11 @@ export default function Carousel() {
                             <div className="row">
                                 <div className="col-lg-12  ">
                                     <div className="carousel-text">
-                                        <h1>With in <span className="second">seconds</span> to ready your <span className="bs-card"> business cards</span></h1>
-                                        <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. These  days are all Happy and Free. These days are all share them with me oh baby. Sometimes you knows your name.</p>
+                                        <h1>Handmade <span className="second">pastries</span> and <span className="bs-card"> cakes</span></h1>
+                                        <p>Тake a look at our recipe suggestions.</p>
                                         <div className="butns">
                                             <button className="about-btn">about us </button>
-                                            <button className="work-btn">our work</button>
+                                            <button className="work-btn">recipes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -26,12 +26,11 @@ export default function Carousel() {
                             <div className="row">
                                 <div className="col-lg-12 ">
                                     <div className="carousel-text">
-                                        <span>With in <span className="second">seconds</span> to ready your <span className="bs-card"> business cards</span></span>
-                                        <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. These days are all Happy and Free. These days are all share them with me oh baby.
-                                            Sometimes you knows your name.</p>
+                                        <span>Handmade <span className="second">pastries</span> and <span className="bs-card"> cakes</span></span>
+                                        <p>Тake a look at our recipe suggestions.</p>
                                         <div className="butns">
                                             <button className="about-btn">about us </button>
-                                            <button className="work-btn">our work</button>
+                                            <button className="work-btn">recipes</button>
                                         </div>
                                     </div>
                                 </div>
