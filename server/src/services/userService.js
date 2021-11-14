@@ -1,4 +1,4 @@
-import User from '../models/User.js'
+import User from '../models/User.js';
 import { createToken } from './tokenService.js';
 
 export async function register(userData) {
