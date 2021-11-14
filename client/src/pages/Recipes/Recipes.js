@@ -1,8 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import './Recipes.css';
 import Subheader from '../../components/Subheader';
+import Pagination from '../../components/Pagination';
+import RecipeCard from './components/RecipeCard';
 
 
 export default function Recipes() {
+
     return (
         <>
             <Subheader
@@ -14,6 +19,11 @@ export default function Recipes() {
                 <div className="inside-container">
                     <div className="row">
                         <div className="col-lg-8 " >
+
+                            <RecipeCard
+                                title="Recipes"
+                            />
+
                             <div className="row blog-row-padd">
                                 <div className="col-md-12  ">
                                     <div className="blog-post">
@@ -84,6 +94,7 @@ export default function Recipes() {
                                 </div>
                             </div>
                         </div>
+
                         <div className=" col-lg-4 side-bar-colon" >
                             <div className="row blog-row-padd">
                                 <div className="col-12  side-bar-bg">
@@ -234,21 +245,8 @@ export default function Recipes() {
                     </div>
                 </div>
             </div>
-            <nav className="pagin-nr">
-                <ul className="pagination  justify-content-center">
-                    <li className="page-item  arr-lf-rt">
-                        <a className="page-link" href="#" tabIndex="-1"><i className="fas fa-arrow-left"></i> </a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">01</a></li>
-                    <li className="page-item active">
-                        <a className="page-link" href="#">02 <span className="sr-only">(current)</span></a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item arr-lf-rt">
-                        <a className="page-link" href="#"><i className="fas fa-arrow-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
+
+            <Pagination />
 
         </>
 
