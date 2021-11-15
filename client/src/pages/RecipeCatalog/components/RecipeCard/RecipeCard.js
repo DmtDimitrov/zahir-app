@@ -1,4 +1,7 @@
-export default function RecipeCard({recipeData}) {
+export default function RecipeCard({
+    recipeData,
+    navigationHandler
+}) {
 
     return (
         <div className="row blog-row-padd">
