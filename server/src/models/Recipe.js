@@ -26,12 +26,6 @@ const recipeSchema = mongoose.Schema({
 		type: String,
 		required: [true, 'Method is required!'],
 	},
-	createdAt: {
-		type: String,
-		required: [true, 'Date is required!'],
-		maxlength: [10, 'Date should be 10 characters long'],
-		minlength: [10, 'Date should be 10 characters long'],
-	},
 	image: {
 		type: String,
 		required: [true, 'Image is required!'],
