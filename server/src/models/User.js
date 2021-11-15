@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import { SALT_ROUNDS } from '../constants/index.js';
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -25,6 +26,16 @@ const userSchema = new mongoose.Schema({
 		minlength: [4, 'Password should be more than 4 characters long!'],
 	},
 
+});
+
+userSchema.pre('save', async function (next) {
+	try {
+		const hashedPassword = await bcrypt.hash(this.password, SALT_ROUNDS);
+		this.password = hashedPassword;
+		return next();
+	} catch (error) {
+		throw error;
+	}
 });
 
 userSchema.method('validatePassword', function (password) {
