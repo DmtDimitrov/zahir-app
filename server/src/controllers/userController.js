@@ -6,30 +6,33 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
 
+    console.log('req.body');
     console.log(req.body);
 
-    let { firtName, lastName, email, password, repeatPassword } = reg.body;
+    let { firstName, lastName, email, password, repeatPassword } = req.body;
 
     try {
         if (password !== repeatPassword) {
-            throw 'Passwords do not match!';
+            throw new Error('Passwords do not match!');
         }
-        let user = await userService.register({ firtName, lastName, email, password });
-        let token = await authService.login({ email, password });
+        let user = await userService.register({ firstName, lastName, email, password });
+        let {accessToken, refreshToken} = await userService.login({ email, password });
+        // console.log('accessToken');
+        // console.log(accessToken);
 
-        res.cookie(COOKIE_NAME, token, { httpOnly: true });
-        res.redirect('/');
+        // console.log('refreshToken');
+        // console.log(refreshToken);
+        // res.cookie(COOKIE_NAME, token, { httpOnly: true });
+        // res.redirect('/');
 
         res.json({
             _id: user._id,
             email: user.email,
-            accesToken: token,
+            accessToken,
+            refreshToken,
         })
     } catch (error) {
-        res.json({
-            type: 'error',
-            message: error.message
-        })
+        throw new Error(error);
     }
 
 });
@@ -45,6 +48,10 @@ router.post('/login', async (req, res) => {
         accessToken,
         refreshToken,
     })
-})
+});
+
+router.get('/logout', (req, res) => {
+    res.json({ ok: true });
+});
 
 export default router;
