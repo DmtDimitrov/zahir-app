@@ -5,7 +5,7 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import ErrorPage from './pages/Error';
-import Recipes from './pages/Recipes';
+import RecipeCatalog from './pages/RecipeCatalog';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeCreate from './pages/RecipeCreate';
 import Login from './pages/Login';
@@ -30,7 +30,7 @@ function App() {
 
         const routes = {
             'home': <Home navigationHandler={navigationHandler} />,
-            'recipes': <Recipes navigationHandler={navigationHandler} />,
+            'recipes': <RecipeCatalog navigationHandler={navigationHandler} />,
             'details': <RecipeDetails navigationHandler={navigationHandler} />,
             'login': <Login navigationHandler={navigationHandler} />,
             'register': <Register navigationHandler={navigationHandler} />,

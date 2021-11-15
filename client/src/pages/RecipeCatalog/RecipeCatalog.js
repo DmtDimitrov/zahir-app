@@ -1,12 +1,23 @@
 import { useEffect, useState } from 'react';
 
-import './Recipes.css';
+import './RecipeCatalog.css';
 import Subheader from '../../components/Subheader';
 import Pagination from '../../components/Pagination';
 import RecipeCard from './components/RecipeCard';
+import * as recipeService from '../../services/recipeService';
 
 
-export default function Recipes() {
+export default function RecipeCatalog({
+    navigationHandler
+}) {
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        recipeService.getAll()
+            .then(result => {
+                setRecipes(result)
+            })
+    }, []);
 
     return (
         <>
@@ -20,9 +31,10 @@ export default function Recipes() {
                     <div className="row">
                         <div className="col-lg-8 " >
 
-                            <RecipeCard
-                                title="Recipes"
-                            />
+                            {recipes.length > 0
+                                ? recipes.map(x => <RecipeCard key={x._id} recipe={x} navigationHandler={navigationHandler} />)
+                                : <h3 className="no-articles">No recipes yet</h3>
+                            }
 
                             <div className="row blog-row-padd">
                                 <div className="col-md-12  ">
