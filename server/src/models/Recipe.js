@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const recipeSchema = mongoose.Schema({
 	title: {
@@ -61,4 +61,4 @@ const recipeSchema = mongoose.Schema({
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = Recipe;
+export default Recipe;
