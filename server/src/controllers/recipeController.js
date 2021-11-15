@@ -11,19 +11,24 @@ router.get('/', async (req, res) => {
     try {
         let recipes = await recipeService.getAll();
 
+        recipes.map(x => console.log(x.author._id));
+
+        // console.log('recipes.author');
+        // console.log(recipes.author);
+
         console.log('recipes');
         console.log(recipes);
 
-        recipes.map(x => {
-            let recipeData = x.toObject();
-            console.log('recipeData');
-            console.log(recipeData);
-            let authorFullName = recipeService.getAuthor(recipeData.author);
-            recipeData.authorFullName = authorFullName;
-        });
 
-        console.log('recipesData');
-        console.log(recipesData);
+
+        // let newRecipes = recipes.map(x => {
+            
+        //     let authorFullName = recipeService.getAuthor(x.author._id);
+        //     console.log(authorFullName);
+        //     x.authorFullName = authorFullName;
+        // });
+
+     
 
         // await recipes.map(x => {
         //     let recipeService.getAuthor(x.author)
