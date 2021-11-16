@@ -1,4 +1,4 @@
-export default function PopularRecipes() {
+export default function PopularRecipesCard() {
     return (
         <div className="col-sm-6 col-lg-3 ">
             <div className="product-top product-top-3">
