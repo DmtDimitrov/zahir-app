@@ -29,6 +29,7 @@ export default function Menu({
                         <div onClick={onMenuClick} className="navbar-nav nav-list ml-auto">
                             <a className="menu" href="/home">HOME</a>
                             <a className="menu" href="/recipes">RECIPES</a>
+                            <a className="menu" href="/recipes2">2</a>
                             <a className="menu" href="/add">ADD RECIPE</a>
                             <a className="menu" href="#">CHEFS</a>
                             <a className="menu" href="/details">RECIPE</a>
