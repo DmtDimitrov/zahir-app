@@ -1,4 +1,4 @@
-import { useState, createElement } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
 import Menu from './components/Menu';
@@ -15,44 +15,29 @@ import Contact from './pages/Contact';
 
 
 function App() {
-    const [page, setPage] = useState('/home');
-
-    const navigationHandler = (path) => {
-        setPage(path);
-    }
-
-    const router = (path) => {
-        let pathNames = path.split('/');
-
-        let rootPath = pathNames[1];
-        console.log('rootPath');
-        console.log(rootPath);
-        let argument = pathNames[2];
-
-        const routes = {
-            'home': <Home navigationHandler={navigationHandler} />,
-            'recipes': <RecipeCatalog navigationHandler={navigationHandler} />,
-            'recipes2': <RecipeCatalog2 navigationHandler={navigationHandler} />,
-            'details': <RecipeDetails navigationHandler={navigationHandler} />,
-            'login': <Login navigationHandler={navigationHandler} />,
-            'register': <Register navigationHandler={navigationHandler} />,
-            'contact': <Contact navigationHandler={navigationHandler} />,
-            'add': <RecipeCreate navigationHandler={navigationHandler} />,
-            
-        };
-        return routes[rootPath]
-    }
     return (
-
         <div>
             <Header />
 
-            <Menu 
-            navigationHandler={navigationHandler} 
-            />
+            <Menu/>
 
             <main>
-                { router(page)} || <ErrorPage />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/recipes/catalog" exact component={RecipeCatalog} />
+                    <Route path="/recipes/catalog/alternative" exact component={RecipeCatalog2} />
+                    <Route path="/recipes/create" exact component={RecipeCreate} />
+                    <Route path="/chefs" exact component={RecipeCreate} />
+                    <Route path="/recipes/:recipeId" exact component={RecipeDetails} />
+                    <Route path="/contact" exact component={Contact} />
+                    <Route path="/login" exact component={Login} />
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/logout" render={(props) =>{
+                        console.log('Logged out');
+                        // props.history.push('/');
+                        return <Redirect to="/" />
+                    }} />
+                </Switch>
             </main>
 
             <Footer />
