@@ -1,22 +1,8 @@
+import { NavLink } from 'react-router-dom';
+
 // import './Header.css';
 
-export default function Menu({
-    navigationHandler
-}) {
-    const onMenuClick = (e) => {
-        e.preventDefault();
-        // console.log('e.target.href');
-        // console.log(e.target.href);
-      
-        if (e.target.tagName == 'A') {
-            let url = new URL(e.target.href);
-
-            console.log('url');
-            console.log(url);
-            // console.log(url.pathname);
-            navigationHandler(url.pathname)
-        }
-    };
+export default function Menu() {
     return (
         <div className="main-container nav-bg-color">
             <div className="inside-container nav-contain">
@@ -26,19 +12,19 @@ export default function Menu({
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div onClick={onMenuClick} className="navbar-nav nav-list ml-auto">
-                            <a className="menu" href="/home">HOME</a>
-                            <a className="menu" href="/recipes">RECIPES</a>
-                            <a className="menu" href="/recipes2">2</a>
-                            <a className="menu" href="/add">ADD RECIPE</a>
-                            <a className="menu" href="#">CHEFS</a>
-                            <a className="menu" href="/details">RECIPE</a>
-                            <a className="menu  last-spc" href="/contact">CONTACT</a>
+                        <div className="navbar-nav nav-list ml-auto">
+                            <NavLink className="menu" to="/">HOME</NavLink>
+                            <NavLink className="menu" to="/recipes/catalog">RECIPES</NavLink>
+                            <NavLink className="menu" to="/recipes/catalog/alternative">2</NavLink>
+                            <NavLink className="menu" to="/recipes/create">ADD RECIPE</NavLink>
+                            <NavLink className="menu" to="/chefs">CHEFS</NavLink>
+                            <NavLink className="menu" to="/recipes/:recipeId">RECIPE</NavLink>
+                            <NavLink className="menu  last-spc" to="/contact">CONTACT</NavLink>
                             <span className="menu last-spc color-line"> | </span>
-                            <a className="menu" href="/register">REGISTER</a>
-                            <a className="menu" href="/login">LOGIN</a>
-                            <a className="menu" href="#">LOGOUT</a>
-                            <a className="menu icon-color  last-spc" href="#"><i className="fas fa-search"></i></a>
+                            <NavLink className="menu" to="/register">REGISTER</NavLink>
+                            <NavLink className="menu" to="/login">LOGIN</NavLink>
+                            <NavLink className="menu" to="/logout">LOGOUT</NavLink>
+                            <NavLink className="menu icon-color  last-spc" to="#"><i className="fas fa-search"></i></NavLink>
 
                         </div>
                     </div>

@@ -1,7 +1,11 @@
 import './RecipeDetails.css';
 import Subheader from '../../components/Subheader';
 
-export default function RecipeDetails() {
+export default function RecipeDetails({
+    match
+}) {
+    let id = match.params.recipeId;
+    console.log(id);
     return (
         <>
             <Subheader

@@ -1,6 +1,19 @@
+// import { useHistory } from 'react-router-dom';
+
 import Subheader from '../../components/Subheader';
 
-export default function Login() {
+export default function Login({
+    history
+}) {
+    // let historyHook = useHistory();
+
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+
+        //TODO: Login
+        // historyHook.push('/contact');
+        history.push('/');
+    }
     return (
         <>
             <Subheader
@@ -17,11 +30,11 @@ export default function Login() {
                                         <hr />
 
 
-                                        <form action="#">
-                                            
+                                        <form onSubmit={onFormSubmit} action="#">
+
                                             <input type="email" placeholder="Your Email*" className="sb-input" />
                                             <input type="password" placeholder="Password" className="sb-input" />
-                                            
+
                                             <div className="text-center">  <input type="submit" value="login" className="submit-btn" /></div>
                                         </form>
                                     </div>
