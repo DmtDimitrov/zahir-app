@@ -16,12 +16,12 @@ import Contact from './pages/Contact';
 
 function App() {
     return (
-        <div>
+        <>
             <Header />
 
             <Menu/>
 
-            <main>
+            <>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/home" exact component={Home} />
@@ -39,11 +39,11 @@ function App() {
                         return <Redirect to="/" />
                     }} />
                 </Switch>
-            </main>
+            </>
 
             <Footer />
 
-        </div>
+        </>
     );
 }
 
