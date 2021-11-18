@@ -1,0 +1,29 @@
+.main-container {
+    max-width: 1950px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.inside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+.contact-col-marg, .contact-col-marg-middle{
+    margin: 100px 0;
+
+}
+.col-icon-contact{
+    font-size: 22px;
+    color: #ffffff;
+    border: 5px solid #c5e7f5;
+    border-radius: 50%;
+    padding: 25px 25px;
+    background-color: #9fd7ef;
+    margin-bottom: 30px;
+}
+.contact-col-border{
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
