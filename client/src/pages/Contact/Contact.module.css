@@ -1,3 +1,15 @@
+.main-container {
+    max-width: 1950px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.inside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
 .breadcrumb{
     display: block!important;
     background-color: transparent;
@@ -74,20 +86,28 @@ font-size: 13px;
     text-decoration: none;
     text-align: center;
 }
+.our-header hr{
+    height: 5px;
+    border-color:#c0bfbf;
+    margin-left: 15px;
+    display: inline-flex;
+    margin-right: 15px;
+    width: 65px;
+ }
 .rotate-45{
-        transform: rotate(45deg);
-        margin-right: -4px;
-        margin-left: -4px;
-        color: #c0bfbf;
-    }
-.our-header div{
+    transform: rotate(45deg);
+    margin-right: -4px;
+    margin-left: -4px;
+    color: #c0bfbf;
+}
+/* .our-header div{
         height: 5px;
         border-color:#c0bfbf;
         margin-left: 10px;
         display: inline-flex;
         margin-right: 10px;
         width: 65px;
-}
+} */
 
 .sm-input{
    width: 100%;
