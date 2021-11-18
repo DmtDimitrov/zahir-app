@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
+import styles from './Menu.module.css';
+
 // import './Header.css';
 
 export default function Menu() {
     return (
-        <div className="main-container nav-bg-color">
-            <div className="inside-container nav-contain">
-                <nav className="navbar navbar-expand-lg navbar-light ">
+        <div className={`${styles['main-container']} ${styles['nav-bg-color']}`}>
+            <div className={`${styles['inside-container']} ${styles['nav-contain']}`}>
+                <nav className={`${styles['navbar']} navbar-expand-lg navbar-light`}>
                     <img src="zahir/zahir3.png" className="img-fluid" alt="" />
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

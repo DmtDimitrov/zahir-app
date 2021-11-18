@@ -1,0 +1,40 @@
+.main-container {
+    max-width: 1950px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.inside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+.nav-bg-color{
+    background-color: white;
+}
+.nav-contain{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.navbar img{
+    width: 200px;
+}
+.nav-list .menu {
+    color: #333333;
+    font-family: 'Roboto Slab', serif;
+    font-size: 13px;
+    line-height: 26px;
+    padding: 0 20px;
+    text-decoration: none;        
+}
+.last-spc{
+    padding: 0 10px;
+}
+.color-line{
+    color: #999999!important;
+}
+.icon-color {
+    color: #f65aa7!important;
+    margin: 1px auto
+}
