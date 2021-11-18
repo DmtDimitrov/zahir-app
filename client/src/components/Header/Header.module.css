@@ -39,7 +39,15 @@
 .icon-scp .left-side .link-head i {
     margin: 0 5px 0 0;
 }
-/* @media (max-width: 575.98px) { 
+.link-head{
+    color: white;
+}
+.link-head:hover{
+    text-decoration: none;
+    color: #f65aa7;
+    cursor: pointer;
+}
+@media (max-width: 575.98px) { 
     .icon-scp .left-side  {
         display: grid;
     }
@@ -54,4 +62,4 @@
         display: unset;
         text-align: center;
     }
-} */
+}
