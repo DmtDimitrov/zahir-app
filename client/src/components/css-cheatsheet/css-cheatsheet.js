@@ -11,8 +11,12 @@
 {`${styles.breadcrumb} ${styles['page-linker']}`}
 {`${styles.subhead} ${styles['main-container']}`}
 {`row ${styles.myCustomClassName}`}
-{styles['pop-col']}
+{styles['menu']}
 {styles['link-head']}
-{`${styles['main-container']} ${styles['nav-bg-color']}`}
-{`${styles['icon-scp']} ${styles['left-side']} ${styles['link-head']}`}
+{`${styles['menu']} ${styles['last-spc']}`}
+{`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`}
 {`fab fa-pinterest-p ${styles['icon-scp']}`}
+{`${styles['navbar']} navbar-expand-lg navbar-light`}
+{`navbar-nav ${styles['nav-list']} ml-auto`}
+"menu icon-color  last-spc"
+"image/Logo 4.png"

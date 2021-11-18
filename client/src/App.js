@@ -24,6 +24,7 @@ function App() {
             <main>
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/home" exact component={Home} />
                     <Route path="/recipes/catalog" exact component={RecipeCatalog} />
                     <Route path="/recipes/catalog/alternative" exact component={RecipeCatalog2} />
                     <Route path="/recipes/create" exact component={RecipeCreate} />
