@@ -1,5 +1,5 @@
 // import { useHistory } from 'react-router-dom';
-
+import styles from './Login.module.css';
 import Subheader from '../../components/Subheader';
 
 export default function Login({
@@ -19,23 +19,19 @@ export default function Login({
             <Subheader
                 title="Login"
             />
-            <div className="main-container blog-container">
-                <div className="inside-container">
+            <div className={`${styles['main-container']} ${styles['blog-container']}`}>
+                <div className={styles['inside-container']}>
                     <div className="row">
                         <div className=" col-lg-8 " >
                             <div className="row">
                                 <div className="col-md-12  ">
-                                    <div className="comment-container">
+                                    <div className={styles['login-container']}>
                                         <span>Login</span>
                                         <hr />
-
-
                                         <form onSubmit={onFormSubmit} action="#">
-
-                                            <input type="email" placeholder="Your Email*" className="sb-input" />
-                                            <input type="password" placeholder="Password" className="sb-input" />
-
-                                            <div className="text-center">  <input type="submit" value="login" className="submit-btn" /></div>
+                                            <input type="email" placeholder="Your Email*" className={styles['sb-input']} />
+                                            <input type="password" placeholder="Password" className={styles['sb-input']} />
+                                            <div className="text-center">  <input type="submit" value="login" className={styles['submit-btn']} /></div>
                                         </form>
                                     </div>
                                 </div>

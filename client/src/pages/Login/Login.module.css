@@ -1,0 +1,61 @@
+.main-container {
+    max-width: 1950px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.inside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+.blog-container{
+    padding: 90px 0;
+    background-color: #f9f9f9;
+}
+.login-container{
+    margin-top: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    padding: 35px 30px;
+}
+.login-container span {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+}
+.login-container hr{
+    border: 2px solid #f65aa7;
+    width: 65px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.sb-input{
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    min-height: 50px;
+    background-color: #f9f9f9;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    color: #777777;
+}
+.submit-btn{
+    font-size: 14px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+}
+.submit-btn:hover{
+    background-color: #f65aa7;
+    color: #ffffff;
+}
