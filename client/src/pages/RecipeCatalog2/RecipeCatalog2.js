@@ -4,6 +4,7 @@ import './RecipeCatalog2.css';
 import Subheader from '../../components/Subheader';
 import Pagination from '../../components/Pagination';
 import RecipeCard2 from './components/RecipeCard2';
+import BestRecipesCard from '../../components/BestRecipes/BestRecipesCard';
 import * as recipeService from '../../services/recipeService';
 
 
@@ -21,7 +22,7 @@ export default function RecipeCatalog2({
 
     console.log(recipes);
 
-    
+
 
 
     return (
@@ -35,17 +36,13 @@ export default function RecipeCatalog2({
                 <div className="inside-container">
                     <div className="row">
                         <div className="col-lg-8 " >
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                {recipes.length > 0
+                                    ? recipes.map(x => <BestRecipesCard key={x._id} recipe={x} navigationHandler={navigationHandler} />)
+                                    : <h3 className="no-articles">No recipes yet</h3>
+                                }
 
-                            {recipes.length > 0
-                                ? recipes.map(x => <RecipeCard2 key={x._id} recipe={x} navigationHandler={navigationHandler} />)
-                                : <h3 className="no-articles">No recipes yet</h3>
-                            }
-
-                            
-                           
-
-                           
-
+                            </div>
                         </div>
 
                         <div className=" col-lg-4 side-bar-colon" >
