@@ -14,18 +14,18 @@
     padding: 0 15px;
     width: 100%;
 }
-.login-container{
+.add-recipe-container{
     margin-top: 30px;
     background-color: #ffffff;
     border: 1px solid #ececec;
     padding: 35px 30px;
 }
-.login-container span {
+.add-recipe-container span {
     text-transform: uppercase;
     font-size: 18px;
     font-family: 'Roboto Slab', serif;
 }
-.login-container hr{
+.add-recipe-container hr{
     border: 2px solid #f65aa7;
     width: 65px;
     margin-left: 0;
@@ -41,6 +41,23 @@
     font-size: 14px;
     font-family: 'Open Sans';
     color: #777777;
+}
+.sm-input{
+    width: 100%;
+   min-height: 50px;
+  
+   margin-bottom: 20px;
+   padding: 0 20px;
+   background-color: #f9f9f9;
+   border: 1px solid #ececec;
+   font-size: 14px;
+   font-family: 'Open Sans';
+   color: #777777;
+}
+
+.sm-input:first-child{
+    
+    margin-right: 20px;
 }
 .submit-btn{
     font-size: 14px;
@@ -58,4 +75,13 @@
 .submit-btn:hover{
     background-color: #f65aa7;
     color: #ffffff;
+}
+textarea{
+    padding: 15px 20px;
+    width:100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    color: #777777;
 }
