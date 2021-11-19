@@ -17,7 +17,6 @@ export default function RecipeCreate() {
                                         <span>Add Recipe</span>
                                         <hr />
 
-
                                         <form action="#">
                                             <input type="text" placeholder="Title" className={styles['sb-input']} />
                                             <textarea rows="3" className="area-text" placeholder="Short description..."></textarea>
