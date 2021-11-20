@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import './RecipeCatalog2.css';
+import './RecipeCatalog.css';
 import Subheader from '../../components/Subheader';
 import Pagination from '../../components/Pagination';
-import RecipeCard2 from './components/RecipeCard2';
-import BestRecipesCard from '../../components/BestRecipes/BestRecipesCard';
+import RecipeCard from './components/RecipeCard';
 import * as recipeService from '../../services/recipeService';
 
 
-export default function RecipeCatalog2({
+export default function RecipeCatalog({
     navigationHandler
 }) {
     const [recipes, setRecipes] = useState([]);
@@ -36,12 +35,84 @@ export default function RecipeCatalog2({
                 <div className="inside-container">
                     <div className="row">
                         <div className="col-lg-8 " >
+
                             <div class="row row-cols-1 row-cols-md-3 g-4">
+
                                 {recipes.length > 0
-                                    ? recipes.map(x => <BestRecipesCard key={x._id} recipe={x} navigationHandler={navigationHandler} />)
+                                    ? recipes.map(x => <RecipeCard key={x._id} recipe={x} navigationHandler={navigationHandler} />)
                                     : <h3 className="no-articles">No recipes yet</h3>
                                 }
 
+                            </div>
+
+                            <div className="row blog-row-padd">
+                                <div className="col-md-12  ">
+                                    <div className="blog-post">
+                                        <div> <img src="blog/post-1.jpg" alt="" className="blog-image img-fluid" /></div>
+                                        <div className="blog-description">
+                                            <div className="text-center">  <a href="#"> Shop </a>
+                                                <h2>Got a dream and we just know now gonna
+                                                    make our dream come true.</h2>
+                                                <div className="post-info"> <p> <span className="info-over">  <i className="far fa-user"></i> By Admin</span> <span className="spc-line"> |</span> <span className="info-over"> Dec 24,2016</span>
+                                                    <span className="spc-line"> |</span> <span className="info-over"> <i className="far fa-heart"></i> 39 Likes </span> <span className="spc-line"> |</span>
+                                                    <span className="info-over"> <i className="far fa-comment"></i> 55 comments </span> </p> </div>
+                                            </div>
+
+                                            <p> He busy revin' up his Powerful Mach So join us here each week my friends you're sure to get a smile from seven stranded castaways
+                                                here on Gilligans Isle. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name.</p>
+
+                                            <div className="rd-btn">
+                                                <button className="read-more"> read more</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row blog-row-padd">
+                                <div className="col-md-12  ">
+                                    <div className="blog-post">
+                                        <div> <img src="blog/post-2.jpg" alt="" className="blog-image img-fluid" /></div>
+                                        <div className="blog-description">
+                                            <div className="text-center">  <a href="#"> machine </a>
+                                                <h2>What might be right for you may not
+                                                    be right for some.</h2>
+                                                <div className="post-info"> <p> <span className="info-over">  <i className="far fa-user"></i> By Admin</span> <span className="spc-line"> |</span> <span className="info-over"> May 17,2016</span>
+                                                    <span className="spc-line"> |</span> <span className="info-over"> <i className="far fa-heart"></i> 45 Likes </span> <span className="spc-line"> |</span>
+                                                    <span className="info-over"> <i className="far fa-comment"></i> 18 comments </span> </p> </div>
+                                            </div>
+
+                                            <p> Those were the days. Here he comes Here comes Speed Racer. He's a demon on wheels.
+                                                Just two good ol' boys Never meanin' no harm. Beats all you've ever saw been in trouble with the law since the day they was born your name.</p>
+
+                                            <div className="rd-btn">
+                                                <button className="read-more"> read more</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row blog-row-padd">
+                                <div className=" col-md-12 ">
+                                    <div className="blog-post">
+                                        <div> <img src="blog/post-3.jpg" alt="" className="blog-image img-fluid" /></div>
+                                        <div className="blog-description">
+                                            <div className="text-center">  <a href="#"> Worker </a>
+                                                <h2>heir house is a museum where people come to see ‘em.
+                                                    They really are a screamed.</h2>
+                                                <div className="post-info"> <p> <span className="info-over">  <i className="far fa-user"></i> By Admin</span> <span className="spc-line"> |</span> <span className="info-over"> Jan 24,2016</span>
+                                                    <span className="spc-line"> |</span> <span className="info-over"> <i className="far fa-heart"></i> 85 Likes </span> <span className="spc-line"> |</span>
+                                                    <span className="info-over"> <i className="far fa-comment"></i> 23 comments </span> </p> </div>
+                                            </div>
+
+                                            <p> He busy revin' up his Powerful Mach So join us here each week my friends you're sure to get a smile from seven stranded castaways
+                                                here on Gilligans Isle. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name.</p>
+
+                                            <div className="rd-btn">
+                                                <button className="read-more"> read more</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
