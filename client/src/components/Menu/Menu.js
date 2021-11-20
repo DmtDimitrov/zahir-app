@@ -2,7 +2,23 @@ import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Menu.module.css';
 
-export default function Menu() {
+export default function Menu({
+    isAuth,
+    username
+}) {
+    let guestNav = (
+        <>
+            <NavLink className={styles['menu']} to="/register">REGISTER</NavLink>
+            <NavLink className={styles['menu']} to="/login">LOGIN</NavLink>
+        </>
+    );
+
+    let userNav = (
+        <>
+            <NavLink className={styles['menu']} to="/recipes/create">ADD</NavLink>
+            <NavLink className={styles['menu']} to="/logout">LOGOUT</NavLink>
+        </>
+    );
     return (
         <div className={`${styles['main-container']} ${styles['nav-bg-color']}`}>
             <div className={`${styles['inside-container']} ${styles['nav-contain']}`}>
@@ -15,16 +31,18 @@ export default function Menu() {
                         <div className={`navbar-nav ${styles['nav-list']} ml-auto`}>
                             <NavLink className={styles['menu']} to="/home">HOME</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/catalog">RECIPES</NavLink>
-                            <NavLink className={styles['menu']} to="/recipes/create">ADD</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/catalog/alternative">2</NavLink>
                             <NavLink className={styles['menu']} to="/chefs">CHEFS</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/:recipeId">RECIPE</NavLink>
                             <NavLink className={`${styles['menu']} ${styles['last-spc']}`} to="/contact">CONTACT</NavLink>
                             <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> | </span>
-                            <NavLink className={styles['menu']} to="/register">REGISTER</NavLink>
-                            <NavLink className={styles['menu']} to="/login">LOGIN</NavLink>
-                            <NavLink className={styles['menu']} to="/logout">LOGOUT</NavLink>
+                            {
+                                isAuth
+                                ? userNav
+                                : guestNav
+                            }
                             <NavLink className={`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`} to="#"><i className="fas fa-search"></i></NavLink>
+                            <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> {username} </span>
 
                         </div>
                     </div>
