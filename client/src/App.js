@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ErrorPage from './pages/Error';
 import RecipeCatalog from './pages/RecipeCatalog';
-import RecipeCatalog2 from './pages/RecipeCatalog2';
+// import RecipeCatalog2 from './pages/RecipeCatalog2';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeCreate from './pages/RecipeCreate';
 import Login from './pages/Login';
@@ -45,7 +45,6 @@ function App() {
                     <Route path="/" exact component={Home} />
                     <Route path="/home" exact component={Home} />
                     <Route path="/recipes/catalog" exact component={RecipeCatalog} />
-                    <Route path="/recipes/catalog/alternative" exact component={RecipeCatalog2} />
                     <Route path="/recipes/create" exact component={RecipeCreate} />
                     <Route path="/chefs" exact component={RecipeCreate} />
                     <Route path="/recipes/:recipeId" exact component={RecipeDetails} />

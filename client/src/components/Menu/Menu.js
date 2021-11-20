@@ -31,7 +31,6 @@ export default function Menu({
                         <div className={`navbar-nav ${styles['nav-list']} ml-auto`}>
                             <NavLink className={styles['menu']} to="/home">HOME</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/catalog">RECIPES</NavLink>
-                            <NavLink className={styles['menu']} to="/recipes/catalog/alternative">2</NavLink>
                             <NavLink className={styles['menu']} to="/chefs">CHEFS</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/:recipeId">RECIPE</NavLink>
                             <NavLink className={`${styles['menu']} ${styles['last-spc']}`} to="/contact">CONTACT</NavLink>
