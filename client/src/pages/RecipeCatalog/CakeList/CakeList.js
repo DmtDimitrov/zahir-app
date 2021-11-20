@@ -1,7 +1,7 @@
 // import styles from './SecondRecipesCard.module.css';
 
 
-export default function CakeList({
+export default function RecipesCard({
     recipe
 }) {
     return (
