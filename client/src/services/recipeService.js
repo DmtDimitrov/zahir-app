@@ -8,7 +8,8 @@ export function getAll() {
 // export async function getAll(){
 //     let response = await fetch(`${HOST}/recipes`);
 //     let recipes = response.json();
-//     return recipes;
+//     let result = Object.values(recipes)
+//     return result;
 // };
 
 export function getAuthor() {
