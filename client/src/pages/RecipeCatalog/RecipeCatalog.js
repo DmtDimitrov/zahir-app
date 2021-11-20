@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 
+
 import './RecipeCatalog.css';
 import Subheader from '../../components/Subheader';
 import Pagination from '../../components/Pagination';
 
 import RecipesCard from './RecipesCard';
+import SearchBar from '../../components/SearchBar';
+import CategoriesBar from '../../components/CategoriesBar';
 import * as recipeService from '../../services/recipeService';
 
 
@@ -46,55 +49,13 @@ export default function RecipeCatalog({
                         </div>
 
                         <div className=" col-lg-4 side-bar-colon" >
-                            <div className="row blog-row-padd">
-                                <div className="col-12  side-bar-bg">
-                                    <div className="recipes-our-header text-center">
-                                        <span>Search</span>
-                                        <div className="text-center">
-                                            <hr /> <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i> <hr />
-                                        </div>
-                                    </div>
 
-                                    <div className="input-group">
-                                        <input className="form-control " type="search" placeholder="Type And Hit Enter" aria-label="Search" />
-                                        <div className="input-group-append">
-                                            <span className="input-group-text search-loop" id="basic-text1"><i className="fas fa-search text-white " aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
+                            <SearchBar/>
 
-                                </div>
-                            </div>
-                            <div className="row blog-row-padd">
-                                <div className="col-12  side-bar-bg">
-                                    <div className="recipes-our-header text-center">
-                                        <span>categories</span>
-                                        <div className="text-center">
-                                            <hr /> <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i> <hr />
-                                        </div>
-                                    </div>
+                            <CategoriesBar/>
 
-                                    <div className="categories-link">
-                                        <a href="#"> <i className="fas fa-angle-right"></i> Post Cards <span className="">(12)</span></a>
-                                    </div>
-                                    <hr />
-                                    <div className="categories-link">
-                                        <a href="#"> <i className="fas fa-angle-right"></i> Brochers <span className="">(12)</span></a>
-                                    </div>
-                                    <hr />
-                                    <div className="categories-link">
-                                        <a href="#"> <i className="fas fa-angle-right"></i> Business Cards <span className="">(13)</span></a>
-                                    </div>
-                                    <hr />
-                                    <div className="categories-link">
-                                        <a href="#"> <i className="fas fa-angle-right"></i> Postel Cards <span className="">(14)</span></a>
-                                    </div>
-                                    <hr />
-                                    <div className="categories-link">
-                                        <a href="#"> <i className="fas fa-angle-right"></i> Printers <span className="">(15)</span></a>
-                                    </div>
-                                    <hr />
-                                </div>
-                            </div>
+                            
+
                             <div className="row blog-row-padd">
                                 <div className="col-12 side-bar-bg">
                                     <div className="recipes-our-header text-center">
@@ -132,44 +93,11 @@ export default function RecipeCatalog({
                                     <hr />
                                 </div>
                             </div>
-                            <div className="row blog-row-padd">
-                                <div className="col-12 side-bar-bg">
-                                    <div className="recipes-our-header text-center">
-                                        <span>let's connect with us</span>
-                                        <div className="text-center">
-                                            <hr /> <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i> <hr />
-                                        </div>
-                                    </div>
-                                    <div className="text-center">
-                                        <i className="fab fa-facebook-f let-icon"></i>
-                                        <i className="fab fa-twitter let-icon"></i>
-                                        <i className="fab fa-linkedin-in let-icon"></i>
-                                        <i className="fab fa-tumblr let-icon"></i>
-                                        <i className="fab fa-vimeo-v let-icon"></i>
-                                        <i className="fab fa-pinterest-p  let-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row blog-row-padd">
-                                <div className=" col-12 side-bar-bg">
-                                    <div className="recipes-our-header text-center">
-                                        <span>instagram feed</span>
-                                        <div className="text-center">
-                                            <hr /> <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i> <hr />
-                                        </div>
-                                    </div>
-                                    <div className="row text-center">
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-2.jpg" alt="" className="insta-img " /></div>
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-3.jpg" alt="" className="insta-img " /></div>
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-1.jpg" alt="" className="insta-img " /></div>
-                                    </div>
-                                    <div className="row text-center">
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-4.jpg" alt="" className="insta-img " /></div>
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-5.jpg" alt="" className="insta-img " /></div>
-                                        <div className="col-md-4  insta-margin" ><img src="blog/insta-6.jpg" alt="" className="insta-img " /></div>
-                                    </div>
-                                </div>
-                            </div>
+
+                     
+
+                            
+
                             <div className="row blog-row-padd">
                                 <div className="col-12 side-bar-bg">
                                     <div className="recipes-our-header text-center">

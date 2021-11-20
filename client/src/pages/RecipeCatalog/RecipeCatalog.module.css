@@ -1,0 +1,16 @@
+.main-container {
+    max-width: 1950px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.blog-container{
+    padding: 90px 0;
+    background-color: #f9f9f9;
+}
+.inside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
