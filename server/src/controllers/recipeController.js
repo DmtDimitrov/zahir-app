@@ -13,9 +13,6 @@ router.get('/', async (req, res) => {
 
         recipes.map(x => console.log(x.author._id));
 
-        // console.log('recipes.author');
-        // console.log(recipes.author);
-
         console.log('recipes');
         console.log(recipes);
 
@@ -50,6 +47,21 @@ router.get('/', async (req, res) => {
     }
 
 });
+
+router.get('/:recipeId', async (req, res) => {
+    try {
+        console.log(req.params.recipeId);
+        let recipe = await recipeService.getOne(req.params.recipeId);
+    
+        res.json(recipe);
+        
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        }) 
+    }
+})
 
 router.post('/', async (req, res) => {
     console.log('req.body');

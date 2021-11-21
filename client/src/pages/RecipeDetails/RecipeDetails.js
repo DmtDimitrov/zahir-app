@@ -1,11 +1,25 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import * as recipeService from '../../services/recipeService';
 import './RecipeDetails.css';
 import Subheader from '../../components/Subheader';
 
 export default function RecipeDetails({
     match
 }) {
-    let id = match.params.recipeId;
-    console.log(id);
+    const [recipe, setRecipe] = useState({});
+
+    const recipeId = match.params.recipeId;
+    console.log(recipeId);
+
+    useEffect(async () => {
+        let recipeResult = await recipeService.getOne(recipeId);
+        console.log(recipeResult);
+        setRecipe(recipeResult);
+    }, []);
+
+  
     return (
         <>
             <Subheader
@@ -19,19 +33,16 @@ export default function RecipeDetails({
                             <div className="row">
                                 <div className="col-md-12 ">
                                     <div className="blog-post">
-                                        <div> <img src="blog/post-2.jpg" alt="" className="blog-image img-fluid" /></div>
+                                        <div> <img src={recipe.image} alt="" className="blog-image img-fluid" /></div>
                                         <div className="blog-description">
                                             <div className="text-center">  <a href="#"> Shop </a>
-                                                <h1>Got a dream and we just know now gonna
-                                                    make our dream come true.</h1>
+                                                <h1>{recipe.title}</h1>
                                                 <div className="post-info"> <p> <span className="info-over">  <i className="far fa-user"></i> By Admin</span> <span className="spc-line"> |</span> <span className="info-over"> Dec 24,2016</span>
                                                     <span className="spc-line"> |</span> <span className="info-over"> <i className="far fa-heart"></i> 39 Likes </span> <span className="spc-line"> |</span>
                                                     <span className="info-over"> <i className="far fa-comment"></i> 55 comments </span> </p> </div>
                                             </div>
 
-                                            <p> He busy revin' up his Powerful Mach So join us here each week my friends you're sure to get a smile from seven stranded castaways
-                                                here on Gilligans Isle. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name.A shadowy flight into the dangerous world of a man who does
-                                                not exist.Come and knock on our door.</p>
+                                            <p> {recipe.description}</p>
 
 
                                             <div className="explore">

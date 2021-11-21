@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 // import styles from './SecondRecipesCard.module.css';
 
 
@@ -11,7 +13,7 @@ export default function CakeList({
                 <div className="card-body">
                     <h5 className="card-title">{recipe.title}</h5>
                     <p className="card-text">{recipe.description}</p>
-                    <a href="#" className="btn btn-primary">View</a>
+                    <NavLink to={`/details/${recipe._id}`} className="btn btn-primary">Details</NavLink>
                 </div>
             </div>
         </div >

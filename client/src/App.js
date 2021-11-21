@@ -47,7 +47,7 @@ function App() {
                     <Route path="/recipes/catalog" exact component={RecipeCatalog} />
                     <Route path="/recipes/create" exact component={RecipeCreate} />
                     <Route path="/chefs" exact component={RecipeCreate} />
-                    <Route path="/recipes/:recipeId" exact component={RecipeDetails} />
+                    <Route path="/details/:recipeId" exact component={RecipeDetails} />
                     <Route path="/contact" exact component={Contact} />
 
                     <Route path="/login" render={() => {
