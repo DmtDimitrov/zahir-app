@@ -1,7 +1,7 @@
 export default function SearchBar() {
 
     return (
-        <div className="row blog-row-padd">
+        <div className="row">
             <div className="col-12  side-bar-bg">
                 <div className="recipes-our-header text-center">
                     <span>Search</span>
@@ -21,3 +21,4 @@ export default function SearchBar() {
         </div>
     );
 }
+
