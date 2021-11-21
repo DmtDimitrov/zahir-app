@@ -1,9 +1,15 @@
+import { USERNAME } from '../constants'
+
 export function login(username) {
-    localStorage.setItem('username', username);
+    localStorage.setItem(USERNAME, username);
+};
+
+export function logout() {
+    localStorage.removeItem(USERNAME);
 };
 
 export function getUser() {
-    let username = localStorage.getItem('username');
+    let username = localStorage.getItem(USERNAME);
 
     return username;
 };

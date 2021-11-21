@@ -8,11 +8,11 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ErrorPage from './pages/Error';
 import RecipeCatalog from './pages/RecipeCatalog';
-// import RecipeCatalog2 from './pages/RecipeCatalog2';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeCreate from './pages/RecipeCreate';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Logout from './components/Logout';
 import Contact from './pages/Contact';
 
 
@@ -33,7 +33,15 @@ function App() {
             isAuth: true,
             username: username,
         })
-    }
+    };
+
+    const onLogout = () => {
+        setUserInfo({
+            isAuth: false,
+            username: null,
+        })
+    };
+
     return (
         <>
             <Header />
@@ -49,15 +57,14 @@ function App() {
                     <Route path="/chefs" exact component={RecipeCreate} />
                     <Route path="/details/:recipeId" exact component={RecipeDetails} />
                     <Route path="/contact" exact component={Contact} />
-
                     <Route path="/login" render={() => {
-                        return <Login onLogin={onLogin}/>
+                        return <Login onLogin={onLogin} />
                     }} />
                     <Route path="/register" exact component={Register} />
-                    <Route path="/logout" render={(props) => {
+                    <Route path="/logout" render={() => {
                         console.log('Logged out');
                         // props.history.push('/');
-                        return <Redirect to="/" />
+                        return <Logout onLogout={onLogout} />
                     }} />
                 </Switch>
             </>
