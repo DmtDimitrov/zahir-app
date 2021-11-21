@@ -16,6 +16,7 @@ export default function Menu({
     let userNav = (
         <>
             <NavLink className={styles['menu']} to="/recipes/create">ADD</NavLink>
+            <NavLink className={styles['menu']} to="/recipes/create">MY RECIPES</NavLink>
             <NavLink className={styles['menu']} to="/logout">LOGOUT</NavLink>
         </>
     );
@@ -32,7 +33,6 @@ export default function Menu({
                             <NavLink className={styles['menu']} to="/home">HOME</NavLink>
                             <NavLink className={styles['menu']} to="/recipes/catalog">RECIPES</NavLink>
                             <NavLink className={styles['menu']} to="/chefs">CHEFS</NavLink>
-                            <NavLink className={styles['menu']} to="/recipes/:recipeId">RECIPE</NavLink>
                             <NavLink className={`${styles['menu']} ${styles['last-spc']}`} to="/contact">CONTACT</NavLink>
                             <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> | </span>
                             {
