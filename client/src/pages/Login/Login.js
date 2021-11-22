@@ -18,10 +18,10 @@ export default function Login({
         let email = formData.get('email')
         let password = formData.get('password');
 
-        console.log('email');
-        console.log(email);
-        console.log('password');
-        console.log(password);
+        // console.log('email');
+        // console.log(email);
+        // console.log('password');
+        // console.log(password);
 
         authService.login(email);
         onLogin(email);
