@@ -1,12 +1,14 @@
 import styles from './PopularTags.module.css';
 
-export default function PopularTags() {
+export default function PopularTags({
+    title,
+}) {
 
     return (
         <div className={`row ${styles['blog-row-padd']}`}>
             <div className={`col-12 ${styles['side-bar-bg']}`}>
                 <div className={`${styles['our-header']} text-center`}>
-                    <span>popular tags</span>
+                    <span>{title}</span>
                     <div className="text-center">
                         <hr /><i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i> <hr />
                     </div>
