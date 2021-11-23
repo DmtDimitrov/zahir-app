@@ -15,8 +15,8 @@
 {styles['sm-input']}
 {`${styles['menu']} ${styles['last-spc']}`}
 {`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`}
-{`fas fa-phone fa-rotate-90 ${styles['col-icon-contact']}`}
-{`${styles['navbar']} navbar-expand-lg navbar-light`}
+{`row ${styles['comment-row']}`}
+{`${styles['comment-img']} img-fluid`}
 {`col-sm-4 ${styles['contact-col-marg']} text-center`}
-"fas fa-phone fa-rotate-90 col-icon-contact"
+"comment-img img-fluid"
 "image/Logo 4.png"

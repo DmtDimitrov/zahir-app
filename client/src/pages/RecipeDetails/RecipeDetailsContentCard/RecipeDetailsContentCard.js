@@ -10,7 +10,7 @@ export default function RecipeDetailsContentCard(
    
     let date = new Date(recipe.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
-    let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
+    // let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
   
     return (
         <div className="row">
@@ -22,7 +22,7 @@ export default function RecipeDetailsContentCard(
                             <h1>{recipe.title}</h1>
                             <div className={styles['post-info']}>
                                 <p>
-                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By { authorFullName}</span>
+                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By { }</span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>
                                     <span className={styles['spc-line']}> |</span>

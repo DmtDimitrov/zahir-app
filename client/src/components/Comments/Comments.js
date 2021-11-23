@@ -1,3 +1,6 @@
+import styles from './Comments.module.css';
+import CommentCard from './CommentCard';
+
 export default function Comments() {
 
     return (
@@ -6,6 +9,12 @@ export default function Comments() {
                 <div className="comment-container">
                     <span>comments(3)</span>
                     <hr />
+
+                    < CommentCard />
+                    < CommentCard />
+                    < CommentCard />
+                    < CommentCard />
+
                     <div className="row">
                         <div className="col-sm-2 ">
                             <img src="max-image/happy-client-1.jpg" alt="" className="comment-img img-fluid" />
@@ -21,6 +30,7 @@ export default function Comments() {
                         </div>
                         <hr className="comment-line" />
                     </div>
+
                     <div className="row comment-row except-row">
                         <div className="col-sm-2  ">
                             <img src="max-image/happy-client.jpg" alt="" className="comment-img img-fluid" />
@@ -36,6 +46,7 @@ export default function Comments() {
                         </div>
                         <hr className="comment-line" />
                     </div>
+
                     <div className="row comment-row ">
                         <div className="col-sm-2 ">
                             <img src="max-image/happy-client-3.jpg" alt="" className="comment-img img-fluid" />
