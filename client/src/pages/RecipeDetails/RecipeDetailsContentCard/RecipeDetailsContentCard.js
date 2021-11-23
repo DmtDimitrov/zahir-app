@@ -47,9 +47,9 @@ export default function RecipeDetailsContentCard(
                         </p>
                         <div className="row">
                             <div className={`col-md-8 ${styles['btn-icon']}`}>
-                                <button>About us</button>
-                                <button>Services</button>
-                                <button>Gallery</button>
+                                <button>Rate</button>
+                                <button>Edit</button>
+                                <button>Delete</button>
                             </div>
                             <div className=" col-md-4 ">
                                 <div className={`text-right ${styles['icon-btn']}`}>
