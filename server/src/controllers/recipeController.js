@@ -50,10 +50,12 @@ router.get('/', async (req, res) => {
 
 router.get('/:recipeId', async (req, res) => {
     try {
-        console.log(req.params.recipeId);
+        // console.log(req.params.recipeId);
         let recipe = await recipeService.getOne(req.params.recipeId);
     
-        res.json(recipe);
+        let recipeData = await recipe.toObject();
+        
+        res.json({...recipeData});
         
     } catch (error) {
         res.json({

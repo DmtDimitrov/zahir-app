@@ -1,14 +1,17 @@
-
+import { useState, useEffect } from 'react';
 import styles from './RecipeDetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../constants';
 
 
 export default function RecipeDetailsContentCard(
     recipe
-) {
 
-    let date = new Date(recipe.createdAt).toLocaleDateString('en-US',DATE_OPTIONS);
-    
+) {
+   
+    let date = new Date(recipe.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
+
+    let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
+  
     return (
         <div className="row">
             <div className="col-md-12 ">
@@ -19,11 +22,11 @@ export default function RecipeDetailsContentCard(
                             <h1>{recipe.title}</h1>
                             <div className={styles['post-info']}>
                                 <p>
-                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By Admin</span> 
-                                    <span className={styles['spc-line']}> |</span> 
+                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By { authorFullName}</span>
+                                    <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>
-                                    <span className={styles['spc-line']}> |</span> 
-                                    <span className={styles['info-over']}> <i className="far fa-heart"></i> 39 Likes </span> 
+                                    <span className={styles['spc-line']}> |</span>
+                                    <span className={styles['info-over']}> <i className="far fa-heart"></i> 39 Likes </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> <i className="far fa-comment"></i> 55 comments </span>
                                 </p>

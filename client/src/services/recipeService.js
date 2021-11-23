@@ -14,6 +14,7 @@ export async function getAll(){
 export const getOne = async (recipeId) => {
     let response = await fetch(`${HOST}/recipes/${recipeId}`);
     let recipe = response.json();
+
     return recipe;
 };
 
