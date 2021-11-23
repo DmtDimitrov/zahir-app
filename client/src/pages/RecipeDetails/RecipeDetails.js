@@ -16,14 +16,16 @@ import RecipeDetailsContentCard from './RecipeDetailsContentCard'
 export default function RecipeDetails({
     match
 }) {
-    const [recipe, setRecipe] = useState({});
+
+    const [recipe, setRecipe] = useState({
+        author: {} = {}
+    });
 
     const recipeId = match.params.recipeId;
 
     useEffect(async () => {
         let recipeResult = await recipeService.getOne(recipeId);
-        
-        console.log(recipeResult);
+
         setRecipe(recipeResult);
     }, []);
 

@@ -23,10 +23,7 @@ export default function RecipeCatalog({
             })
     }, []);
 
-    console.log(recipes);
-
-
-
+   
 
     return (
         <>
