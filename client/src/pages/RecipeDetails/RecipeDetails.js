@@ -12,16 +12,17 @@ import CategoriesBar from '../../components/CategoriesBar';
 import PopularTags from '../../components/PopularTags';
 import RecipeDetailsContentCard from './RecipeDetailsContentCard'
 
+
 export default function RecipeDetails({
     match
 }) {
     const [recipe, setRecipe] = useState({});
 
     const recipeId = match.params.recipeId;
-    console.log(recipeId);
 
     useEffect(async () => {
         let recipeResult = await recipeService.getOne(recipeId);
+        
         console.log(recipeResult);
         setRecipe(recipeResult);
     }, []);
@@ -39,14 +40,13 @@ export default function RecipeDetails({
 
                         <div className=" col-lg-12 " >
 
-                        
+
 
                             <PopularTags
                                 title="Categories"
                             />
 
                         </div>
-                        
 
 
 
@@ -58,7 +58,6 @@ export default function RecipeDetails({
                             <Comments />
 
                             <AddComment />
-
 
 
                         </div>
