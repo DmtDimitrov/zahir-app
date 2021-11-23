@@ -50,11 +50,12 @@ const recipeSchema = mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
-},
-	{
-		timestamps: true,
-	}
-);
+	createdAt: {
+		type: Date,
+		required: true,
+		default: new Date(),
+	},
+});
 
 
 
