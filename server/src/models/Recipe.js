@@ -46,6 +46,12 @@ const recipeSchema = mongoose.Schema({
 			ref: 'User',
 		},
 	],
+	comments: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: 'Comment',
+		},
+	],
 	ratings: {
 		type: Number,
 		default: 0,
