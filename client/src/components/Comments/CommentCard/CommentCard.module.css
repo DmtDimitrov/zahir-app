@@ -6,3 +6,17 @@
      min-height: 110px; 
      border-radius: 6px;
 }
+@media (max-width:575px){
+    .comment-img{
+        width: 110px;
+        max-height: 110px; 
+    }
+    .comment-text{
+        padding-top: 20px;
+        padding-right: 0px!important;
+        padding-left: 0px!important;
+    }
+    .except-row {
+        margin-left: 0px; 
+    }
+}
