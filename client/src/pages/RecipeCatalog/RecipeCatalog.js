@@ -36,7 +36,7 @@ export default function RecipeCatalog({
                 <div className="inside-container">
                     <div className="row">
                         <div className="col-lg-8 " >
-                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div className="row row-cols-1 row-cols-md-3 g-4">
                                 {recipes.length > 0
                                     ? recipes.map(x => <RecipesCard key={x._id} recipe={x} />)
                                     : <h3 className="no-articles">No recipes yet</h3>
