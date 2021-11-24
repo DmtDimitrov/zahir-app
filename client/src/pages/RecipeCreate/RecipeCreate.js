@@ -1,11 +1,38 @@
 import { Redirect } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import styles from './RecipeCreate.module.css';
 import Subheader from '../../components/Subheader';
 
 import * as recipeService from '../../services/recipeService';
+import * as categoryService from '../../services/categoryService';
 
 export default function RecipeCreate() {
+
+    const [category, setCategory] = useState([]);
+
+    useEffect(() => {
+        categoryService.getAll()
+            .then(result => {
+                let categoryResult = Object.values(result);
+
+                let categories = categoryResult.reduce((a, x) => {
+                    if (!a[x.name]) {
+                        a[x.name] = [];
+                    }
+                    a[x.name].push(x);
+                    return a
+                }, {});
+
+
+                setCategory(categories)
+            })
+    }, []);
+
+    const onAddCategory = (e) => {
+
+    }
+
     const onRecipeCreate = (e) => {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
@@ -18,6 +45,8 @@ export default function RecipeCreate() {
         let unit = formData.get('unit');
         let quantity = formData.get('quantity');
         let method = formData.get('method');
+
+       
 
         recipeService.create({
             title,
@@ -32,7 +61,7 @@ export default function RecipeCreate() {
             .then(result => {
                 <Redirect to="/" />
             })
-        
+
         e.currentTarget.reset();
     }
     return (
@@ -53,15 +82,20 @@ export default function RecipeCreate() {
                                         <form onSubmit={onRecipeCreate} method="POST">
                                             <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
                                             <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
-                                            <select name="category" id="" placeholder="Select category" className={styles['sb-input']}>
-                                                <option value="Select category">Select category</option>
-                                                <option value="Cake">Cake</option>
-                                                <option value="Cream">Cream</option>
-                                                <option value="Tart">Tart</option>
-                                                <option value="Cupcake">Cupcake</option>
-                                                <option value="Мuffin">Мuffin</option>
-                                                <option value="Brownie">Brownie</option>
-                                            </select>
+
+                                            <div className="row">
+                                                <div className="col-sm-9">
+                                                    <select name="category" id="" placeholder="Select category" className={styles['sb-input']}>
+                                                        <option default>Select category</option>
+                                                        {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
+
+                                                    </select>
+                                                </div>
+                                                <div className="col-sm-3">
+                                                    <input onSubmit={onAddCategory} type="submit" value="add category" className={styles['submit-btn']} />
+                                                </div>
+
+                                            </div>
 
                                             <textarea name="description" rows="3" className="area-text" placeholder="Short description..."></textarea>
                                             <div className="row">
