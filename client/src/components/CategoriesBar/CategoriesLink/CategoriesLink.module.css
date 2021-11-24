@@ -1,0 +1,20 @@
+.categories-link{
+    font-family: 'Open Sans';
+    font-size: 13px;
+}
+.categories-link a{
+    color: #777777;
+}
+.categories-link a:hover{
+    color: #f65aa7;
+    text-decoration: none;
+}
+.categories-link i {
+    margin-right: 15px;
+}
+.categories-link span{
+float: right;
+}
+.categories-link:active{ 
+    color: #f65aa7;
+}

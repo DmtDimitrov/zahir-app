@@ -12,11 +12,11 @@
 {`${styles.subhead} ${styles['main-container']}`}
 {`row ${styles.myCustomClassName}`}
 {styles['menu']}
-{styles['sm-input']}
+{styles['categories-link']}
 {`${styles['menu']} ${styles['last-spc']}`}
 {`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`}
-{`row ${styles['comment-row']}`}
-{`${styles['comment-img']} img-fluid`}
+{`far fa-square ${styles['rotate-45']}`}
+{`${styles['our-header']} text-center`}
 {`col-sm-4 ${styles['contact-col-marg']} text-center`}
-"comment-img img-fluid"
+"categories-link"
 "image/Logo 4.png"
