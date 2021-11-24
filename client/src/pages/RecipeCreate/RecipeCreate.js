@@ -32,6 +32,8 @@ export default function RecipeCreate() {
             .then(result => {
                 <Redirect to="/" />
             })
+        
+        e.currentTarget.reset();
     }
     return (
         <>
@@ -60,7 +62,6 @@ export default function RecipeCreate() {
                                                 <option value="Мuffin">Мuffin</option>
                                                 <option value="Brownie">Brownie</option>
                                             </select>
-                                            
                                             <textarea name="description" rows="3" className="area-text" placeholder="Short description..."></textarea>
                                             <div className="row">
                                                 <div className="col-sm-6"> <input type="text" name="ingredient" placeholder="Ingredient Name" className={styles['sm-input']} /> </div>
