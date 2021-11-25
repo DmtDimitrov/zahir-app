@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 
 import styles from './RecipeCreate.module.css';
 import Subheader from '../../components/Subheader';
-
+import IngredientInputs from './IngredientInputs';
 import * as recipeService from '../../services/recipeService';
 import * as categoryService from '../../services/categoryService';
 
 export default function RecipeCreate() {
 
     const [category, setCategory] = useState([]);
+    const [ingredientsCount, setIngredientsCount] = useState([]);
 
     useEffect(() => {
         categoryService.getAll()
@@ -46,7 +47,7 @@ export default function RecipeCreate() {
         let quantity = formData.get('quantity');
         let method = formData.get('method');
 
-       
+
 
         recipeService.create({
             title,
@@ -63,6 +64,16 @@ export default function RecipeCreate() {
             })
 
         e.currentTarget.reset();
+    }
+
+    const addIngredientHandler = (e) => {
+
+        let ingredient = {
+            name: ingredient,
+            unit: ,
+            quantity: 
+        }
+       
     }
     return (
         <>
@@ -103,9 +114,12 @@ export default function RecipeCreate() {
                                                 <div className="col-sm-3">  <input type="text" name="unit" placeholder="Unit" className={styles['sm-input']} /></div>
                                                 <div className="col-sm-3">  <input type="text" name="quantity" placeholder="Quantity" className={styles['sm-input']} /></div>
                                             </div>
+
+                                            <IngredientInputs />
+
                                             <div className="row">
                                                 <div className="col-sm-6 text-center">  <input type="submit" value="add group heading" className={styles['submit-btn']} /></div>
-                                                <div className="col-sm-6 text-center">  <input type="submit" value="add next ingredient" className={styles['submit-btn']} /></div>
+                                                <div className="col-sm-6 text-center">  <input onSubmit={addIngredientHandler} type="submit" value="add next ingredient" className={styles['submit-btn']} /></div>
                                             </div>
                                             <label htmlFor="method">Method</label>
                                             <textarea name="method" rows="6" className="area-text" placeholder="Method..."></textarea>

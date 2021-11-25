@@ -15,18 +15,12 @@ const recipeSchema = mongoose.Schema({
 		required: [true, 'Description is required!'],
 		maxlength: [200, 'Description should be max 200 characters long'],
 	},
-	ingredient: {
-		type: String,
-		required: [true, 'Ingredient is required!'],
-	},
-	unit: {
-		type: String,
-		required: [true, 'Unit is required!'],
-	},
-	quantity: {
-		type: Number,
-		required: [true, 'Quantity is required!'],
-	},
+	ingredient: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: 'Ingredient',
+		},
+	],
 	method: {
 		type: String,
 		required: [true, 'Method is required!'],
