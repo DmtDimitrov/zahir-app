@@ -1,7 +1,6 @@
-// import { useState, useEffect } from 'react';
+// import { useEffect } from 'react';
 import styles from './RecipeDetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../constants';
-
 
 export default function RecipeDetailsContentCard(
     recipe
@@ -9,28 +8,31 @@ export default function RecipeDetailsContentCard(
 
     let date = new Date(recipe.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
-    // let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
-
-    console.log("recipe");
-    console.log(recipe);
-    console.log('recipe.author');
-    console.log(recipe.author);
-    console.log('recipe.ingredients');
-    console.log(recipe.ingredients);
-
-  
-
     return (
         <div className="row">
             <div className="col-md-12 ">
                 <div className={styles['recipe-post']}>
                     <div> <img src={recipe.image} alt="" className={`${styles['recipe-image']} img-fluid`} /></div>
                     <div className={styles['recipe-description']}>
-                        <div className="text-center">  <a href="#"> Shop </a>
+                        <div className="text-center">
+                            <div className="row">
+                                <div className={`col-md-6 ${styles['btn-icon']}`}>
+                                    <button>Cook for</button>
+                                    
+                                </div>
+                                <div className=" col-md-6 ">
+                                <input type="text" name="Serving" placeholder="Serving" className={styles['sm-input']} />
+                                </div>
+
+                            </div>
+
                             <h1>{recipe.title}</h1>
                             <div className={styles['post-info']}>
                                 <p>
-                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By </span>
+                                    <span className={styles['info-over']}>
+                                        <i className="far fa-user"></i>
+                                        By {`${recipe.author.firstName} ${recipe.author.lastName}`}
+                                    </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>
                                     <span className={styles['spc-line']}> |</span>
@@ -41,16 +43,31 @@ export default function RecipeDetailsContentCard(
                             </div>
                         </div>
 
-                        <p> {recipe.description}</p>
+                        <p>
+                            <h5>Description:</h5>
+                            {recipe.description}
+                        </p>
 
 
                         <div className={styles['explore']}>
                             <p>
-                                
+
+                                <h5>Ingredients:</h5>
+                                <ul className="list-group">
+                                    {recipe.ingredients.map(x => (
+
+                                        <li className="list-group-item" key={x._id}>{x.quantity} {x.unit} {x.name}</li>
+
+                                    ))}
+
+                                </ul>
+
                             </p>
-                            <i className="fas fa-quote-right"></i>
+
                         </div>
+
                         <p>
+                            <h5>Method:</h5>
                             {recipe.method}
                         </p>
                         <div className="row">

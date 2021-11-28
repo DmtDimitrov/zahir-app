@@ -10,15 +10,15 @@ import AddComment from '../../components/Comments/AddComment';
 import SearchBar from '../../components/SearchBar';
 import CategoriesBar from '../../components/CategoriesBar';
 import PopularTags from '../../components/PopularTags';
-import RecipeDetailsContentCard from './RecipeDetailsContentCard'
+import RecipeDetailsContentCard from './RecipeDetailsContentCard';
 
 
 export default function RecipeDetails({
     match
 }) {
 
-    const [recipe, setRecipe] = useState({
-      
+    const [recipe, setRecipe] = useState({author:{}, ingredients:[]
+
     });
 
     const recipeId = match.params.recipeId;
@@ -29,7 +29,7 @@ export default function RecipeDetails({
         setRecipe(recipeResult);
     }, []);
 
-
+    console.log(recipe);
     return (
         <>
             <Subheader
@@ -55,7 +55,7 @@ export default function RecipeDetails({
                         <div className=" col-lg-8 " >
 
 
-                            <RecipeDetailsContentCard {...recipe} />
+                            {recipe ? <RecipeDetailsContentCard {...recipe} /> : 'Loading...'}
 
                             <Comments />
 
