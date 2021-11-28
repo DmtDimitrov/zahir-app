@@ -72,30 +72,44 @@ export default function RecipeCreate() {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
 
-        
+
 
         let title = formData.get('title');
         let image = formData.get('image');
         let category = formData.get('category');
         let description = formData.get('description');
-        let ingredient = formData.get('ingredient');
-        let unit = formData.get('unit');
-        let quantity = formData.get('quantity');
         let method = formData.get('method');
 
         console.log('ingredientInputs');
-        console.log(ingredientInputs.forEach(x => console.log(x.Ingredient)));
+        console.log(ingredientInputs);
 
-        recipeService.create({
+        let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
+        console.log(ingredientData);
+
+        let ingredients = [
+            {
+                name: 'milk',
+                unit: 'ml',
+                quantity: '200'
+            },
+            {
+                name: 'sugar',
+                unit: 'kg',
+                quantity: '0.2'
+            },
+
+        ]
+
+        let data = {
             title,
-            image,
             category,
             description,
-            ingredient,
-            unit,
-            quantity,
+            ingredients: ingredientData,
             method,
-        })
+            image,
+        }
+
+        recipeService.create(data)
             .then(result => {
                 <Redirect to="/" />
             })
@@ -137,9 +151,9 @@ export default function RecipeCreate() {
                 return {
                     ...item,
                     [event.target.name]: event.target.value,
-                    errors:{
+                    errors: {
                         ...item.errors,
-                        [event.target.name]:event.target.value.length>0?null:[event.target.name]+ ' Is required',
+                        [event.target.name]: event.target.value.length > 0 ? null : [event.target.name] + ' Is required',
                     }
                 };
             });
@@ -207,8 +221,8 @@ export default function RecipeCreate() {
                                                                 value={x.Ingredient}
                                                                 className={
                                                                     x.errors.Ingredient
-                                                                    ? `${styles['sm-input']} form-control is-invalid`
-                                                                    : `${styles['sm-input']} form-control`
+                                                                        ? `${styles['sm-input']} form-control is-invalid`
+                                                                        : `${styles['sm-input']} form-control`
                                                                 }
                                                             />
                                                             {x.errors.Ingredient && (
@@ -247,8 +261,8 @@ export default function RecipeCreate() {
                                                                 value={x.Quantity}
                                                                 className={
                                                                     x.errors.Quantity
-                                                                    ? `${styles['sm-input']} form-control is-invalid`
-                                                                    : `${styles['sm-input']} form-control`
+                                                                        ? `${styles['sm-input']} form-control is-invalid`
+                                                                        : `${styles['sm-input']} form-control`
                                                                 }
                                                             />
                                                             {x.errors.Quantity && (

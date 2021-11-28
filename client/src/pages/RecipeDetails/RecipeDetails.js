@@ -18,7 +18,7 @@ export default function RecipeDetails({
 }) {
 
     const [recipe, setRecipe] = useState({
-        author: {} = {}
+      
     });
 
     const recipeId = match.params.recipeId;

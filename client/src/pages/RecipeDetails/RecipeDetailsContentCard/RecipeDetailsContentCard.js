@@ -5,13 +5,21 @@ import { DATE_OPTIONS } from '../../../constants';
 
 export default function RecipeDetailsContentCard(
     recipe
-
 ) {
-   
+
     let date = new Date(recipe.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
     // let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
+
+    console.log("recipe");
+    console.log(recipe);
+    console.log('recipe.author');
+    console.log(recipe.author);
+    console.log('recipe.ingredients');
+    console.log(recipe.ingredients);
+
   
+
     return (
         <div className="row">
             <div className="col-md-12 ">
@@ -22,7 +30,7 @@ export default function RecipeDetailsContentCard(
                             <h1>{recipe.title}</h1>
                             <div className={styles['post-info']}>
                                 <p>
-                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By { }</span>
+                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>
                                     <span className={styles['spc-line']}> |</span>
@@ -37,13 +45,13 @@ export default function RecipeDetailsContentCard(
 
 
                         <div className={styles['explore']}>
-                            <p> Explore strange new worlds to seek out new life and new civilizations to boldly go where no man has gone before.
+                            <p>
+                                
                             </p>
                             <i className="fas fa-quote-right"></i>
                         </div>
                         <p>
-                            Sometimes you want to go where everybody knows your name. And they're always glad you came. Makin' your way in the world today takes everything you've got.
-                            Takin' a break from all your worries sure would help a lot. Makin' your way in the world today takes everything you've got.
+                            {recipe.method}
                         </p>
                         <div className="row">
                             <div className={`col-md-8 ${styles['btn-icon']}`}>
