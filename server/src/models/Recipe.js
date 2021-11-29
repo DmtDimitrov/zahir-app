@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 
+const ingredientSchema = mongoose.Schema({
+	name: String,
+	unit: String,
+	quantity: Number,
+});
+
 const recipeSchema = mongoose.Schema({
 	title: {
 		type: String,
@@ -15,18 +21,9 @@ const recipeSchema = mongoose.Schema({
 		required: [true, 'Description is required!'],
 		maxlength: [200, 'Description should be max 200 characters long'],
 	},
-	ingredient: {
-		type: String,
-		required: [true, 'Ingredient is required!'],
-	},
-	unit: {
-		type: String,
-		required: [true, 'Unit is required!'],
-	},
-	quantity: {
-		type: Number,
-		required: [true, 'Quantity is required!'],
-	},
+	ingredients: [
+		ingredientSchema
+	],
 	method: {
 		type: String,
 		required: [true, 'Method is required!'],

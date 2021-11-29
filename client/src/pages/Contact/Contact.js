@@ -1,4 +1,4 @@
-import styles from './Contact.module.css';
+
 import Subheader from '../../components/Subheader';
 import ContactCard from './components/ContactCard';
 import GoogleMapCard from './components/GoogleMapCard';

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import * as authService from './services/authService';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import ErrorPage from './pages/Error';
+// import ErrorPage from './pages/Error';
 import RecipeCatalog from './pages/RecipeCatalog';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeCreate from './pages/RecipeCreate';

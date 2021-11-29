@@ -1,0 +1,17 @@
+.sm-input{
+    width: 100%;
+   min-height: 50px;
+  
+   margin-bottom: 20px;
+   padding: 0 20px;
+   background-color: #f9f9f9;
+   border: 1px solid #ececec;
+   font-size: 14px;
+   font-family: 'Open Sans';
+   color: #777777;
+}
+
+.sm-input:first-child{
+    
+    margin-right: 20px;
+}

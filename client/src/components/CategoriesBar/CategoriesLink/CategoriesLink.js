@@ -7,7 +7,7 @@ export default function CategoriesLink({
     return (
         <>
             <div className={styles['categories-link']}>
-                <a href="#"> <i className="fas fa-angle-right"></i> {title} <span className="">({productsCount})</span></a>
+                <a href="/#"> <i className="fas fa-angle-right"></i> {title} <span className="">({productsCount})</span></a>
             </div>
             <hr />
         </>

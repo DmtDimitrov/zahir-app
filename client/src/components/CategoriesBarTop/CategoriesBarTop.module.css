@@ -4,10 +4,6 @@
     margin: 0 auto;
     overflow: hidden;
 }
-.recipe-container{
-    padding: 90px 0;
-    background-color: #f9f9f9;
-}
 .inside-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -21,15 +17,24 @@
     font-weight: bold;
     text-align: center;
     font-family: 'Roboto Slab', serif;
-    margin-top: 140px;
+    margin-top: 10px;
+}
+.our-header h4{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 5px;
 }
 .our-header hr{
    height: 5px;
    border-color:#c0bfbf;
-   margin-left: 15px;
+   margin-left: 10px;
     display: inline-flex;
-    margin-right: 15px;
-    width: 65px;
+    margin-right: 10px;
+    width: 40px;
 }
 .rotate-45{
     transform: rotate(45deg);
@@ -56,7 +61,7 @@
     color: #777777;
     font-size: 15px;
     font-family: 'Roboto Slab', serif;
-    background-color: #ffffff;
+    background-color: #ffffff00;
     border: none;
     text-align: center;
 }

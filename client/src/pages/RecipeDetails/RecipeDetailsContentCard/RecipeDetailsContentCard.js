@@ -1,28 +1,38 @@
-import { useState, useEffect } from 'react';
+// import { useEffect } from 'react';
 import styles from './RecipeDetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../constants';
 
-
 export default function RecipeDetailsContentCard(
     recipe
-
 ) {
-   
+
     let date = new Date(recipe.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
-    // let authorFullName = `${recipe.author.firstName} ${recipe.author.lastName}`;
-  
     return (
         <div className="row">
             <div className="col-md-12 ">
                 <div className={styles['recipe-post']}>
                     <div> <img src={recipe.image} alt="" className={`${styles['recipe-image']} img-fluid`} /></div>
                     <div className={styles['recipe-description']}>
-                        <div className="text-center">  <a href="#"> Shop </a>
+                        <div className="text-center">
+                            <div className="row">
+                                <div className={`col-md-6 ${styles['btn-icon']}`}>
+                                    <button>Cook for</button>
+
+                                </div>
+                                <div className=" col-md-6 ">
+                                    <input type="text" name="Serving" placeholder="Serving" className={styles['sm-input']} />
+                                </div>
+
+                            </div>
+
                             <h1>{recipe.title}</h1>
-                            <div className={styles['post-info']}>
+                            <div className={styles['post-info']} >
                                 <p>
-                                    <span className={styles['info-over']}>  <i className="far fa-user"></i> By { }</span>
+                                    <span className={styles['info-over']}>
+                                        <i className="far fa-user"></i>
+                                        By {`${recipe.author.firstName} ${recipe.author.lastName}`}
+                                    </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>
                                     <span className={styles['spc-line']}> |</span>
@@ -32,19 +42,37 @@ export default function RecipeDetailsContentCard(
                                 </p>
                             </div>
                         </div>
-
-                        <p> {recipe.description}</p>
-
+                        <div >
+                            <h5>Description:</h5>
+                            <p>
+                                {recipe.description}
+                            </p>
+                        </div>
 
                         <div className={styles['explore']}>
-                            <p> Explore strange new worlds to seek out new life and new civilizations to boldly go where no man has gone before.
-                            </p>
-                            <i className="fas fa-quote-right"></i>
+                            <div >
+
+                                <h5>Ingredients:</h5>
+                                <ul className="list-group">
+                                    {recipe.ingredients.map(x => (
+
+                                        <li className="list-group-item" key={x._id}>{x.quantity} {x.unit} {x.name}</li>
+
+                                    ))}
+
+                                </ul>
+
+                            </div>
+
                         </div>
-                        <p>
-                            Sometimes you want to go where everybody knows your name. And they're always glad you came. Makin' your way in the world today takes everything you've got.
-                            Takin' a break from all your worries sure would help a lot. Makin' your way in the world today takes everything you've got.
-                        </p>
+
+                        <div>
+                            <h5>Method:</h5>
+                            <p>
+                                {recipe.method}
+                            </p>
+                        </div>
+
                         <div className="row">
                             <div className={`col-md-8 ${styles['btn-icon']}`}>
                                 <button>Rate</button>
