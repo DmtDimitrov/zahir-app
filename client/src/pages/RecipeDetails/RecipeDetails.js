@@ -11,13 +11,15 @@ import SearchBar from '../../components/SearchBar';
 import CategoriesBar from '../../components/CategoriesBar';
 import PopularTags from '../../components/PopularTags';
 import RecipeDetailsContentCard from './RecipeDetailsContentCard';
+import CategoriesBarTop from '../../components/CategoriesBarTop';
 
 
 export default function RecipeDetails({
     match
 }) {
 
-    const [recipe, setRecipe] = useState({author:{}, ingredients:[]
+    const [recipe, setRecipe] = useState({
+        author: {}, ingredients: []
 
     });
 
@@ -40,15 +42,7 @@ export default function RecipeDetails({
                 <div className={styles['inside-container']}>
                     <div className="row">
 
-                        <div className=" col-lg-12 " >
-
-
-
-                            <PopularTags
-                                title="Categories"
-                            />
-
-                        </div>
+                        <CategoriesBarTop />
 
 
 
