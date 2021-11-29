@@ -59,7 +59,6 @@ export default function RecipeCreate() {
                     return a
                 }, {});
 
-
                 setCategory(categories)
             })
     }, []);
@@ -72,8 +71,6 @@ export default function RecipeCreate() {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
 
-
-
         let title = formData.get('title');
         let image = formData.get('image');
         let category = formData.get('category');
@@ -85,20 +82,6 @@ export default function RecipeCreate() {
 
         let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
         console.log(ingredientData);
-
-        let ingredients = [
-            {
-                name: 'milk',
-                unit: 'ml',
-                quantity: '200'
-            },
-            {
-                name: 'sugar',
-                unit: 'kg',
-                quantity: '0.2'
-            },
-
-        ]
 
         let data = {
             title,
