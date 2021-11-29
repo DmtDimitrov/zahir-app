@@ -18,16 +18,16 @@ export default function RecipeDetailsContentCard(
                             <div className="row">
                                 <div className={`col-md-6 ${styles['btn-icon']}`}>
                                     <button>Cook for</button>
-                                    
+
                                 </div>
                                 <div className=" col-md-6 ">
-                                <input type="text" name="Serving" placeholder="Serving" className={styles['sm-input']} />
+                                    <input type="text" name="Serving" placeholder="Serving" className={styles['sm-input']} />
                                 </div>
 
                             </div>
 
                             <h1>{recipe.title}</h1>
-                            <div className={styles['post-info']}>
+                            <div className={styles['post-info']} >
                                 <p>
                                     <span className={styles['info-over']}>
                                         <i className="far fa-user"></i>
@@ -42,15 +42,15 @@ export default function RecipeDetailsContentCard(
                                 </p>
                             </div>
                         </div>
-
-                        <p>
+                        <div >
                             <h5>Description:</h5>
-                            {recipe.description}
-                        </p>
-
+                            <p>
+                                {recipe.description}
+                            </p>
+                        </div>
 
                         <div className={styles['explore']}>
-                            <p>
+                            <div >
 
                                 <h5>Ingredients:</h5>
                                 <ul className="list-group">
@@ -62,14 +62,17 @@ export default function RecipeDetailsContentCard(
 
                                 </ul>
 
-                            </p>
+                            </div>
 
                         </div>
 
-                        <p>
+                        <div>
                             <h5>Method:</h5>
-                            {recipe.method}
-                        </p>
+                            <p>
+                                {recipe.method}
+                            </p>
+                        </div>
+
                         <div className="row">
                             <div className={`col-md-8 ${styles['btn-icon']}`}>
                                 <button>Rate</button>
