@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+// import { Route, Switch, Redirect } from 'react-router-dom';
 
 import styles from './CategoriesBarTop.module.css';
 
@@ -10,7 +10,7 @@ export default function CategoriesBarTop() {
             <div className={`col-12 ${styles['our-header']} ${styles['prom-padd']}`}>
                 <h4>categories</h4>
                 <div className="text-center">
-                <hr/> <i class={`far fa-square ${styles['rotate-45']}`}></i> <i class={`far fa-square ${styles['rotate-45']}`}></i>
+                <hr/> <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                 <hr/>
                 </div>
 

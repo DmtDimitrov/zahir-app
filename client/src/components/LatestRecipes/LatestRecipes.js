@@ -8,7 +8,7 @@ export default function LatestRecipes() {
                     <div className={`col-12 ${styles['our-header']} ${styles['prom-padd']}`}>
                         <h2>latest recipes</h2>
                         <div className="text-center">
-                        <hr/> <i class={`far fa-square ${styles['rotate-45']}`}></i> <i class={`far fa-square ${styles['rotate-45']}`}></i>
+                        <hr/> <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                         <hr/>
                         </div>
 
@@ -29,8 +29,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>Brouchers</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -45,8 +45,8 @@ export default function LatestRecipes() {
                                         <div className="our-header">
                                             <p>BUSINESS CARD</p>
                                             <div className="icon-overlay">
-                                                <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                                <a href="#">  <i className="fas fa-link"></i> </a>
+                                                <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                                <a href="/#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
                                                 <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -59,8 +59,8 @@ export default function LatestRecipes() {
                                         <div className="our-header">
                                             <p>BUSINESS CARD</p>
                                             <div className="icon-overlay">
-                                                <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                                <a href="#">  <i className="fas fa-link"></i> </a>
+                                                <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                                <a href="/#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
                                                 <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -75,8 +75,8 @@ export default function LatestRecipes() {
                                         <div className="our-header">
                                             <p>BUSINESS CARD</p>
                                             <div className="icon-overlay">
-                                                <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                                <a href="#">  <i className="fas fa-link"></i> </a>
+                                                <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                                <a href="/#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
                                                 <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -91,8 +91,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>Brouchers</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -107,8 +107,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>POST CARDS</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -121,8 +121,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>POST CARDS</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -135,8 +135,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>POST CARDS</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
@@ -149,8 +149,8 @@ export default function LatestRecipes() {
                                 <div className="our-header">
                                     <p>POST CARDS</p>
                                     <div className="icon-overlay">
-                                        <a href="#">  <i className="fas fa-compress-arrows-alt"></i></a>
-                                        <a href="#">  <i className="fas fa-link"></i> </a>
+                                        <a href="/#">  <i className="fas fa-compress-arrows-alt"></i></a>
+                                        <a href="/#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
                                         <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
