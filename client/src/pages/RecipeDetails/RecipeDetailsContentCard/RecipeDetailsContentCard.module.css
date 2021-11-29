@@ -89,7 +89,7 @@
         bottom: 24%;
     }
 }*/
-.explore p{
+.explore div{
     font-size: 16px;
     color: #000000;
     font-family: 'Open Sans';
@@ -160,4 +160,16 @@
 .sm-input:first-child{
     
     margin-right: 20px;
+}
+.our-header{
+    padding-bottom: 10px;
+}
+.our-header span{
+        font-family: 'Roboto Slab', serif;
+        font-size: 14px;
+        /* font-weight:bold; */
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        
 }
