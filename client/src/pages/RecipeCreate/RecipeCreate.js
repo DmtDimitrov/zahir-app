@@ -39,7 +39,7 @@ export default function RecipeCreate() {
                     allOldState[index].errors.Quantity = 'Quantity is required';
                 }
 
-                setIngredientInputs(allOldState);
+                return setIngredientInputs(allOldState);
             });
         }
 
