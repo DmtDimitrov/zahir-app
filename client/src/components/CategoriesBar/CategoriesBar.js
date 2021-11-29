@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+// import { Route, Switch, Redirect } from 'react-router-dom';
 
 import styles from './CategoriesBar.module.css';
 import CategoriesLink from './CategoriesLink';
