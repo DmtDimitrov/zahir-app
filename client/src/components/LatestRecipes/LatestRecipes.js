@@ -1,18 +1,22 @@
-// import './Header.css';
+import styles from './LatestRecipes.module.css';
 
 export default function LatestRecipes() {
     return (
-        <div className="main-container">
-            <div className="inside-container">
+        <div className={styles['main-container']}>
+            <div className={styles['inside-container']}>
                 <div className="row">
-                    <div className="col-12 our-header prom-padd">
+                    <div className={`col-12 ${styles['our-header']} ${styles['prom-padd']}`}>
                         <h2>latest recipes</h2>
                         <div className="text-center">
-                            <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                        <hr/> <i class={`far fa-square ${styles['rotate-45']}`}></i> <i class={`far fa-square ${styles['rotate-45']}`}></i>
+                        <hr/>
                         </div>
 
-                        <div className="linker-work js-filter button">
-                            <button data-filter="*" >All Projects</button>   <button data-filter=".business"> Business Card</button>   <button data-filter=".postcard"> Post Cards</button>   <button data-filter=".brocher"> Brouchers</button>
+                        <div className={`${styles['linker-work']} js-filter button`}>
+                            <button data-filter="*" >All Recipes</button>   
+                            <button data-filter=".business"> Cakes</button>   
+                            <button data-filter=".postcard"> Brownies</button>   
+                            <button data-filter=".brocher"> Cupcakes</button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +33,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +49,7 @@ export default function LatestRecipes() {
                                                 <a href="#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
-                                                <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                                <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +63,7 @@ export default function LatestRecipes() {
                                                 <a href="#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
-                                                <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                                <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +79,7 @@ export default function LatestRecipes() {
                                                 <a href="#">  <i className="fas fa-link"></i> </a>
                                             </div>
                                             <div className="text-center">
-                                                <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                                <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +95,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +111,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +125,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +139,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +153,7 @@ export default function LatestRecipes() {
                                         <a href="#">  <i className="fas fa-link"></i> </a>
                                     </div>
                                     <div className="text-center">
-                                        <i className="far fa-square rotate-45"></i> <i className="far fa-square rotate-45"></i>
+                                        <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
                                     </div>
                                 </div>
                             </div>
