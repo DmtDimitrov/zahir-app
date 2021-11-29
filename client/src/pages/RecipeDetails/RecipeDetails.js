@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
-import './RecipeDetails.css';
 import styles from './RecipeDetails.module.css';
 import Subheader from '../../components/Subheader';
 import Comments from '../../components/Comments';
@@ -56,8 +55,8 @@ export default function RecipeDetails({
                             <AddComment />
 
                         </div>
-
-                        <div className=" col-lg-4 side-bar-colon" >
+                      
+                        <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
                             <SearchBar />
 
