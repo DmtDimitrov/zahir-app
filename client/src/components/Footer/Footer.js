@@ -25,10 +25,10 @@ export default function Footer() {
                         <hr />
                         <div className="row">
                             <div className={`col-6 ${styles['pop-link']}`}>
-                                <a href="#">About Us</a>
-                                <a href="#">contact us </a>
-                                <a href="#">recipes</a>
-                                <a href="#">Chefs</a>
+                                <a href="/#">About Us</a>
+                                <a href="/#">contact us </a>
+                                <a href="/#">recipes</a>
+                                <a href="/#">Chefs</a>
                             </div>
     
                         </div>

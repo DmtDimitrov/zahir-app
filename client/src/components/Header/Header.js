@@ -8,9 +8,9 @@ export default function Header() {
                     <div className={`col-md-12 ${styles['col-disp']}`}>
                         <div className={styles['icon-scp']} >
                             <div className={styles['left-side']}>
-                                <a className={styles['link-head']} href="#"><i className="fas fa-phone fa-rotate-90"></i>  +359 879 213 566</a> <span>|</span>
-                                <a className={styles['link-head']} href="#"><i className="far fa-clock"></i> Sun-Mon: 9.00am to 7.00pm</a> <span>|</span>
-                                <a className={styles['link-head']} href="#"><i className="far fa-envelope "> </i> info@zahirsweetcreations.com </a>
+                                <a className={styles['link-head']} href="/#"><i className="fas fa-phone fa-rotate-90"></i>  +359 879 213 566</a> <span>|</span>
+                                <a className={styles['link-head']} href="/#"><i className="far fa-clock"></i> Sun-Mon: 9.00am to 7.00pm</a> <span>|</span>
+                                <a className={styles['link-head']} href="/#"><i className="far fa-envelope "> </i> info@zahirsweetcreations.com </a>
                             </div>
                         </div>
                         <div className={`ml-auto ${styles['icon-scp']}`} >
