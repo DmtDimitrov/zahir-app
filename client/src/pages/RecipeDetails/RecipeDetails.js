@@ -34,7 +34,7 @@ export default function RecipeDetails({
     }, [recipeId]);
 
    
-    console.log(recipe);
+    // console.log(recipe);
     return (
         <>
             <Subheader
