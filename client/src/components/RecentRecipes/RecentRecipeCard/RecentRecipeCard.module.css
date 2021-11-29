@@ -1,0 +1,20 @@
+.ltl-blog{
+    display: inline-flex;
+}
+.recent-img {
+    min-width: 75px;
+}
+.max-award {
+    padding-left: 30px;
+    font-size: 14px;
+    font-family: 'Roboto Slab', serif;
+}
+.blog-icon{
+    margin-right:5px;
+    font-size: 13px;
+    color: #f65aa7;
+}
+.blog-vl{
+    color: #777777;
+    margin: 0 5px;
+}
