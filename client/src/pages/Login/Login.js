@@ -16,7 +16,7 @@ export default function Login({
         let formData = new FormData(e.currentTarget);
 
         let email = formData.get('email')
-        let password = formData.get('password');
+        // let password = formData.get('password');
 
         // console.log('email');
         // console.log(email);
