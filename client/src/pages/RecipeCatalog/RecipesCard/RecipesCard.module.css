@@ -33,3 +33,18 @@
     overflow: visible; 
     white-space: normal; 
 }
+.card-body h5{
+    font-size: 1.1rem;
+}
+.post-info p{
+    color: #888888;
+    font-size: 13px;
+    font-family: 'Open Sans';
+}
+.info-over:hover{
+    color: #f65aa7;
+}
+.post-info i {
+    font-size: 13px;
+    padding: 0 5px;
+}

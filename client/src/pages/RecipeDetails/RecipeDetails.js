@@ -18,10 +18,7 @@ export default function RecipeDetails({
     match
 }) {
 
-    const [recipe, setRecipe] = useState({
-        author: {}, ingredients: []
-
-    });
+    const [recipe, setRecipe] = useState(null);
 
     const recipeId = match.params.recipeId;
 
@@ -48,7 +45,7 @@ export default function RecipeDetails({
 
                         <div className=" col-lg-8 " >
 
-                            {recipe ? <RecipeDetailsContentCard {...recipe} /> : 'Loading...'}
+                            {recipe && <RecipeDetailsContentCard {...recipe} />}
 
                             <Comments />
 

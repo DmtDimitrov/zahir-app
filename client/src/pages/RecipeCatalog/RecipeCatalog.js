@@ -14,7 +14,7 @@ import PopularTags from '../../components/PopularTags';
 export default function RecipeCatalog({
     navigationHandler
 }) {
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState(null);
 
     useEffect(() => {
         recipeService.getAll()
@@ -24,7 +24,7 @@ export default function RecipeCatalog({
     }, []);
 
    
-
+console.log(recipes);
     return (
         <>
             <Subheader
@@ -37,10 +37,7 @@ export default function RecipeCatalog({
                     <div className="row">
                         <div className="col-lg-8 " >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
-                                {recipes.length > 0
-                                    ? recipes.map(x => <RecipesCard key={x._id} recipe={x} />)
-                                    : <h3 className="no-articles">No recipes yet</h3>
-                                }
+                                { recipes && recipes.map(x => <RecipesCard key={x._id} recipe={x} />)}
 
                             </div>
                         </div>
