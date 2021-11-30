@@ -3,11 +3,11 @@ export default function BestRecipesCard({
 }) {
     return (
 
-        <div class="col-sm-6 col-lg-4">
+        <div class="col">
             <div class="card h-100">
-                <img src={recipe.image} class="card-img-top" alt="..." />
+                <img src="https://zahirsweetcreations.com/wp-content/uploads/2021/07/rafaelo-03_crop_www-600x600.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
-                    <h5 class="card-title">{recipe.title}</h5>
+                    <h5 class="card-title">Raffaello cake</h5>
                     <p class="card-text">asdasd</p>
                 </div>
             </div>
@@ -15,3 +15,5 @@ export default function BestRecipesCard({
 
     );
 }
+
+            
