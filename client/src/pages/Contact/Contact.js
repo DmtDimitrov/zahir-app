@@ -1,8 +1,8 @@
 
 import Subheader from '../../components/Subheader';
-import ContactCard from './components/ContactCard';
-import GoogleMapCard from './components/GoogleMapCard';
-import ContactFromCard from './components/ContactFormCard';
+import ContactCard from './ContactCard';
+import GoogleMapCard from './GoogleMapCard';
+import ContactFromCard from './ContactFormCard';
 
 
 
