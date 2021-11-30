@@ -17,10 +17,9 @@ export default function Contact() {
 
             <ContactCard/>
 
-            <GoogleMapCard/>
-
             <ContactFromCard/>
 
+            <GoogleMapCard/>
         </>
     );
 }
