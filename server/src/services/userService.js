@@ -10,30 +10,39 @@ export async function register({ firstName, lastName, email, password }) {
 };
 
 export async function login({ email, password }) {
+    console.log('Server UserService email');
+    console.log(email);
+    console.log('Server UserService password');
+    console.log(password);
 
     try {
         let user = await User.findOne({ email });
-        console.log('login user');
-        console.log(user);
+      
         if (!user) {
-            throw 'Invalid email or password';
+
+            throw new Error('Invalid email');
+
         }
 
         let isValid = await user.validatePassword(password);
+        console.log('isValid');
+        console.log(isValid);
 
         if (!isValid) {
-            throw 'Invalid email or password';
+            throw new Error('Invalid password');
+
         }
 
         let { accessToken, refreshToken } = await createToken(user);
 
         user.refreshToken = refreshToken;
-       
+        console.log(refreshToken);
+
         await user.save();
 
         return { user, accessToken, refreshToken };
     } catch (error) {
-        throw error;
+        throw new Error(error);
     }
 };
 

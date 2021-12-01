@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import * as authService from './services/authService';
+import { AuthContext } from './contexts/AuthContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -17,36 +17,27 @@ import Contact from './pages/Contact';
 
 
 function App() {
-    const [userInfo, setUserInfo] = useState({ isAuth: false, username: '' });
 
-    useEffect(() => {
-        let username = authService.getUser();
+    const [user, setUser] = useState({
+        _id: '',
+        email: '',
+        accessToken: '',
+        refreshToken: '',
+    })
 
-        setUserInfo({
-            isAuth: Boolean(username),
-            username,
-        });
-    }, []);
-
-    const onLogin = (username) => {
-        setUserInfo({
-            isAuth: true,
-            username: username,
-        })
+    const onLogin = (authData) => {
+        setUser(authData);
     };
 
     const onLogout = () => {
-        setUserInfo({
-            isAuth: false,
-            username: null,
-        })
+
     };
 
     return (
-        <>
+        <AuthContext.Provider value={true}>
             <Header />
 
-            <Menu {...userInfo} />
+            <Menu email={user.email} />
 
             <>
                 <Switch>
@@ -71,7 +62,7 @@ function App() {
 
             <Footer />
 
-        </>
+        </AuthContext.Provider>
     );
 }
 

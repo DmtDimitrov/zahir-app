@@ -16,16 +16,21 @@ export default function Login({
         let formData = new FormData(e.currentTarget);
 
         let email = formData.get('email')
-        // let password = formData.get('password');
+        let password = formData.get('password');
 
-        // console.log('email');
-        // console.log(email);
-        // console.log('password');
-        // console.log(password);
 
-        authService.login(email);
-        onLogin(email);
-        historyHook.push('/contact');
+        authService.login(email, password)
+            .then((authData) => {
+                console.log('logged');
+                console.log(authData);
+                onLogin(authData);
+                // onLogin(email);
+                historyHook.push('/contact');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
         // history.push('/');
     }
     return (

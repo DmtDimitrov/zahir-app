@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
             throw new Error('Passwords do not match!');
         }
         let user = await userService.register({ firstName, lastName, email, password });
-        let {accessToken, refreshToken} = await userService.login({ email, password });
+       
         // console.log('accessToken');
         // console.log(accessToken);
 
@@ -28,8 +28,8 @@ router.post('/register', async (req, res) => {
         res.json({
             _id: user._id,
             email: user.email,
-            accessToken,
-            refreshToken,
+            // accessToken,
+            // refreshToken,
         })
     } catch (error) {
         throw new Error(error);
@@ -39,8 +39,13 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     let { email, password } = req.body;
+   
 
-    let { user, accessToken, refreshToken } = await userService.login((email, password));
+    let { user, accessToken, refreshToken } = await userService.login({ email, password });
+    console.log('user');
+    console.log(user);
+    console.log('accessToken');
+    console.log(accessToken);
 
     res.json({
         _id: user._id,

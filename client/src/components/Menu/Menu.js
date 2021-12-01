@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Menu.module.css';
 
 export default function Menu({
-    isAuth,
-    username
+    email,
 }) {
     let guestNav = (
         <>
@@ -36,12 +35,12 @@ export default function Menu({
                             <NavLink className={`${styles['menu']} ${styles['last-spc']}`} to="/contact">CONTACT</NavLink>
                             <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> | </span>
                             {
-                                isAuth
+                                email
                                 ? userNav
                                 : guestNav
                             }
                             <NavLink className={`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`} to="#"><i className="fas fa-search"></i></NavLink>
-                            <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> {username} </span>
+                            <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> {email} </span>
 
                         </div>
                     </div>
