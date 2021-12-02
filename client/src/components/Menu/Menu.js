@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './Menu.module.css';
+import { AuthContext } from '../../contexts/AuthContext';
 
-export default function Menu({
-    email,
-}) {
+export default function Menu() {
+    const { user} = useContext(AuthContext)
     let guestNav = (
         <>
             <NavLink className={styles['menu']} to="/register">REGISTER</NavLink>
@@ -17,6 +18,7 @@ export default function Menu({
             <NavLink className={styles['menu']} to="/recipes/create">ADD</NavLink>
             <NavLink className={styles['menu']} to="/recipes/create">MY RECIPES</NavLink>
             <NavLink className={styles['menu']} to="/logout">LOGOUT</NavLink>
+            <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> {user.email} </span>
         </>
     );
     return (
@@ -35,12 +37,12 @@ export default function Menu({
                             <NavLink className={`${styles['menu']} ${styles['last-spc']}`} to="/contact">CONTACT</NavLink>
                             <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> | </span>
                             {
-                                email
-                                ? userNav
-                                : guestNav
+                                user.email
+                                    ? userNav
+                                    : guestNav
                             }
                             <NavLink className={`${styles['menu']} ${styles['icon-color']} ${styles['last-spc']}`} to="#"><i className="fas fa-search"></i></NavLink>
-                            <span className={`${styles['menu']} ${styles['last-spc']} ${styles['color-line']}`}> {email} </span>
+
 
                         </div>
                     </div>

@@ -3,11 +3,6 @@ import { HOST } from "../constants";
 
 export async function login(email, password) {
 
-    console.log('AuthService:email');
-    console.log(email);
-    console.log('AuthService:password');
-    console.log(password);
-
     try {
         let response = await fetch(`${HOST}/users/login`, {
             method: 'POST',
@@ -23,16 +18,18 @@ export async function login(email, password) {
            throw jsonResult;
             // throw new Error(`${response.status}: ${response.statusText}\n${message}`);
         }
-        console.log('jsonResult authService Client');
-        console.log(jsonResult);
         return jsonResult;
     } catch (error) {
         throw error;
     }
 };
 
-export function logout() {
-    localStorage.removeItem(USERNAME);
+export function logout(token) {
+    return fetch(`${HOST}/users/logout`, {
+        headers: {
+            'X-Authorization': token,
+        }
+    })
 };
 
 export function getUser() {

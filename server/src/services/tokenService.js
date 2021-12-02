@@ -9,14 +9,9 @@ export async function createToken(user) {
 			email: user.email,
 		};
 
-        let payloadRefreshToken = {
-			_id: user._id,
-		};
+		let accessToken = await jwt.sign(payloadAccessToken, TOKEN_SECRET, { expiresIn: '2h' });
 
-		let accessToken = await jwt.sign(payloadAccessToken, TOKEN_SECRET, { expiresIn: '1m' });
-		let refreshToken = await jwt.sign(payloadRefreshToken, TOKEN_SECRET, { expiresIn: '17d' });
-
-		return { accessToken, refreshToken };
+		return { accessToken };
     } catch (error) {
         throw error;
     }

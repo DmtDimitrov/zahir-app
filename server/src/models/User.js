@@ -30,25 +30,23 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function (next) {
 	try {
-		const hashedPassword = await bcrypt.hash(this.password, SALT_ROUNDS);
-		this.password = hashedPassword;
+		if (this.isModified())
+			
+		this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
+
 		return next();
 	} catch (error) {
-		throw error;
+		next(error);
 	}
 });
 
-userSchema.method('validatePassword', async function (password) {
-	console.log('validatePassword: password');
-	console.log(password);
-	console.log('validatePassword: this.password');
-	console.log(this.password);
-	let compareResult = await bcrypt.compare(password, this.password)
-	
-	console.log('compareResult');
-	console.log(compareResult);
-	return compareResult;
-});
+userSchema.methods.validatePassword = async function (password) {
+	try {
+		return await bcrypt.compare(password, this.password)
+	} catch (error) {
+		throw error;
+	}
+};
 
 userSchema.method('getFullName', function () {
 	let fullName = this.firstName + ' ' + this.lastName;

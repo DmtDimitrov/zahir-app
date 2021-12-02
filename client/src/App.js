@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { AuthContext } from './contexts/AuthContext';
@@ -14,30 +14,31 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
+import useLocalStorage from './hooks/useLocalStorage';
 
+const initialAuthState = {
+    _id: '',
+    email: '',
+    accessToken: '',
+};
 
 function App() {
 
-    const [user, setUser] = useState({
-        _id: '',
-        email: '',
-        accessToken: '',
-        refreshToken: '',
-    })
+    const [user, setUser ] = useLocalStorage('user', initialAuthState);
 
-    const onLogin = (authData) => {
+    const login = (authData) => {
         setUser(authData);
     };
 
-    const onLogout = () => {
-
+    const logout = () => {
+        setUser(initialAuthState);
     };
 
     return (
-        <AuthContext.Provider value={true}>
+        <AuthContext.Provider value={{user, login, logout}}>
             <Header />
 
-            <Menu email={user.email} />
+            <Menu />
 
             <>
                 <Switch>
@@ -48,15 +49,9 @@ function App() {
                     <Route path="/chefs" exact component={RecipeCreate} />
                     <Route path="/details/:recipeId" exact component={RecipeDetails} />
                     <Route path="/contact" exact component={Contact} />
-                    <Route path="/login" render={() => {
-                        return <Login onLogin={onLogin} />
-                    }} />
+                    <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
-                    <Route path="/logout" render={() => {
-                        console.log('Logged out');
-                        // props.history.push('/');
-                        return <Logout onLogout={onLogout} />
-                    }} />
+                    <Route path="/logout" exact component={Logout} />
                 </Switch>
             </>
 
