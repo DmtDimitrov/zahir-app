@@ -51,8 +51,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:recipeId', async (req, res) => {
     try {
-        console.log('req.query.where');
-        console.log(req.query.where);
+    
         let recipe = await recipeService.getOne(req.params.recipeId);
        
         let recipeData = await recipe.toObject();
