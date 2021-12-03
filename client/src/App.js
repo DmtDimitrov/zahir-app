@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+// import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import * as authService from './services/authService';
+import { AuthContext } from './contexts/AuthContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -14,39 +14,31 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
+import useLocalStorage from './hooks/useLocalStorage';
 
+const initialAuthState = {
+    _id: '',
+    email: '',
+    accessToken: '',
+};
 
 function App() {
-    const [userInfo, setUserInfo] = useState({ isAuth: false, username: '' });
 
-    useEffect(() => {
-        let username = authService.getUser();
+    const [user, setUser ] = useLocalStorage('user', initialAuthState);
 
-        setUserInfo({
-            isAuth: Boolean(username),
-            username,
-        });
-    }, []);
-
-    const onLogin = (username) => {
-        setUserInfo({
-            isAuth: true,
-            username: username,
-        })
+    const login = (authData) => {
+        setUser(authData);
     };
 
-    const onLogout = () => {
-        setUserInfo({
-            isAuth: false,
-            username: null,
-        })
+    const logout = () => {
+        setUser(initialAuthState);
     };
 
     return (
-        <>
+        <AuthContext.Provider value={{user, login, logout}}>
             <Header />
 
-            <Menu {...userInfo} />
+            <Menu />
 
             <>
                 <Switch>
@@ -57,21 +49,15 @@ function App() {
                     <Route path="/chefs" exact component={RecipeCreate} />
                     <Route path="/details/:recipeId" exact component={RecipeDetails} />
                     <Route path="/contact" exact component={Contact} />
-                    <Route path="/login" render={() => {
-                        return <Login onLogin={onLogin} />
-                    }} />
+                    <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
-                    <Route path="/logout" render={() => {
-                        console.log('Logged out');
-                        // props.history.push('/');
-                        return <Logout onLogout={onLogout} />
-                    }} />
+                    <Route path="/logout" exact component={Logout} />
                 </Switch>
             </>
 
             <Footer />
 
-        </>
+        </AuthContext.Provider>
     );
 }
 

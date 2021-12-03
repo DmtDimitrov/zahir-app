@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
     res.json({ text: 'Server is working' })
 });
 
-app.use(routes);
+app.use('/api', routes);
 
 databaseConfig()
     .then(() => {
         console.log('Database connected');
-        app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}/`));
+        app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}/api/`));
     })
     .catch((err) => {
         console.log('Database is not connected:', err);

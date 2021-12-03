@@ -4,9 +4,13 @@ import styles from './RecipesCard.module.css';
 
 
 export default function RecipesCard({
-    recipe
+    recipe,
+    author,
 }) {
-    console.log(recipe.author);
+    // console.log('recipe.author');
+    // console.log(recipe.author);
+    console.log('recipe');
+    console.log(recipe);
     return (
         <div className="col-sm-6 col-lg-4 mb-3">
             <div className="card h-100">

@@ -18,17 +18,23 @@ export const getOne = async (recipeId) => {
     return recipe;
 };
 
-export const create = async (recipeData) => {
-    let response = await fetch(`${HOST}/recipes`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(recipeData)
-    });
-    let result = await response.json();
-
-    return result;
+export const create = async (recipeData, token) => {
+    try {
+        let response = await fetch(`${HOST}/recipes`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'X-Authorization': token,
+            },
+            body: JSON.stringify(recipeData)
+        });
+        let result = await response.json();
+    
+        return result;
+        
+    } catch (error) {
+        throw error
+    }
 };
 
 export function getAuthor() {

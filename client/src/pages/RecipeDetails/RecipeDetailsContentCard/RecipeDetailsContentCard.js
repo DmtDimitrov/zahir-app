@@ -31,7 +31,7 @@ export default function RecipeDetailsContentCard(
                                 <p>
                                     <span className={styles['info-over']}>
                                         <i className="far fa-user"></i>
-                                        By {`${recipe.author.firstName} ${recipe.author.lastName}`}
+                                        By 
                                     </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>

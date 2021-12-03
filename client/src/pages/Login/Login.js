@@ -1,14 +1,16 @@
+import { useContext } from 'react'
 import { useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/AuthContext';
 import * as authService from '../../services/authService'
 import styles from './Login.module.css';
 import Subheader from '../../components/Subheader';
 
-export default function Login({
-    onLogin,
-}) {
+export default function Login() {
+    const { login } = useContext(AuthContext);
     let historyHook = useHistory();
 
-    const onFormSubmit = (e) => {
+    const onLoginHandler = (e) => {
         e.preventDefault();
 
         //TODO: Login
@@ -16,16 +18,19 @@ export default function Login({
         let formData = new FormData(e.currentTarget);
 
         let email = formData.get('email')
-        // let password = formData.get('password');
+        let password = formData.get('password');
 
-        // console.log('email');
-        // console.log(email);
-        // console.log('password');
-        // console.log(password);
 
-        authService.login(email);
-        onLogin(email);
-        historyHook.push('/contact');
+        authService.login(email, password)
+            .then((authData) => {
+                login(authData);
+                
+                historyHook.push('/home');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
         // history.push('/');
     }
     return (
@@ -42,7 +47,7 @@ export default function Login({
                                     <div className={styles['login-container']}>
                                         <span>Login</span>
                                         <hr />
-                                        <form onSubmit={onFormSubmit} method="POST">
+                                        <form onSubmit={onLoginHandler} method="POST">
                                             <input type="email" name="email" placeholder="Your Email*" className={styles['sb-input']} />
                                             <input type="password" name="password" placeholder="Password" className={styles['sb-input']} />
                                             <div className="text-center">  <input type="submit" value="login" className={styles['submit-btn']} /></div>

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 import styles from './RecipeDetails.module.css';
@@ -12,15 +12,17 @@ import PopularTags from '../../components/PopularTags';
 import RecipeDetailsContentCard from './RecipeDetailsContentCard';
 import CategoriesBarTop from '../../components/CategoriesBarTop';
 import RecentRecipes from '../../components/RecentRecipes';
+import { AuthContext } from '../../contexts/AuthContext'; 
 
 
 export default function RecipeDetails({
     match
 }) {
-
+    const { user } = useContext(AuthContext);
     const [recipe, setRecipe] = useState(null);
+    const { recipeId } = useParams();
 
-    const recipeId = match.params.recipeId;
+    // const recipeId = match.params.recipeId;
 
     useEffect(() => {
         recipeService.getOne(recipeId)
