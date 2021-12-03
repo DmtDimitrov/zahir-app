@@ -1,13 +1,16 @@
 import { Redirect } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import styles from './RecipeCreate.module.css';
 import Subheader from '../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import * as recipeService from '../../services/recipeService';
 import * as categoryService from '../../services/categoryService';
+import { AuthContext } from '../../contexts/AuthContext'; 
 
 export default function RecipeCreate() {
+
+    const { user } = useContext(AuthContext);
 
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
@@ -92,7 +95,7 @@ export default function RecipeCreate() {
             image,
         }
 
-        recipeService.create(data)
+        recipeService.create(data, user.accessToken)
             .then(result => {
                 <Redirect to="/" />
             })

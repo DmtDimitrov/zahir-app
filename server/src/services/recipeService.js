@@ -3,7 +3,7 @@ import Recipe from '../models/Recipe.js';
 import User from '../models/User.js';
 
 export const getAll = () => Recipe.find().populate('author');
-export const getOne = (id) => Recipe.findById(id).populate('author').populate('ingredients');
+export const getOne = (id) => Recipe.findById(id).populate('author');
 export const create = (recipeData) => Recipe.create(recipeData);
 export const update = (id, recipeData) => Recipe.findByIdAndUpdate(id, recipeData);
 export const deleteOne = (id) => Recipe.findByIdAndDelete(id);

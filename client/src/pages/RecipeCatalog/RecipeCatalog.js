@@ -11,9 +11,7 @@ import CategoriesBar from '../../components/CategoriesBar';
 import PopularTags from '../../components/PopularTags';
 
 
-export default function RecipeCatalog({
-    navigationHandler
-}) {
+export default function RecipeCatalog() {
     const [recipes, setRecipes] = useState(null);
 
     useEffect(() => {
@@ -24,6 +22,7 @@ export default function RecipeCatalog({
     }, []);
 
    
+console.log('recipes');
 console.log(recipes);
     return (
         <>
