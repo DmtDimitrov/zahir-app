@@ -33,7 +33,7 @@ const recipeSchema = mongoose.Schema({
 		required: [true, 'Image is required!'],
 		validate: [/^https?:\/\//i, 'Image should starts with http or https!'],
 	},
-	author: {
+	ownerId: {
 		type: mongoose.Types.ObjectId,
 		ref: 'User',
 	},
