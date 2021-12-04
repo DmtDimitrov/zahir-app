@@ -7,11 +7,11 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-    
+
 
     try {
         let recipes = await recipeService.getAll();
-       
+
         // recipes.map(x => console.log(x.author._id));
 
 
@@ -49,11 +49,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:recipeId', async (req, res) => {
     try {
-    
+
         let recipe = await recipeService.getOne(req.params.recipeId);
-       
+
         let recipeData = await recipe.toObject();
-       
+
         res.json({ ...recipeData });
 
     } catch (error) {
@@ -62,12 +62,12 @@ router.get('/:recipeId', async (req, res) => {
             message: error.message
         })
     }
-})
+});
 
 router.post('/', isAuth, async (req, res) => {
 
     console.log('req.user')
-    
+
     console.log(req?.user)
     // console.log('req.body');
     // console.log(req.body);
@@ -79,6 +79,42 @@ router.post('/', isAuth, async (req, res) => {
     try {
 
         await recipeService.create({ ...req.body, ownerId: userId });
+
+        res.json({ created: true });
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
+
+router.delete('/:recipeId', async (req, res) => {
+    try {
+
+        await recipeService.deleteOne(req.params.recipeId);
+
+        res.json({ deleted: true });
+
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
+
+router.patch('/:recipeId', isAuth, async (req, res) => {
+
+    let userId = req?.user._id;
+    let recipeId = req.params.recipeId;
+    console.log('recipeId');
+    console.log(recipeId);
+    console.log('userId');
+    console.log(userId);
+
+    try {
+        await recipeService.like(recipeId, userId);
 
         res.json({ ok: true });
     } catch (error) {
