@@ -16,3 +16,21 @@ export const getAuthor = async (id) => {
         throw new Error(error);
     }
 };
+
+
+export const like = async (recipeId, userId) => {
+    try {
+        
+        return User.findOneAndUpdate(
+			{ _id: recipeId },
+			{
+				$push: { votes: userId },
+				$inc: { likes: +1 },
+			},
+			{ runValidators: true }
+		);
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
