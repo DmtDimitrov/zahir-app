@@ -37,7 +37,7 @@ const recipeSchema = mongoose.Schema({
 		type: mongoose.Types.ObjectId,
 		ref: 'User',
 	},
-	votes: [
+	likes: [
 		{
 			type: mongoose.Types.ObjectId,
 			ref: 'User',
@@ -49,10 +49,6 @@ const recipeSchema = mongoose.Schema({
 			ref: 'Comment',
 		},
 	],
-	ratings: {
-		type: Number,
-		default: 0,
-	},
 	createdAt: {
 		type: Date,
 		required: true,
