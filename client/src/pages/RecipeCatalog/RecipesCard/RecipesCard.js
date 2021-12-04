@@ -5,7 +5,6 @@ import styles from './RecipesCard.module.css';
 
 export default function RecipesCard({
     recipe,
-    author,
 }) {
     // console.log('recipe.author');
     // console.log(recipe.author);
