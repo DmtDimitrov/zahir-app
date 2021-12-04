@@ -1,4 +1,5 @@
 import { HOST } from "../constants";
+import { FetchRequest } from "../helpers/FetchRequest";
 
 // export function getAll() {
 //     return fetch(`${HOST}/recipes`)
@@ -10,6 +11,13 @@ export async function getAll(){
     let recipes = response.json();
     return recipes;
 };
+
+
+// export async function getAll(){
+//     let result = await FetchRequest(`${HOST}/recipes`);
+    
+//     return result;
+// };
 
 export const getOne = async (recipeId) => {
     let response = await fetch(`${HOST}/recipes/${recipeId}`);
@@ -37,7 +45,19 @@ export const create = async (recipeData, token) => {
     }
 };
 
-export function getAuthor() {
-    return fetch(`${HOST}/recipes`)
-        .then(res => res.json())
+export const deleteOne = async (recipeId, token) => {
+    let response = await fetch(`${HOST}/recipes/${recipeId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Authorization': token,
+        },
+    });
+    let result = await response.json();
+    
+    return result;
 };
+
+// export function getAuthor() {
+//     return fetch(`${HOST}/recipes`)
+//         .then(res => res.json())
+// };

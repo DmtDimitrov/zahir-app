@@ -33,11 +33,11 @@ const recipeSchema = mongoose.Schema({
 		required: [true, 'Image is required!'],
 		validate: [/^https?:\/\//i, 'Image should starts with http or https!'],
 	},
-	author: {
+	ownerId: {
 		type: mongoose.Types.ObjectId,
 		ref: 'User',
 	},
-	votes: [
+	likes: [
 		{
 			type: mongoose.Types.ObjectId,
 			ref: 'User',
@@ -49,10 +49,6 @@ const recipeSchema = mongoose.Schema({
 			ref: 'Comment',
 		},
 	],
-	ratings: {
-		type: Number,
-		default: 0,
-	},
 	createdAt: {
 		type: Date,
 		required: true,

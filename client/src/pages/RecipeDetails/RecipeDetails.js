@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 import styles from './RecipeDetails.module.css';
@@ -13,6 +13,7 @@ import RecipeDetailsContentCard from './RecipeDetailsContentCard';
 import CategoriesBarTop from '../../components/CategoriesBarTop';
 import RecentRecipes from '../../components/RecentRecipes';
 import { AuthContext } from '../../contexts/AuthContext'; 
+import { RecipeDetailsContext } from '../../contexts/RecipeDetailsContext';
 
 
 export default function RecipeDetails({
@@ -21,6 +22,7 @@ export default function RecipeDetails({
     const { user } = useContext(AuthContext);
     const [recipe, setRecipe] = useState(null);
     const { recipeId } = useParams();
+    let historyHook = useHistory();
 
     // const recipeId = match.params.recipeId;
 
@@ -32,9 +34,17 @@ export default function RecipeDetails({
     }, [recipeId]);
 
    
-    // console.log(recipe);
+    const deleteRecipeHandler = (e) => {
+        e.preventDefault();
+
+        recipeService.deleteOne(recipeId, user.accessToken)
+        .then(() =>{
+            historyHook.push('/recipes/catalog');
+        });
+    }
+    
     return (
-        <>
+        <RecipeDetailsContext.Provider value={{recipe, deleteRecipeHandler}}>
             <Subheader
                 title="Recipe Details"
             />
@@ -47,7 +57,7 @@ export default function RecipeDetails({
 
                         <div className=" col-lg-8 " >
 
-                            {recipe && <RecipeDetailsContentCard {...recipe} />}
+                            {recipe && <RecipeDetailsContentCard />}
 
                             <Comments />
 
@@ -71,6 +81,6 @@ export default function RecipeDetails({
                     </div>
                 </div>
             </div>
-        </>
+        </RecipeDetailsContext.Provider>
     );
 }

@@ -5,7 +5,6 @@ import styles from './RecipesCard.module.css';
 
 export default function RecipesCard({
     recipe,
-    author,
 }) {
     // console.log('recipe.author');
     // console.log(recipe.author);
@@ -17,11 +16,11 @@ export default function RecipesCard({
                 <img src={recipe.image} className="card-img-top" alt="..." />
                 <div className={`${styles['card-body']} ${styles['post-info']} card-body`}>
                     <h5 className="card-title">{recipe.title}</h5>
-                    {recipe.author &&
+                    {recipe.ownerId &&
                         <p className={styles['card-text']}>
                             <span className={styles['info-over']}>
                                 <i className="far fa-user"></i>
-                                By {`${recipe.author.firstName} ${recipe.author.lastName}`}
+                                By {`${recipe.ownerId.firstName} ${recipe.ownerId.lastName}`}
                             </span>
                           
                         </p>}

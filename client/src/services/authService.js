@@ -1,4 +1,4 @@
-import { USERNAME } from '../constants';
+
 import { HOST } from "../constants";
 
 export async function login(email, password) {
@@ -68,9 +68,11 @@ export function logout(token) {
 };
 
 export function getUser() {
-    let username = localStorage.getItem(USERNAME);
+    let user = localStorage.getItem('user') === null 
+    ? undefined 
+    : JSON.parse(localStorage.getItem('user'));
 
-    return username;
+    return user;
 };
 
 export function isAuth() {

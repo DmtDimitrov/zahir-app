@@ -13,13 +13,13 @@
     padding-left: 30px;
     padding-right: 55px;
 }
-.recipe-description a{
+/* .recipe-description a{
     text-transform: uppercase;
    color: #f65aa7;
    font-family: 'Open Sans';
    font-size: 12px;
    font-weight: 600;
-}
+} */
 .recipe-description h1{
     padding: 20px 0;
     text-transform: uppercase;
@@ -109,6 +109,22 @@
     border-radius: 6px;
 }
 .btn-icon button:hover{
+    background-color: #f65aa7;
+    color: #ffffff;
+}
+
+.btn-icon .btn-icon-a{
+    font-size: 12px;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    color: #777777;
+    padding: 10px 30px;
+    margin-right: 10px;
+    border: 1px solid #ececec;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+.btn-icon .btn-icon-a:hover{
     background-color: #f65aa7;
     color: #ffffff;
 }

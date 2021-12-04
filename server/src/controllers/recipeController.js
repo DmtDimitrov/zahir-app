@@ -1,18 +1,16 @@
 import express from 'express';
 
 import * as recipeService from '../services/recipeService.js';
+import { isAuth } from '../routes/guards.js';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-    console.log('req.body');
-    console.log(req.body);
+
 
     try {
         let recipes = await recipeService.getAll();
-        console.log('recipes');
-        console.log(recipes);
 
         // recipes.map(x => console.log(x.author._id));
 
@@ -51,11 +49,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:recipeId', async (req, res) => {
     try {
-    
+
         let recipe = await recipeService.getOne(req.params.recipeId);
-       
+
         let recipeData = await recipe.toObject();
-       
+
         res.json({ ...recipeData });
 
     } catch (error) {
@@ -64,19 +62,59 @@ router.get('/:recipeId', async (req, res) => {
             message: error.message
         })
     }
-})
+});
 
-router.post('/', async (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
-    console.log('req.user');
-    console.log(req?.user);
+router.post('/', isAuth, async (req, res) => {
 
-    let userId = '6191b1b8015eda7d3c742fd7'
+    console.log('req.user')
+
+    console.log(req?.user)
+    // console.log('req.body');
+    // console.log(req.body);
+    // console.log('req.user');
+    // console.log(req?.user);
+
+    let userId = req?.user._id;
 
     try {
 
-        await recipeService.create({ ...req.body, author: userId });
+        await recipeService.create({ ...req.body, ownerId: userId });
+
+        res.json({ created: true });
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
+
+router.delete('/:recipeId', async (req, res) => {
+    try {
+
+        await recipeService.deleteOne(req.params.recipeId);
+
+        res.json({ deleted: true });
+
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
+
+router.patch('/:recipeId', isAuth, async (req, res) => {
+
+    let userId = req?.user._id;
+    let recipeId = req.params.recipeId;
+    console.log('recipeId');
+    console.log(recipeId);
+    console.log('userId');
+    console.log(userId);
+
+    try {
+        await recipeService.like(recipeId, userId);
 
         res.json({ ok: true });
     } catch (error) {
