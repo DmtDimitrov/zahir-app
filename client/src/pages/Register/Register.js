@@ -1,12 +1,14 @@
-import { useContext } from 'react';
+
 import { useHistory } from 'react-router-dom';
 
 import styles from './Register.module.css';
 import Subheader from '../../components/Subheader';
-import { AuthContext } from '../../contexts/AuthContext';
+
 import * as authService from '../../services/authService';
 
 export default function Register() {
+
+   
 
     let historyHook = useHistory();
 
@@ -27,8 +29,7 @@ export default function Register() {
             password,
             repeatPassword
         })
-            .then(authData => {
-                authService.login(authData);
+            .then(() => {
                 historyHook.push('/login');
             })
             .catch(error => {
