@@ -14,7 +14,7 @@ export async function isAuth(req, res, next) {
         req.user = verifiedToken;
         return next();
     } catch (error) {
-        return res.status(401).json('Invalid Token')
+        return res.status(401).json('Invalid acces token')
     }
 };
 
