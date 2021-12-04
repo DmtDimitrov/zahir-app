@@ -32,7 +32,7 @@ export async function login({ email, password }) {
         }
 
         let { accessToken } = await createToken(user);
-
+       
         return { user, accessToken };
     } catch (error) {
         throw new Error(error);

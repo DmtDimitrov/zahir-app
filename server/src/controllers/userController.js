@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
         let { firstName, lastName, email, password, repeatPassword } = req.body;
 
         if (password !== repeatPassword) {
-            return res.status(400).json({message: 'Passwords do not match!'})
+            return res.status(400).json({ message: 'Passwords do not match!' })
             // throw new Error('Passwords do not match!');
         }
 
@@ -19,10 +19,10 @@ router.post('/register', async (req, res) => {
         res.status(201).json({
             _id: user._id,
             email: user.email,
-     
+
         })
     } catch (error) {
-        res.json({
+        res.status(400).json({
             type: 'error',
             message: error.message
         })
@@ -36,6 +36,10 @@ router.post('/login', async (req, res) => {
 
         let { user, accessToken } = await userService.login({ email, password });
 
+        if (accessToken) {
+            res.header('access-token', accessToken);
+        };
+
         res.status(200).json({
             _id: user._id,
             email: user.email,
@@ -43,7 +47,7 @@ router.post('/login', async (req, res) => {
         })
 
     } catch (error) {
-        res.json({
+        res.status(400).json({
             type: 'error',
             message: error.message
         })

@@ -1,19 +1,17 @@
 import express from 'express';
 
 import * as recipeService from '../services/recipeService.js';
+import { isAuth } from '../routes/guards.js';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-    console.log('req.body');
-    console.log(req.body);
+    
 
     try {
         let recipes = await recipeService.getAll();
-        console.log('recipes');
-        console.log(recipes);
-
+       
         // recipes.map(x => console.log(x.author._id));
 
 
@@ -66,17 +64,21 @@ router.get('/:recipeId', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
-    console.log('req.user');
-    console.log(req?.user);
+router.post('/', isAuth, async (req, res) => {
 
-    let userId = '6191b1b8015eda7d3c742fd7'
+    console.log('req.user')
+    
+    console.log(req?.user)
+    // console.log('req.body');
+    // console.log(req.body);
+    // console.log('req.user');
+    // console.log(req?.user);
+
+    let userId = req?.user._id;
 
     try {
 
-        await recipeService.create({ ...req.body, author: userId });
+        await recipeService.create({ ...req.body, ownerId: userId });
 
         res.json({ ok: true });
     } catch (error) {
