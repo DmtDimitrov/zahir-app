@@ -1,5 +1,5 @@
 
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Register.module.css';
 import Subheader from '../../components/Subheader';
@@ -10,7 +10,7 @@ export default function Register() {
 
    
 
-    let historyHook = useHistory();
+    let navigate = useNavigate();
 
     const registerSubmitHandler = (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ export default function Register() {
             repeatPassword
         })
             .then(() => {
-                historyHook.push('/login');
+                navigate('/login');
             })
             .catch(error => {
                 console.log(error);

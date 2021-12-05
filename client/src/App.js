@@ -1,5 +1,6 @@
 // import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { AuthContext } from './contexts/AuthContext';
 import Header from './components/Header';
@@ -24,7 +25,7 @@ const initialAuthState = {
 
 function App() {
 
-    const [user, setUser ] = useLocalStorage('user', initialAuthState);
+    const [user, setUser] = useLocalStorage('user', initialAuthState);
 
     const login = (authData) => {
         setUser(authData);
@@ -35,24 +36,24 @@ function App() {
     };
 
     return (
-        <AuthContext.Provider value={{user, login, logout}}>
+        <AuthContext.Provider value={{ user, login, logout }}>
             <Header />
 
             <Menu />
 
             <>
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/home" exact component={Home} />
-                    <Route path="/recipes/catalog" exact component={RecipeCatalog} />
-                    <Route path="/recipes/create" exact component={RecipeCreate} />
-                    <Route path="/chefs" exact component={RecipeCreate} />
-                    <Route path="/details/:recipeId" exact component={RecipeDetails} />
-                    <Route path="/contact" exact component={Contact} />
-                    <Route path="/login" exact component={Login} />
-                    <Route path="/register" exact component={Register} />
-                    <Route path="/logout" exact component={Logout} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/recipes/catalog" element={<RecipeCatalog />} />
+                    <Route path="/recipes/create" element={<RecipeCreate />} />
+                    <Route path="/chefs" element={<RecipeCreate />} />
+                    <Route path="/details/:recipeId" element={<RecipeDetails />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/logout" element={<Logout />} />
+                </Routes>
             </>
 
             <Footer />

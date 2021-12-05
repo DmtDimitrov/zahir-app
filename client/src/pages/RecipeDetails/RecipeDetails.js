@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 import styles from './RecipeDetails.module.css';
@@ -22,7 +22,7 @@ export default function RecipeDetails({
     const { user } = useContext(AuthContext);
     const [recipe, setRecipe] = useState(null);
     const { recipeId } = useParams();
-    let historyHook = useHistory();
+    let navigate = useNavigate();
 
     // const recipeId = match.params.recipeId;
 
@@ -39,7 +39,7 @@ export default function RecipeDetails({
 
         recipeService.deleteOne(recipeId, user.accessToken)
         .then(() =>{
-            historyHook.push('/recipes/catalog');
+            navigate('/recipes/catalog');
         });
     }
     

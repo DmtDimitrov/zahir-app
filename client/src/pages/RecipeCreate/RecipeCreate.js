@@ -1,4 +1,4 @@
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
 import styles from './RecipeCreate.module.css';
@@ -97,7 +97,7 @@ export default function RecipeCreate() {
 
         recipeService.create(data, user.accessToken)
             .then(result => {
-                <Redirect to="/" />
+                <Navigate to="/" />
             })
 
         e.currentTarget.reset();
