@@ -1,11 +1,13 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './Menu.module.css';
-import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function Menu() {
-    const { user} = useContext(AuthContext)
+    // const { user } = useContext(AuthContext)
+    const { user } = useAuth();
     let guestNav = (
         <>
             <NavLink className={styles['menu']} to="/register">REGISTER</NavLink>

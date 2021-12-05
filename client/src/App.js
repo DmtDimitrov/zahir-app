@@ -1,8 +1,7 @@
-// import { useState } from 'react';
-// import { Route, Switch } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContext } from './contexts/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -15,28 +14,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
-import useLocalStorage from './hooks/useLocalStorage';
-
-const initialAuthState = {
-    _id: '',
-    email: '',
-    accessToken: '',
-};
 
 function App() {
 
-    const [user, setUser] = useLocalStorage('user', initialAuthState);
-
-    const login = (authData) => {
-        setUser(authData);
-    };
-
-    const logout = () => {
-        setUser(initialAuthState);
-    };
-
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthProvider>
             <Header />
 
             <Menu />
@@ -58,7 +40,7 @@ function App() {
 
             <Footer />
 
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 
