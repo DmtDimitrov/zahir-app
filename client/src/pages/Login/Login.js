@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import * as authService from '../../services/authService'
@@ -8,7 +8,7 @@ import Subheader from '../../components/Subheader';
 
 export default function Login() {
     const { login } = useContext(AuthContext);
-    let historyHook = useHistory();
+    let navigate = useNavigate();
 
     const onLoginHandler = (e) => {
         e.preventDefault();
@@ -25,7 +25,7 @@ export default function Login() {
             .then((authData) => {
                 login(authData);
                 
-                historyHook.push('/home');
+                navigate('/home');
             })
             .catch(error => {
                 console.log(error);
