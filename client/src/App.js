@@ -16,7 +16,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
-import Catalog from './pages/Catalog';
+import MyRecipes from './pages/MyRecipes';
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/recipes/catalog" element={<RecipeCatalog />} />
-                    <Route path="/recipes/catalog/new" element={<Catalog />} />
+                    <Route path="/recipes/my-recipes" element={<MyRecipes />} />
                     <Route path="/recipes/create" element={<RecipeCreate />} />
                     <Route path="/chefs" element={<RecipeCreate />} />
                     <Route path="/details/:recipeId" element={<RecipeDetails />} />

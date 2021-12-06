@@ -31,7 +31,7 @@ const NavbarMenu = () => {
     let userNav = (
         <>
             <NavDropdown.Divider />
-            <NavDropdown.Item as={Link} to={"/recipes/create"}>My Recipes</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to={"/recipes/my-recipes"}>My Recipes</NavDropdown.Item>
             <NavDropdown.Item as={Link} to={"/recipes/create"}>
                 Add Recipe
             </NavDropdown.Item>
