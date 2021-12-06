@@ -1,9 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 // import ErrorPage from './pages/Error';
@@ -14,6 +16,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
+import MyRecipes from './pages/MyRecipes';
+
 
 function App() {
 
@@ -23,11 +27,14 @@ function App() {
 
             <Menu />
 
+            <Navbar />
+
             <>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/recipes/catalog" element={<RecipeCatalog />} />
+                    <Route path="/recipes/my-recipes" element={<MyRecipes />} />
                     <Route path="/recipes/create" element={<RecipeCreate />} />
                     <Route path="/chefs" element={<RecipeCreate />} />
                     <Route path="/details/:recipeId" element={<RecipeDetails />} />

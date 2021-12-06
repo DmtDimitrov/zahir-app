@@ -67,11 +67,7 @@ export default function RecipeDetailsContentCard() {
 
                                 </div>
 
-
-
                             </div>
-
-
 
 
                             {/* <h1>{recipe.title}</h1> */}
@@ -131,8 +127,6 @@ export default function RecipeDetailsContentCard() {
                                         : userButtons
                                     : ""
                                 }
-
-
 
                             </div>
                             <div className=" col-md-4 ">

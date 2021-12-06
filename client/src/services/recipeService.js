@@ -6,24 +6,49 @@ import { FetchRequest } from "../helpers/FetchRequest";
 //         .then(res => res.json())
 // };
 
-export async function getAll(){
-    let response = await fetch(`${HOST}/recipes`);
-    let recipes = response.json();
-    return recipes;
+export async function getAll() {
+    try {
+        let response = await fetch(`${HOST}/recipes`);
+        let recipes = response.json();
+        return recipes;
+
+    } catch (error) {
+        throw error
+    }
 };
 
 
 // export async function getAll(){
 //     let result = await FetchRequest(`${HOST}/recipes`);
-    
+
 //     return result;
 // };
 
-export const getOne = async (recipeId) => {
-    let response = await fetch(`${HOST}/recipes/${recipeId}`);
-    let recipe = response.json();
+export async function getMy(token) {
+    try {
+       
+        let response = await fetch(`${HOST}/recipes/my-recipes`, {
+            headers: {
+                'X-Authorization': token,
+            },
+        });
+        let recipes = response.json();
+        return recipes;
+    } catch (error) {
+        throw error
+    }
+};
 
-    return recipe;
+export const getOne = async (recipeId) => {
+    try {
+        let response = await fetch(`${HOST}/recipes/${recipeId}`);
+        let recipe = response.json();
+
+        return recipe;
+
+    } catch (error) {
+        throw error
+    }
 };
 
 export const create = async (recipeData, token) => {
@@ -37,24 +62,29 @@ export const create = async (recipeData, token) => {
             body: JSON.stringify(recipeData)
         });
         let result = await response.json();
-    
+
         return result;
-        
+
     } catch (error) {
         throw error
     }
 };
 
 export const deleteOne = async (recipeId, token) => {
-    let response = await fetch(`${HOST}/recipes/${recipeId}`, {
-        method: 'DELETE',
-        headers: {
-            'X-Authorization': token,
-        },
-    });
-    let result = await response.json();
-    
-    return result;
+    try {
+
+        let response = await fetch(`${HOST}/recipes/${recipeId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-Authorization': token,
+            },
+        });
+        let result = await response.json();
+
+        return result;
+    } catch (error) {
+        throw error
+    }
 };
 
 // export function getAuthor() {

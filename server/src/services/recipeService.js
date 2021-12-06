@@ -3,6 +3,7 @@ import Recipe from '../models/Recipe.js';
 import User from '../models/User.js';
 
 export const getAll = () => Recipe.find().populate('ownerId');
+export const getMy = (ownerId) => Recipe.find({ ownerId: ownerId }).populate('ownerId');
 export const getOne = (id) => Recipe.findById(id).populate('ownerId');
 export const create = (recipeData) => Recipe.create(recipeData);
 export const update = (id, recipeData) => Recipe.findByIdAndUpdate(id, recipeData);
@@ -20,15 +21,15 @@ export const getAuthor = async (id) => {
 
 export const like = async (recipeId, userId) => {
     try {
-        
+
         return User.findOneAndUpdate(
-			{ _id: recipeId },
-			{
-				$push: { votes: userId },
-				$inc: { likes: +1 },
-			},
-			{ runValidators: true }
-		);
+            { _id: recipeId },
+            {
+                $push: { votes: userId },
+                $inc: { likes: +1 },
+            },
+            { runValidators: true }
+        );
     } catch (error) {
         throw new Error(error);
     }

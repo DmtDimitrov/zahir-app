@@ -31,7 +31,7 @@ export default function Login() {
                 console.log(error);
             })
 
-        // history.push('/');
+        
     }
     return (
         <>
