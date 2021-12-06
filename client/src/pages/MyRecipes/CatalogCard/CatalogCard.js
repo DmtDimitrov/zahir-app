@@ -10,9 +10,10 @@ export default function RecipesCard({
     // console.log(recipe.author);
     console.log('recipe');
     console.log(recipe);
+    
     return (
         <div className="col-sm-6 col-lg-4 mb-3">
-            <div className="card h-100">
+            <div className={`card h-100 ${styles['card-container']}`}>
                 <img src={recipe.image} className="card-img-top" alt="..." />
                 <div className={`${styles['card-body']} ${styles['post-info']} card-body`}>
                     <h5 className="card-title">{recipe.title}</h5>
@@ -30,6 +31,7 @@ export default function RecipesCard({
         </div >
     );
 }
+
 
 
 

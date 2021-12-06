@@ -47,6 +47,25 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/my-recipes', async (req, res) => {
+
+    let userId = req?.user._id;
+    console.log('Server recipeController: userId');
+    console.log(userId);
+
+    try {
+        let recipes = await recipeService.getMy(userId);
+
+        res.json(recipes);
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+
+});
+
 router.get('/:recipeId', async (req, res) => {
     try {
 
