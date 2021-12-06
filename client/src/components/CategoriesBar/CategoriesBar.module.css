@@ -1,9 +1,11 @@
 .blog-row-padd{
     padding-top: 50px;
+    
 }
 .side-bar-bg{
     background-color: #ffffff;
     padding: 35px 30px;
+    border-radius: 10px;
 }
 .our-header{
 padding-bottom: 10px;
