@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+
 import './Navbar.css';
 import { useAuth } from '../../contexts/AuthContext';
 import Navbar from 'react-bootstrap/Navbar';
@@ -46,7 +47,7 @@ const NavbarMenu = () => {
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
                         className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
+                        style={{ maxHeight: 'none' }}
                         navbarScroll
                     >
                         <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
