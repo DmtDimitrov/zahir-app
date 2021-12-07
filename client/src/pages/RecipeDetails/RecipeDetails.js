@@ -12,7 +12,7 @@ import PopularTags from '../../components/PopularTags';
 import RecipeDetailsContentCard from './RecipeDetailsContentCard';
 import CategoriesBarTop from '../../components/CategoriesBarTop';
 import RecentRecipes from '../../components/RecentRecipes';
-import { AuthContext } from '../../contexts/AuthContext'; 
+import { AuthContext } from '../../contexts/AuthContext';
 import { RecipeDetailsContext } from '../../contexts/RecipeDetailsContext';
 
 
@@ -21,30 +21,39 @@ export default function RecipeDetails({
 }) {
     const { user } = useContext(AuthContext);
     const [recipe, setRecipe] = useState(null);
+    const [show, setShow] = useState(false);
     const { recipeId } = useParams();
     let navigate = useNavigate();
 
-    // const recipeId = match.params.recipeId;
+    const handleClose = () => {
+
+        setShow(false);
+    }
+    const handleShow = () => setShow(true);
+
 
     useEffect(() => {
         recipeService.getOne(recipeId)
-        .then(result =>{
-            setRecipe(result);
-        })
+            .then(result => {
+                setRecipe(result);
+            })
     }, [recipeId]);
 
-   
+
     const deleteRecipeHandler = (e) => {
         e.preventDefault();
 
         recipeService.deleteOne(recipeId, user.accessToken)
-        .then(() =>{
-            navigate('/recipes/catalog');
-        });
+            .then(() => {
+                setShow(false);
+                navigate('/recipes/catalog');
+            });
     }
-    
+
+
+
     return (
-        <RecipeDetailsContext.Provider value={{recipe, deleteRecipeHandler}}>
+        <RecipeDetailsContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose }}>
             <Subheader
                 title="Recipe Details"
             />
@@ -64,7 +73,7 @@ export default function RecipeDetails({
                             <AddComment />
 
                         </div>
-                      
+
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
                             <SearchBar />

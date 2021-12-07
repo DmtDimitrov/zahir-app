@@ -5,10 +5,11 @@ import styles from './RecipeDetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../constants';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { RecipeDetailsContext } from '../../../contexts/RecipeDetailsContext';
+import DeleteModal from '../Modal';
 
 export default function RecipeDetailsContentCard() {
     const { user } = useContext(AuthContext)
-    const { recipe, deleteRecipeHandler } = useContext(RecipeDetailsContext);
+    const { recipe } = useContext(RecipeDetailsContext);
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
 
@@ -16,31 +17,9 @@ export default function RecipeDetailsContentCard() {
 
     const ownerButtons = (
         <>
-            
             <NavLink to="/edit" className={styles['btn-icon-a']}> Edit</NavLink>
-            <button className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
+            <DeleteModal/>
             <button>Cook</button>
-
-
-            <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Delete Recipe</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            Are you sure you want to delete this recipe?
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button onClick={(e) => deleteRecipeHandler(e)} type="button" className="btn btn-primary">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </>
     );
 
@@ -64,11 +43,8 @@ export default function RecipeDetailsContentCard() {
                                             : userButtons
                                         : ""
                                     }
-
                                 </div>
-
                             </div>
-
 
                             {/* <h1>{recipe.title}</h1> */}
                             <div className={styles['post-info']} >
@@ -85,7 +61,6 @@ export default function RecipeDetailsContentCard() {
                                     <span className={styles['info-over']}> <i className="far fa-comment"></i> 55 comments </span>
                                 </p>
                             </div>
-
 
                         </div>
                         <div >
@@ -117,28 +92,6 @@ export default function RecipeDetailsContentCard() {
                             <p>
                                 {recipe?.method}
                             </p>
-                        </div>
-
-                        <div className="row">
-                            <div className={`col-md-8 ${styles['btn-icon']}`}>
-                                {user._id
-                                    ? user?._id === recipe?.ownerId._id
-                                        ? ownerButtons
-                                        : userButtons
-                                    : ""
-                                }
-
-                            </div>
-                            <div className=" col-md-4 ">
-                                <div className={`text-right ${styles['icon-btn']}`}>
-
-                                    <i className="fab fa-facebook-f"></i>
-                                    <i className="fab fa-twitter"></i>
-                                    <i className="fab fa-linkedin-in"></i>
-                                    <i className="fab fa-tumblr"></i>
-                                </div>
-                            </div>
-
                         </div>
                         <hr />
                     </div>
