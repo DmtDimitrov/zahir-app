@@ -47,13 +47,14 @@ router.get('/', async (req, res) => {
 
 });
 
-router.get('/my-recipes', async (req, res) => {
+router.get('/my-recipes', isAuth, async (req, res) => {
 
-    let userId = req?.user._id;
-    console.log('Server recipeController: userId');
-    console.log(userId);
-
+    
+    
     try {
+        let userId = req?.user._id;
+        // console.log('Server recipeController: userId');
+        // console.log(userId);
         let recipes = await recipeService.getMy(userId);
 
         res.json(recipes);
