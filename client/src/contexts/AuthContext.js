@@ -31,7 +31,7 @@ export const AuthProvider = ({
     );
 };
 
-export const useAuth = () => {
+export const useAuthContext = () => {
     const authState = useContext(AuthContext);
 
     return authState;

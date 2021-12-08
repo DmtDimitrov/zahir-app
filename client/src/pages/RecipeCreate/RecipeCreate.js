@@ -6,11 +6,11 @@ import Subheader from '../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import * as recipeService from '../../services/recipeService';
 import * as categoryService from '../../services/categoryService';
-import { AuthContext } from '../../contexts/AuthContext'; 
+import { useAuthContext } from '../../contexts/AuthContext'; 
 
 export default function RecipeCreate() {
 
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
 
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);

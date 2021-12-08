@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import * as authService from '../../services/authService'
 import styles from './Login.module.css';
 import Subheader from '../../components/Subheader';
 
 export default function Login() {
-    const { login } = useContext(AuthContext);
+    const { login } = useAuthContext();
     let navigate = useNavigate();
 
     const onLoginHandler = (e) => {
