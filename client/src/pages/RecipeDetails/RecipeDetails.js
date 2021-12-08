@@ -12,14 +12,14 @@ import PopularTags from '../../components/PopularTags';
 import RecipeDetailsContentCard from './RecipeDetailsContentCard';
 import CategoriesBarTop from '../../components/CategoriesBarTop';
 import RecentRecipes from '../../components/RecentRecipes';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { RecipeDetailsContext } from '../../contexts/RecipeDetailsContext';
 
 
 export default function RecipeDetails({
     match
 }) {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const [recipe, setRecipe] = useState(null);
     const [show, setShow] = useState(false);
     const { recipeId } = useParams();
@@ -35,6 +35,7 @@ export default function RecipeDetails({
     useEffect(() => {
         recipeService.getOne(recipeId)
             .then(result => {
+                console.log(result);
                 setRecipe(result);
             })
     }, [recipeId]);
@@ -42,18 +43,40 @@ export default function RecipeDetails({
 
     const deleteRecipeHandler = (e) => {
         e.preventDefault();
-
+        setShow(false);
         recipeService.deleteOne(recipeId, user.accessToken)
             .then(() => {
-                setShow(false);
                 navigate('/recipes/catalog');
             });
     }
 
+    const likeButtonClickHandler = () => {
+        console.log('Like');
+        if(recipe.likes.includes(user._id)){
+            //TODO: add notificaton
+         
+            console.log(recipe);
+            console.log('User already liked');
+            return;
+        }
+        let likes = [...recipe.likes, user._id]
+        recipeService.like(recipe._id, likes, user.accessToken)
+            .then((responseData) => {
+                console.log('RecipeDetails(likeButtonClickHandler): responseData');
+                console.log(responseData);
+                setRecipe(state => ({
+                    ...state,
+                    likes,
+                    
+                }));
+            })
+    };
+
+
 
 
     return (
-        <RecipeDetailsContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose }}>
+        <RecipeDetailsContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
             <Subheader
                 title="Recipe Details"
             />

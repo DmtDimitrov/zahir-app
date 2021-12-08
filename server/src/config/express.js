@@ -6,5 +6,5 @@ export function expressConfig(app) {
     app.use(express.urlencoded({extended: true}));
     app.use(express.json());
     app.use(cors());
-    app.use(authMiddleware);
+    // app.use(authMiddleware);
 }

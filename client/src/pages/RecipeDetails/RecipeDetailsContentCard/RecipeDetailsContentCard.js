@@ -2,29 +2,30 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './RecipeDetailsContentCard.module.css';
+
+import * as recipeService from '../../../services/recipeService';
 import { DATE_OPTIONS } from '../../../constants';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useAuthContext } from '../../../contexts/AuthContext';
+
 import { RecipeDetailsContext } from '../../../contexts/RecipeDetailsContext';
 import DeleteModal from '../Modal';
 
 export default function RecipeDetailsContentCard() {
-    const { user } = useContext(AuthContext)
-    const { recipe } = useContext(RecipeDetailsContext);
+    const { user } = useAuthContext()
+    const { recipe, likeButtonClickHandler } = useContext(RecipeDetailsContext);
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
-
-    
 
     const ownerButtons = (
         <>
             <NavLink to="/edit" className={styles['btn-icon-a']}> Edit</NavLink>
-            <DeleteModal/>
+            <DeleteModal />
             <button>Cook</button>
         </>
     );
 
     const userButtons = (
-        <button>Like</button>
+        <button onClick={likeButtonClickHandler} >Like</button>
     );
     return (
 

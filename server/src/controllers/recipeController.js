@@ -73,6 +73,7 @@ router.get('/:recipeId', async (req, res) => {
 
         let recipeData = await recipe.toObject();
 
+
         res.json({ ...recipeData });
 
     } catch (error) {
@@ -133,15 +134,37 @@ router.patch('/:recipeId', isAuth, async (req, res) => {
     console.log(userId);
 
     try {
-        await recipeService.like(recipeId, userId);
-
-        res.json({ ok: true });
+        let likedRecipe = await recipeService.like(recipeId, userId);
+        console.log('likedRecipe');
+        console.log(likedRecipe);
+        res.json({ ...likedRecipe });
     } catch (error) {
         res.json({
             type: 'error',
             message: error.message
         })
     }
-})
+});
+
+// router.put('/:recipeId', isAuth, async (req, res) => {
+
+//     let userId = req?.user._id;
+//     let recipeId = req.params.recipeId;
+//     console.log('recipeId');
+//     console.log(recipeId);
+//     console.log('userId');
+//     console.log(userId);
+
+//     try {
+//         let likedRecipe = await recipeService.like(recipeId, userId);
+
+//         res.json({ liked: true });
+//     } catch (error) {
+//         res.json({
+//             type: 'error',
+//             message: error.message
+//         })
+//     }
+// });
 
 export default router;
