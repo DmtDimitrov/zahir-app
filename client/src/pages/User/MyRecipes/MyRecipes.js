@@ -1,15 +1,16 @@
 import { useEffect, useState, useContext } from 'react';
 
-import * as recipeService from '../../services/recipeService';
+import * as recipeService from '../../../services/recipeService';
 import styles from './Catalog.module.css';
-import Subheader from '../../components/Subheader';
-import Pagination from '../../components/Pagination';
-import RecentRecipes from '../../components/RecentRecipes';
+
+import Subheader from '../../../components/Subheader';
+import Pagination from '../../../components/Pagination';
+import RecentRecipes from '../../../components/RecentRecipes';
 import RecipesCard from './CatalogCard';
 // import SearchBar from '../../components/SearchBar';
-import CategoriesBar from '../../components/CategoriesBar';
-import PopularTags from '../../components/PopularTags';
-import { AuthContext } from '../../contexts/AuthContext'; 
+import CategoriesBar from '../../../components/CategoriesBar';
+import PopularTags from '../../../components/PopularTags';
+import { AuthContext } from '../../../contexts/AuthContext'; 
 
 
 export default function MyRecipes() {
@@ -21,7 +22,7 @@ export default function MyRecipes() {
             .then(result => {
                 setRecipes(result)
             })
-    }, []);
+    }, [user.accessToken]);
 
    
 console.log('recipes');

@@ -1,24 +1,25 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import styles from './RecipeDetailsContentCard.module.css';
+import styles from './DetailsContentCard.module.css';
 
-import * as recipeService from '../../../services/recipeService';
-import { DATE_OPTIONS } from '../../../constants';
-import { useAuthContext } from '../../../contexts/AuthContext';
 
-import { RecipeDetailsContext } from '../../../contexts/RecipeDetailsContext';
+import { DATE_OPTIONS } from '../../../../constants';
+import { useAuthContext } from '../../../../contexts/AuthContext';
+
+import { RecipeContext } from '../../../../contexts/RecipeContext';
 import DeleteModal from '../Modal';
 
 export default function RecipeDetailsContentCard() {
     const { user } = useAuthContext()
-    const { recipe, likeButtonClickHandler } = useContext(RecipeDetailsContext);
+    const { recipe, likeButtonClickHandler } = useContext(RecipeContext);
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
 
     const ownerButtons = (
         <>
-            <NavLink to="/edit" className={styles['btn-icon-a']}> Edit</NavLink>
+            {/* <Link to="/recipes/edit" className={styles['btn-icon-a']}> Edit</Link> */}
+            <Link to={`/recipes/edit/${recipe._id}`} className={styles['btn-icon-a']}> Edit</Link>
             <DeleteModal />
             <button>Cook</button>
         </>

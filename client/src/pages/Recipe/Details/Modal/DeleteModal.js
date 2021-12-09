@@ -2,10 +2,10 @@ import { useContext } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { RecipeDetailsContext } from '../../../contexts/RecipeDetailsContext';
+import { RecipeContext } from '../../../../contexts/RecipeContext';
 
 export default function DeleteModal() {
-  const { deleteRecipeHandler, show, handleClose, handleShow} = useContext(RecipeDetailsContext);
+  const { deleteRecipeHandler, show, handleClose, handleShow} = useContext(RecipeContext);
 
   
 

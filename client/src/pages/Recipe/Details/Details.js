@@ -1,28 +1,29 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import * as recipeService from '../../services/recipeService';
-import styles from './RecipeDetails.module.css';
-import Subheader from '../../components/Subheader';
-import Comments from '../../components/Comments';
-import AddComment from '../../components/Comments/AddComment';
-import SearchBar from '../../components/SearchBar';
-import CategoriesBar from '../../components/CategoriesBar';
-import PopularTags from '../../components/PopularTags';
-import RecipeDetailsContentCard from './RecipeDetailsContentCard';
-import CategoriesBarTop from '../../components/CategoriesBarTop';
-import RecentRecipes from '../../components/RecentRecipes';
-import { useAuthContext } from '../../contexts/AuthContext';
-import { RecipeDetailsContext } from '../../contexts/RecipeDetailsContext';
+import styles from './Details.module.css';
+
+import * as recipeService from '../../../services/recipeService';
+import { useRecipeState } from '../../../hooks/useRecipeState';
+
+import Subheader from '../../../components/Subheader';
+import Comments from '../../../components/Comments';
+import AddComment from '../../../components/Comments/AddComment';
+import SearchBar from '../../../components/SearchBar';
+import CategoriesBar from '../../../components/CategoriesBar';
+import PopularTags from '../../../components/PopularTags';
+import RecipeDetailsContentCard from './DetailsContentCard';
+import CategoriesBarTop from '../../../components/CategoriesBarTop';
+import RecentRecipes from '../../../components/RecentRecipes';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { RecipeContext } from '../../../contexts/RecipeContext';
 
 
-export default function RecipeDetails({
-    match
-}) {
+export default function RecipeDetails() {
     const { user } = useAuthContext();
-    const [recipe, setRecipe] = useState(null);
-    const [show, setShow] = useState(false);
     const { recipeId } = useParams();
+    const [recipe, setRecipe] = useRecipeState(recipeId);
+    const [show, setShow] = useState(false);
     let navigate = useNavigate();
 
     const handleClose = () => {
@@ -30,16 +31,6 @@ export default function RecipeDetails({
         setShow(false);
     }
     const handleShow = () => setShow(true);
-
-
-    useEffect(() => {
-        recipeService.getOne(recipeId)
-            .then(result => {
-                console.log(result);
-                setRecipe(result);
-            })
-    }, [recipeId]);
-
 
     const deleteRecipeHandler = (e) => {
         e.preventDefault();
@@ -52,9 +43,9 @@ export default function RecipeDetails({
 
     const likeButtonClickHandler = () => {
         console.log('Like');
-        if(recipe.likes.includes(user._id)){
+        if (recipe.likes.includes(user._id)) {
             //TODO: add notificaton
-         
+
             console.log(recipe);
             console.log('User already liked');
             return;
@@ -67,7 +58,7 @@ export default function RecipeDetails({
                 setRecipe(state => ({
                     ...state,
                     likes,
-                    
+
                 }));
             })
     };
@@ -76,7 +67,7 @@ export default function RecipeDetails({
 
 
     return (
-        <RecipeDetailsContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
+        <RecipeContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
             <Subheader
                 title="Recipe Details"
             />
@@ -113,6 +104,6 @@ export default function RecipeDetails({
                     </div>
                 </div>
             </div>
-        </RecipeDetailsContext.Provider>
+        </RecipeContext.Provider>
     );
 }

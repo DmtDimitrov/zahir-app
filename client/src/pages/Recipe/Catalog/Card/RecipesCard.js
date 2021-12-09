@@ -24,7 +24,7 @@ export default function RecipesCard({
                             </span>
                           
                         </p>}
-                    <NavLink to={`/details/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</NavLink>
+                    <NavLink to={`/recipes/details/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</NavLink>
                 </div>
             </div>
         </div >

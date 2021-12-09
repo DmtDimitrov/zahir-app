@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import * as recipeService from '../../services/recipeService';
-import styles from './RecipeCatalog.module.css';
-import Subheader from '../../components/Subheader';
-import Pagination from '../../components/Pagination';
-import RecentRecipes from '../../components/RecentRecipes';
-import RecipesCard from './RecipesCard';
-import SearchBar from '../../components/SearchBar';
-import CategoriesBar from '../../components/CategoriesBar';
-import PopularTags from '../../components/PopularTags';
+import * as recipeService from '../../../services/recipeService';
+import styles from './Catalog.module.css';
+
+import Subheader from '../../../components/Subheader';
+import Pagination from '../../../components/Pagination';
+import RecentRecipes from '../../../components/RecentRecipes';
+import RecipesCard from './Card';
+import SearchBar from '../../../components/SearchBar';
+import CategoriesBar from '../../../components/CategoriesBar';
+import PopularTags from '../../../components/PopularTags';
 
 
 export default function RecipeCatalog() {

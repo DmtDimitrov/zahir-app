@@ -1,17 +1,19 @@
-import { Navigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import styles from './RecipeCreate.module.css';
-import Subheader from '../../components/Subheader';
+import styles from './Edit.module.css';
+import * as recipeService from '../../../services/recipeService';
+import * as categoryService from '../../../services/categoryService';
+import { useRecipeState } from '../../../hooks/useRecipeState';
+
+import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
-import * as recipeService from '../../services/recipeService';
-import * as categoryService from '../../services/categoryService';
-import { useAuthContext } from '../../contexts/AuthContext'; 
+import { useAuthContext } from '../../../contexts/AuthContext';
 
-export default function RecipeCreate() {
-
+export default function Edit() {
+    const { recipeId } = useParams();
+    const [recipe, setRecipe] = useRecipeState(recipeId)
     const { user } = useAuthContext();
-
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
 
@@ -70,7 +72,7 @@ export default function RecipeCreate() {
 
     }
 
-    const onRecipeCreate = (e) => {
+    const onRecipeEdit = (e) => {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
 
@@ -95,7 +97,7 @@ export default function RecipeCreate() {
             image,
         }
 
-        recipeService.create(data, user.accessToken)
+        recipeService.edit(data, user.accessToken)
             .then(result => {
                 <Navigate to="/" />
             })
@@ -154,7 +156,7 @@ export default function RecipeCreate() {
     return (
         <>
             <Subheader
-                title="Own Recipe"
+                title="Edit Recipe"
             />
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
@@ -163,12 +165,10 @@ export default function RecipeCreate() {
                             <div className="row">
                                 <div className="col-md-12  ">
                                     <div className={styles['add-recipe-container']}>
-                                        <span>Add Recipe</span>
+                                        <span>Edit Recipe</span>
                                         <hr />
 
-                                        {JSON.stringify(ingredientInputs)}
-
-                                        <form onSubmit={onRecipeCreate} method="POST">
+                                        <form onSubmit={onRecipeEdit} method="POST">
                                             <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
                                             <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
 
