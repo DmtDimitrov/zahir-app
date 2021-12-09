@@ -67,6 +67,26 @@ export const create = async (recipeData, token) => {
     }
 };
 
+
+export const edit = async (recipeData, token) => {
+    try {
+        let response = await fetch(`${HOST}/recipes`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'X-Authorization': token,
+            },
+            body: JSON.stringify(recipeData)
+        });
+        let result = await response.json();
+
+        return result;
+
+    } catch (error) {
+        throw error
+    }
+};
+
 export const deleteOne = async (recipeId, token) => {
     try {
 
