@@ -167,7 +167,7 @@ export default function RecipeCreate() {
                                         <span>Add Recipe</span>
                                         <hr />
 
-                                        {JSON.stringify(ingredientInputs)}
+                                      
 
                                         <form onSubmit={onRecipeCreate} method="POST">
                                             <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
