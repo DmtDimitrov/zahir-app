@@ -18,7 +18,7 @@ import Login from './pages/User/Login';
 import Register from './pages/User/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
-import MyRecipes from './pages/User/MyRecipes';
+import MyRecipes from './pages/Recipe/MyRecipes';
 
 
 function App() {
