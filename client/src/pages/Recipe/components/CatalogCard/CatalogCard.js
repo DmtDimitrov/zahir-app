@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './CatalogCard.module.css';
 
@@ -25,7 +25,7 @@ export default function RecipesCard({
                             </span>
                           
                         </p>}
-                    <NavLink to={`/recipes/details/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</NavLink>
+                    <Link to={`/recipes/details/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</Link>
                 </div>
             </div>
         </div >
