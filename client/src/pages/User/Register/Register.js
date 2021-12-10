@@ -2,9 +2,10 @@
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Register.module.css';
-import Subheader from '../../components/Subheader';
 
-import * as authService from '../../services/authService';
+import * as authService from '../../../services/authService';
+
+import Subheader from '../../../components/Subheader';
 
 export default function Register() {
 

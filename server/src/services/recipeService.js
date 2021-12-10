@@ -22,16 +22,23 @@ export const getAuthor = async (id) => {
 export const like = async (recipeId, userId) => {
     try {
 
-        return User.findOneAndUpdate(
+        console.log('Server recipeService: recipeId');
+        console.log(recipeId);
+        console.log('Server recipeService: userId');
+        console.log(userId);
+
+         let likedRecipe = await Recipe.findOneAndUpdate(
             { _id: recipeId },
             {
-                $push: { votes: userId },
-                $inc: { likes: +1 },
+                $push: { likes: userId },
             },
-            { runValidators: true }
         );
+        console.log('Server recipeServicelikedRecipe');
+        console.log(likedRecipe);
     } catch (error) {
         throw new Error(error);
     }
 };
+
+
 

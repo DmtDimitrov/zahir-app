@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 
 import './Navbar.css';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 const NavbarMenu = () => {
 
-    const { user } = useAuth();
+    const { user } = useAuthContext();
 
     let guestAuthNav = (
         <>

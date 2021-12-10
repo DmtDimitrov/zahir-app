@@ -1,25 +1,29 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 
-import * as recipeService from '../../services/recipeService';
+import * as recipeService from '../../../services/recipeService';
 import styles from './Catalog.module.css';
-import Subheader from '../../components/Subheader';
-import Pagination from '../../components/Pagination';
-import RecentRecipes from '../../components/RecentRecipes';
-import RecipesCard from './CatalogCard';
-// import SearchBar from '../../components/SearchBar';
-import CategoriesBar from '../../components/CategoriesBar';
-import PopularTags from '../../components/PopularTags';
-import { AuthContext } from '../../contexts/AuthContext'; 
+
+import Subheader from '../../../components/Subheader';
+import Pagination from '../../../components/Pagination';
+import RecentRecipes from '../../../components/RecentRecipes';
+import RecipesCard from './Card';
+import SearchBar from '../../../components/SearchBar';
+import CategoriesBar from '../../../components/CategoriesBar';
+import PopularTags from '../../../components/PopularTags';
 
 
-export default function MyRecipes() {
+export default function RecipeCatalog() {
     const [recipes, setRecipes] = useState(null);
-    const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        recipeService.getMy(user.accessToken)
+        recipeService.getAll()
             .then(result => {
+                console.log(result);
                 setRecipes(result)
+            })
+            .catch(err => {
+                console.log('Recipe catalog: err');
+                console.log(err);
             })
     }, []);
 
@@ -29,7 +33,7 @@ console.log(recipes);
     return (
         <>
             <Subheader
-                title="My Recipes"
+                title="Recipes"
             />
 
 
@@ -45,7 +49,7 @@ console.log(recipes);
                         
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                          
+                            <SearchBar/>
 
                             <CategoriesBar/>
 

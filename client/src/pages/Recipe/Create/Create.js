@@ -1,16 +1,17 @@
 import { Navigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import styles from './RecipeCreate.module.css';
-import Subheader from '../../components/Subheader';
+import styles from './Create.module.css';
+import * as recipeService from '../../../services/recipeService';
+import * as categoryService from '../../../services/categoryService';
+
+import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
-import * as recipeService from '../../services/recipeService';
-import * as categoryService from '../../services/categoryService';
-import { AuthContext } from '../../contexts/AuthContext'; 
+import { useAuthContext } from '../../../contexts/AuthContext'; 
 
 export default function RecipeCreate() {
 
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
 
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
