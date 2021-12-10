@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import styles from './Edit.module.css';
@@ -16,6 +16,29 @@ export default function Edit() {
     const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
+    let navigate = useNavigate();
+
+    if (!ingredientInputs.length > 0 && recipe) {
+        let initialIngredientInputState = [];
+        recipe?.ingredients.map(x => {
+
+            let initialIngredientInput = {
+                Ingredient: x.name,
+                Unit: x.unit,
+                Quantity: x.quantity,
+                errors: {
+                    Ingredient: null,
+                    Unit: null,
+                    Quantity: null,
+                }
+            };
+
+            initialIngredientInputState.push(initialIngredientInput)
+        })
+
+        setIngredientInputs(initialIngredientInputState);
+    }
+
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -74,37 +97,40 @@ export default function Edit() {
 
     const onRecipeEdit = (e) => {
         e.preventDefault();
-        console.log(recipe);
-        // let formData = new FormData(e.currentTarget);
 
-        // let title = formData.get('title');
-        // let image = formData.get('image');
-        // let category = formData.get('category');
-        // let description = formData.get('description');
-        // let method = formData.get('method');
+        let formData = new FormData(e.currentTarget);
 
-        // console.log('ingredientInputs');
-        // console.log(ingredientInputs);
+        let title = formData.get('title');
+        let image = formData.get('image');
+        let category = formData.get('category');
+        let description = formData.get('description');
+        let method = formData.get('method');
 
-        // let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
-        // console.log(ingredientData);
+        console.log('ingredientInputs');
+        console.log(ingredientInputs);
 
-        // let data = {
-        //     title,
-        //     category,
-        //     description,
-        //     ingredients: ingredientData,
-        //     method,
-        //     image,
-        // }
+        let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
+        console.log(ingredientData);
 
-        // recipeService.edit(data, user.accessToken)
-        //     .then(result => {
-        //         <Navigate to="/" />
-        //     })
+        let data = {
+            title,
+            category,
+            description,
+            ingredients: ingredientData,
+            method,
+            image,
+        }
 
-        // e.currentTarget.reset();
+        recipeService.edit(recipe._id, data, user.accessToken)
+            .then(() => {
+                navigate(`/recipes/details/${recipe._id}`)
+                
+            })
+
+        e.currentTarget.reset();
     }
+
+
 
     const addIngredientHandler = (e) => {
         e.preventDefault();
@@ -154,6 +180,10 @@ export default function Edit() {
 
         setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
     }
+
+    const titleChangeHandler = (e) => {
+        console.log(e.target.value);
+    }
     return (
         <>
             <Subheader
@@ -170,12 +200,12 @@ export default function Edit() {
                                         <hr />
 
                                         <form onSubmit={onRecipeEdit} method="POST">
-                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title}/>
-                                            <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
+                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title} onBlur={titleChangeHandler} />
+                                            <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} defaultValue={recipe?.image} />
 
                                             <div className="row">
                                                 <div className="col-sm-9">
-                                                    <select name="category" id="" placeholder="Select category" className={styles['sb-input']}>
+                                                    <select name="category" id="" placeholder="Select category" className={styles['sb-input']} value={recipe?.category} onChange={(e) => setRecipe(s => ({ ...s, category: e.target.value }))}>
                                                         <option default>Select category</option>
                                                         {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
 
@@ -193,7 +223,9 @@ export default function Edit() {
                                             <textarea name="description"
                                                 rows="3"
                                                 className="area-text"
-                                                placeholder="Short description...">
+                                                placeholder="Short description..."
+                                                defaultValue={recipe?.description}
+                                            >
                                             </textarea>
 
 
@@ -280,7 +312,7 @@ export default function Edit() {
                                                 </div>
                                             </div>
                                             <label htmlFor="method">Method</label>
-                                            <textarea name="method" rows="6" className="area-text" placeholder="Method..."></textarea>
+                                            <textarea name="method" rows="6" className="area-text" placeholder="Method..." defaultValue={recipe?.method}></textarea>
                                             <div className="text-center">
                                                 <input type="submit" value="send mesage" className={styles['submit-btn']} />
                                             </div>

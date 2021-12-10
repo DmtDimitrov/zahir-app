@@ -6,7 +6,7 @@ import styles from './Catalog.module.css';
 import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/RecentRecipes';
-import RecipesCard from './CatalogCard';
+import RecipesCard from '../components/CatalogCard';
 // import SearchBar from '../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';

@@ -6,7 +6,7 @@ export const getAll = () => Recipe.find().populate('ownerId');
 export const getMy = (ownerId) => Recipe.find({ ownerId: ownerId }).populate('ownerId');
 export const getOne = (id) => Recipe.findById(id).populate('ownerId');
 export const create = (recipeData) => Recipe.create(recipeData);
-export const update = (id, recipeData) => Recipe.findByIdAndUpdate(id, recipeData);
+export const update = (recipeId, recipeData) => Recipe.findByIdAndUpdate(recipeId, recipeData);
 export const deleteOne = (id) => Recipe.findByIdAndDelete(id);
 export const getAuthor = async (id) => {
     try {
@@ -35,6 +35,24 @@ export const like = async (recipeId, userId) => {
         );
         console.log('Server recipeServicelikedRecipe');
         console.log(likedRecipe);
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+export const edit = async (recipeId, recipeData) => {
+    try {
+
+        console.log('Server recipeService: recipeId');
+        console.log(recipeId);
+        console.log('Server recipeService: recipeData');
+        console.log(recipeData);
+
+        let result = await Recipe.findByIdAndUpdate(recipeId, recipeData);
+        console.log('Server recipeService: result');
+        console.log(result);
+return result;
+     
     } catch (error) {
         throw new Error(error);
     }

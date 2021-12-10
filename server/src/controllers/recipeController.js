@@ -49,8 +49,8 @@ router.get('/', async (req, res) => {
 
 router.get('/my-recipes', isAuth, async (req, res) => {
 
-    
-    
+
+
     try {
         let userId = req?.user._id;
         // console.log('Server recipeController: userId');
@@ -147,25 +147,29 @@ router.patch('/:recipeId', isAuth, async (req, res) => {
     }
 });
 
-// router.put('/:recipeId', isAuth, async (req, res) => {
+router.put('/:recipeId', isAuth, async (req, res) => {
 
-//     let userId = req?.user._id;
-//     let recipeId = req.params.recipeId;
-//     console.log('recipeId');
-//     console.log(recipeId);
-//     console.log('userId');
-//     console.log(userId);
 
-//     try {
-//         let likedRecipe = await recipeService.like(recipeId, userId);
+    let recipeId = req.params.recipeId;
+    // console.log('recipeId');
+    // console.log(recipeId);
+    // console.log('req.body');
+    // console.log(req.body);
 
-//         res.json({ liked: true });
-//     } catch (error) {
-//         res.json({
-//             type: 'error',
-//             message: error.message
-//         })
-//     }
-// });
+
+    try {
+        let editedRecipe = await recipeService.edit(recipeId, req.body);
+
+        console.log('editedRecipe');
+        console.log(editedRecipe);
+
+        res.json({ edited: true });
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
 
 export default router;

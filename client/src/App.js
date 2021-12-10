@@ -7,6 +7,7 @@ import { RecipeProvider } from './contexts/RecipeContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Navbar from './components/Navbar';
+import NavbarAlternative from './components/NavbarAlternative';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 // import ErrorPage from './pages/Error';
@@ -18,16 +19,16 @@ import Login from './pages/User/Login';
 import Register from './pages/User/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
-import MyRecipes from './pages/User/MyRecipes';
+import MyRecipes from './pages/Recipe/MyRecipes';
 
 
 function App() {
 
     return (
         <AuthProvider>
-            <Header />
+            {/* <NavbarAlternative />
 
-            <Menu />
+            <Menu /> */}
 
             <Navbar />
 

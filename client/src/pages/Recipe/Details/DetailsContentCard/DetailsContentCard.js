@@ -48,7 +48,7 @@ export default function RecipeDetailsContentCard() {
                                 </div>
                             </div>
 
-                            {/* <h1>{recipe.title}</h1> */}
+                            <h1>{recipe.title}</h1>
                             <div className={styles['post-info']} >
                                 <p>
                                     <span className={styles['info-over']}>
