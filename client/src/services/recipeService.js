@@ -68,10 +68,10 @@ export const create = async (recipeData, token) => {
 };
 
 
-export const edit = async (recipeData, token) => {
+export const edit = async (recipeId, recipeData, token) => {
     try {
-        let response = await fetch(`${HOST}/recipes`, {
-            method: 'POST',
+        let response = await fetch(`${HOST}/recipes/${recipeId}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json',
                 'X-Authorization': token,
