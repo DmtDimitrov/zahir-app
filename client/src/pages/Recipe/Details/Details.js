@@ -14,7 +14,7 @@ import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';
 import RecipeDetailsContentCard from './DetailsContentCard';
 import CategoriesBarTop from '../../../components/CategoriesBarTop';
-import RecentRecipes from '../../../components/RecentRecipes';
+import RecentRecipes from '../../../components/Recipes/RecentRecipes';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { RecipeContext } from '../../../contexts/RecipeContext';
 
