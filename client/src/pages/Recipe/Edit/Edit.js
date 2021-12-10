@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import styles from './Edit.module.css';
@@ -16,6 +16,7 @@ export default function Edit() {
     const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
+    let navigate = useNavigate();
 
     if (!ingredientInputs.length > 0 && recipe) {
         let initialIngredientInputState = [];
@@ -121,8 +122,9 @@ export default function Edit() {
         }
 
         recipeService.edit(recipe._id, data, user.accessToken)
-            .then(result => {
-                <Navigate to={`/recipes/details/:${recipe?._id}`} />
+            .then(() => {
+                navigate(`/recipes/details/${recipe._id}`)
+                
             })
 
         e.currentTarget.reset();
