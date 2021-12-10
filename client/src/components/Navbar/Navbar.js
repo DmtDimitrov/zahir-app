@@ -54,7 +54,6 @@ const NavbarMenu = () => {
                         <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
                         <NavDropdown title="Recipes" id="navbarScrollingDropdown">
                             <NavDropdown.Item as={Link} to={"/recipes/catalog"}>Catalog</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to={"/recipes/catalog/new"}>CatalogNew</NavDropdown.Item>
                             {
                                 user.email
                                     ? userNav
