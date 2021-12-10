@@ -74,35 +74,36 @@ export default function Edit() {
 
     const onRecipeEdit = (e) => {
         e.preventDefault();
-        let formData = new FormData(e.currentTarget);
+        console.log(recipe);
+        // let formData = new FormData(e.currentTarget);
 
-        let title = formData.get('title');
-        let image = formData.get('image');
-        let category = formData.get('category');
-        let description = formData.get('description');
-        let method = formData.get('method');
+        // let title = formData.get('title');
+        // let image = formData.get('image');
+        // let category = formData.get('category');
+        // let description = formData.get('description');
+        // let method = formData.get('method');
 
-        console.log('ingredientInputs');
-        console.log(ingredientInputs);
+        // console.log('ingredientInputs');
+        // console.log(ingredientInputs);
 
-        let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
-        console.log(ingredientData);
+        // let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
+        // console.log(ingredientData);
 
-        let data = {
-            title,
-            category,
-            description,
-            ingredients: ingredientData,
-            method,
-            image,
-        }
+        // let data = {
+        //     title,
+        //     category,
+        //     description,
+        //     ingredients: ingredientData,
+        //     method,
+        //     image,
+        // }
 
-        recipeService.edit(data, user.accessToken)
-            .then(result => {
-                <Navigate to="/" />
-            })
+        // recipeService.edit(data, user.accessToken)
+        //     .then(result => {
+        //         <Navigate to="/" />
+        //     })
 
-        e.currentTarget.reset();
+        // e.currentTarget.reset();
     }
 
     const addIngredientHandler = (e) => {
@@ -169,7 +170,7 @@ export default function Edit() {
                                         <hr />
 
                                         <form onSubmit={onRecipeEdit} method="POST">
-                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
+                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title}/>
                                             <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
 
                                             <div className="row">

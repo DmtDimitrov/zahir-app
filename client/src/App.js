@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
+import { RecipeProvider } from './contexts/RecipeContext';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Navbar from './components/Navbar';
@@ -30,7 +31,7 @@ function App() {
 
             <Navbar />
 
-            <>
+            <RecipeProvider>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
@@ -45,7 +46,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
                 </Routes>
-            </>
+            </RecipeProvider>
 
             <Footer />
 

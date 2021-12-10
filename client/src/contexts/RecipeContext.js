@@ -1,55 +1,48 @@
 import { createContext, useContext } from 'react';
 
-// import { useRecipeState } from '../hooks/useRecipeState';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 
 export const RecipeContext = createContext();
 
-// const initialRecipeState = {
-//     category: '',
-//     comments: [],
-//     createdAt: '',
-//     description: '',
-//     image: '',
-//     ingredients: [{}],
-//     likes: [],
-//     method: '',
-//     ownerId: {},
-//     title: '',
-//     _id: '',
-// };
+const initialRecipeState = {
+    category: '',
+    comments: [],
+    createdAt: '',
+    description: '',
+    image: '',
+    ingredients: [{}],
+    likes: [],
+    method: '',
+    ownerId: {},
+    title: '',
+    _id: '',
+};
 
 
-// export const RecipeProvider = ({
-//     children
-// }) => {
+export const RecipeProvider = ({
+    children
+}) => {
 
-//     const [recipe, setRecipe] = useRecipeState('recipeId', initialRecipeState);
+    const [recipe, setRecipe] = useLocalStorage('recipe', initialRecipeState);
+ 
+    const setRecipeContext = (recipeData) => {
+        setRecipe(recipeData);
+    };
 
+    const resetRecipeContext = () => {
+        setRecipe(initialRecipeState);
+    };
+    return(
+        <RecipeContext.Provider value={{ recipe, setRecipeContext, resetRecipeContext }}>
+            {children}
+        </RecipeContext.Provider>
+    )
+};
 
-//     return(
-//         <RecipeContext.Provider>
-//             {children}
-//         </RecipeContext.Provider>
-//     )
-// };
+export const useRecipeContext = () => {
+    const recipeState = useContext(RecipeContext);
 
-// export const useRecipeContext = () => {
-//     const RecipeState = useContext(RecipeContext);
-
-//     return RecipeState;
-
-/////////////////
-
-// import { createContext, useContext } from 'react';
-
-// import useLocalStorage from '../hooks/useLocalStorage';
-
-// export const AuthContext = createContext();
-
-// const initialAuthState = {
-//     _id: '',
-//     email: '',
-//     accessToken: '',
-// };
+    return recipeState;
+}
 
