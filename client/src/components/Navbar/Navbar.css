@@ -21,6 +21,16 @@
     text-decoration: none;
     background-color: #f65aa7;
 }
+/* .dropdown-item {
+    color: #fff;
+    text-decoration: none;
+    background-color: #212529;
+}
+.dropdown-menu {
+    color: #fff;
+    text-decoration: none;
+    background-color: #212529;
+} */
 .navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text a:hover {
     color: #f65aa7;
 }
