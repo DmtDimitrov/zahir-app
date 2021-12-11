@@ -1,25 +1,38 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 
 export const NotificationContext = createContext();
 
 export const types = {
-    error: 'error',
+    error: 'danger',
     warning: 'warning',
     info: 'info',
     success: 'success',
-}
+};
+
+const initialNotificationState = {
+    show: false,
+    message: '',
+    type: types.error
+};
+
 
 export const NotificationProvider = ({
     children
 }) => {
-    const [notification, setNotification] = useState({ show: false, message: '', type: types.error });
+    const [notification, setNotification] = useState(initialNotificationState);
 
-    const addNotification = (message, type = types.error) => {
-        setNotification({ show: true, message, type })
-    }
+    const addNotification = useCallback((message, type = types.error) => {
+        setNotification({ show: true, message, type });
+
+        setTimeout(() => {
+            setNotification(initialNotificationState)
+        }, 4000);
+    }, []);
+
+    const hideNotification = useCallback(() => setNotification(initialNotificationState))
 
     return (
-        <NotificationContext.Provider value={{ notification, addNotification }}>
+        <NotificationContext.Provider value={{ notification, addNotification, hideNotification }}>
             {children}
         </NotificationContext.Provider>
     )
