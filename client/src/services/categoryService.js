@@ -1,4 +1,5 @@
 import { HOST } from "../constants";
+import * as request from './requestService';
 
 export const getAll = async () => await request.get(`${HOST}/category`);
 export const create = async (categoryData) => await request.post(`${HOST}/category`, categoryData, true);
