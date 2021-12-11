@@ -1,14 +1,6 @@
 import * as request from './requestService';
-// request.method(url, data, isAuthorized, skipResult)
 
 import { HOST } from "../constants";
-
-// export const getAll = () => request.get(`${HOST}/recipes`);
-// export const getMy = async () => await request.get(`${HOST}/recipes/my-recipes`, undefined, true);
-// export const getOne = async (recipeId) => await request.get(`${HOST}/recipes/${recipeId}`, undefined);
-// export const create = async (recipeData) => await request.post(`${HOST}/recipes`, recipeData, true);
-// export const edit = async (recipeId, recipeData) => await request.put(`${HOST}/recipes/${recipeId}`, recipeData, true);
-// export const deleteOne = async (recipeId) => await request.del(`${HOST}/recipes/${recipeId}`, undefined, true);
 
 export const login = async (userData) => await request.post(`${HOST}/users/login`, userData);
 export const register = async (userData) => await request.post(`${HOST}/users/register`, userData);
