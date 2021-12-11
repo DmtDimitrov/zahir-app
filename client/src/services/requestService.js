@@ -39,19 +39,6 @@ export const request = async (method, url, data, isAuthorized, skipResult) => {
     }
 };
 
-// async function responseHandler(res) {
-//     try {
-//         let jsonData = await res.json();
-
-//         if (res.ok) {
-//             return Object.values(jsonData);
-//         } else {
-//             throw jsonData;
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
 
 function getToken() {
     try {

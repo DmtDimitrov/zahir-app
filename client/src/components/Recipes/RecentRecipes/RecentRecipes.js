@@ -1,10 +1,12 @@
 import styles from './RecentRecipes.module.css';
 import RecentRecipeCard from './RecentRecipeCard';
+import { useRecipesState } from '../../../hooks/useRecipesState'
 
-export default function RecentRecipes(
-    recipe
-) {
 
+
+export default function RecentRecipes() {
+    const [recipes, setRecipes] = useRecipesState();
+    console.log(recipes);
     return (
         <div className={`row ${styles['blog-row-padd']}`}>
             <div className={`col-12 ${styles['side-bar-bg']}`}>
@@ -14,8 +16,8 @@ export default function RecentRecipes(
                         <hr /><i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i><hr />
                     </div>
                 </div>
+                {recipes && recipes.slice(-3).map(x => <RecentRecipeCard key={x._id} recipe={x} />)}
 
-                < RecentRecipeCard {...recipe}/>
 
             </div>
         </div>

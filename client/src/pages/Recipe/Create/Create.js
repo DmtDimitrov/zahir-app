@@ -159,13 +159,13 @@ export default function RecipeCreate() {
             />
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
-                    <div className="row">
-                        <div className=" col-lg-8 " >
+                 
                             <div className="row">
                                 <div className="col-md-12  ">
                                     <div className={styles['add-recipe-container']}>
                                         <span>Add Recipe</span>
                                         <hr />
+
 
                                         <form onSubmit={onRecipeCreate} method="POST">
                                             <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
@@ -286,8 +286,7 @@ export default function RecipeCreate() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 

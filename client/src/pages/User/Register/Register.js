@@ -9,7 +9,7 @@ import Subheader from '../../../components/Subheader';
 
 export default function Register() {
 
-   
+
 
     let navigate = useNavigate();
 
@@ -47,25 +47,21 @@ export default function Register() {
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
                     <div className="row">
-                        <div className=" col-lg-8 " >
-                            <div className="row">
-                                <div className="col-md-12  ">
-                                    <div className={styles['register-container']}>
-                                        <span>Register</span>
-                                        <hr />
-                                        <form method="POST" onSubmit={registerSubmitHandler}>
-                                            <div className="row">
-                                                <div className="col-sm-6"> <input type="text" name="firstName" placeholder="First Name*" className={styles['sm-input']} /> </div>
-                                                <div className="col-sm-6"> <input type="text" name="lastName" placeholder="Last Name*" className={styles['sm-input']} /> </div>
-                                            </div>
-                                            <input type="email" name="email" placeholder="Your Email*" className={styles['sb-input']} />
-                                            <input type="password" name="password" placeholder="Password" className={styles['sb-input']} />
-                                            <input type="password" name="repeatPassword" placeholder="Confirm Password" className={styles['sb-input']} />
-
-                                            <div className="text-center">  <input type="submit" value="register" className={styles['submit-btn']} /></div>
-                                        </form>
+                        <div className="col-md-12  ">
+                            <div className={styles['register-container']}>
+                                <span>Register</span>
+                                <hr />
+                                <form method="POST" onSubmit={registerSubmitHandler}>
+                                    <div className="row">
+                                        <div className="col-sm-6"> <input type="text" name="firstName" placeholder="First Name*" className={styles['sm-input']} /> </div>
+                                        <div className="col-sm-6"> <input type="text" name="lastName" placeholder="Last Name*" className={styles['sm-input']} /> </div>
                                     </div>
-                                </div>
+                                    <input type="email" name="email" placeholder="Your Email*" className={styles['sb-input']} />
+                                    <input type="password" name="password" placeholder="Password" className={styles['sb-input']} />
+                                    <input type="password" name="repeatPassword" placeholder="Confirm Password" className={styles['sb-input']} />
+
+                                    <div className="text-center">  <input type="submit" value="register" className={styles['submit-btn']} /></div>
+                                </form>
                             </div>
                         </div>
                     </div>
