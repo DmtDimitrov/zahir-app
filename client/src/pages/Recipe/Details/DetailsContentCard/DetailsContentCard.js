@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import styles from './DetailsContentCard.module.css';
 
-
 import { DATE_OPTIONS } from '../../../../constants';
 import { useAuthContext } from '../../../../contexts/AuthContext';
 
