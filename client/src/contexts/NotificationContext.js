@@ -7,6 +7,7 @@ export const types = {
     warning: 'warning',
     info: 'info',
     success: 'success',
+    light: 'light',
 };
 
 const initialNotificationState = {

@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
@@ -33,7 +32,7 @@ export default function Login() {
             .then((authData) => {
                 login(authData);
                 addNotification('You logged in successfully', types.success)
-                navigate('/home');
+                navigate('/recipes/my-recipes');
             })
             .catch(error => {
                 console.log(error);

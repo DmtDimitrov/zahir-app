@@ -6,10 +6,11 @@ import styles from './Register.module.css';
 import * as authService from '../../../services/authService';
 
 import Subheader from '../../../components/Subheader';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 
 export default function Register() {
 
-
+    const { addNotification } = useNotificationContext();
 
     let navigate = useNavigate();
 
@@ -33,6 +34,7 @@ export default function Register() {
 
         authService.register(userData)
             .then(() => {
+                addNotification('You have registered successfully', types.light);
                 navigate('/login');
             })
             .catch(error => {
