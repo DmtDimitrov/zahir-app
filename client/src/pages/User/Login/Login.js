@@ -21,8 +21,13 @@ export default function Login() {
         let email = formData.get('email')
         let password = formData.get('password');
 
+        let userData = {
+            email,
+            password
+        }
 
-        authService.login(email, password)
+
+        authService.login(userData)
             .then((authData) => {
                 login(authData);
                 
