@@ -281,7 +281,7 @@ export default function RecipeCreate() {
                                     <label htmlFor="method">Method</label>
                                     <textarea name="method" rows="6" className="area-text" placeholder="Method..."></textarea>
                                     <div className="text-center">
-                                        <input type="submit" value="send mesage" className={styles['submit-btn']} />
+                                        <input type="submit" value="create" className={styles['submit-btn']} />
                                     </div>
                                 </form>
                             </div>
