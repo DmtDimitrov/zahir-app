@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import * as recipeService from '../../../services/recipeService';
 import styles from './Catalog.module.css';
 
+import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/Recipes/RecentRecipes';
@@ -31,7 +32,7 @@ export default function RecipeCatalog() {
 console.log('recipes');
 console.log(recipes);
     return (
-        <>
+        <Page>
             <Subheader
                 title="Recipes"
             />
@@ -66,7 +67,7 @@ console.log(recipes);
 
             <Pagination />
 
-        </>
+        </Page>
 
     );
 }
