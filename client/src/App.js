@@ -29,8 +29,6 @@ function App() {
 
                 <Navbar />
 
-                <Notification />
-
                 <RecipeProvider>
                     <Routes>
                         <Route path="/" element={<Home />} />
