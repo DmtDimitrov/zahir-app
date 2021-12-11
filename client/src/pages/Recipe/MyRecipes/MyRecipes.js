@@ -11,7 +11,7 @@ import RecipesCard from '../components/CatalogCard';
 import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';
 import { AuthContext } from '../../../contexts/AuthContext';
-import Page from '../../Page'; 
+import Page from '../../Page';
 
 
 export default function MyRecipes() {
@@ -23,11 +23,14 @@ export default function MyRecipes() {
             .then(result => {
                 setRecipes(result)
             })
+            .catch(error => {
+                console.log(error);
+            })
     }, [user.accessToken]);
 
-   
-console.log('recipes');
-console.log(recipes);
+
+    console.log('recipes');
+    console.log(recipes);
     return (
         <Page>
             <Subheader
@@ -40,19 +43,19 @@ console.log(recipes);
                     <div className="row">
                         <div className="col-lg-8 " >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
-                                { recipes && recipes.map(x => <RecipesCard key={x._id} recipe={x} />)}
+                                {recipes && recipes.map(x => <RecipesCard key={x._id} recipe={x} />)}
 
                             </div>
                         </div>
-                        
+
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                          
 
-                            <CategoriesBar/>
 
-                            <RecentRecipes/>
-                            
+                            <CategoriesBar />
+
+                            <RecentRecipes />
+
                             <PopularTags
                                 title="Popular Tags"
                             />

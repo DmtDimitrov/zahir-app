@@ -13,6 +13,9 @@ export const useRecipeState = (recipeId) => {
                 setRecipe(result);
                 setRecipeContext(result)
             })
+            .catch(error => {
+                console.log(error);
+            })
     }, [recipeId]);
 
     return [

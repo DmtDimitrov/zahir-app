@@ -7,7 +7,6 @@ import * as categoryService from '../../../services/categoryService';
 import { useRecipeState } from '../../../hooks/useRecipeState';
 
 import Subheader from '../../../components/Subheader';
-// import IngredientInputs from './IngredientInputs';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -35,13 +34,11 @@ export default function Edit() {
                     Quantity: null,
                 }
             };
-
             initialIngredientInputState.push(initialIngredientInput)
         })
 
         setIngredientInputs(initialIngredientInputState);
     }
-
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -73,7 +70,6 @@ export default function Edit() {
                 return setIngredientInputs(allOldState);
             });
         }
-
         return !someEmpty;
     }
 
@@ -89,13 +85,10 @@ export default function Edit() {
                     a[x.name].push(x);
                     return a
                 }, {});
-
                 setCategory(categories)
             })
     }, []);
-
     const addCategoryHandler = (e) => {
-
     }
 
     const onRecipeEdit = (e) => {
@@ -108,9 +101,6 @@ export default function Edit() {
         let category = formData.get('category');
         let description = formData.get('description');
         let method = formData.get('method');
-
-        console.log('ingredientInputs');
-        console.log(ingredientInputs);
 
         let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
         console.log(ingredientData);
@@ -128,13 +118,12 @@ export default function Edit() {
             .then(() => {
                 addNotification('You edited this recipe successfully', types.success, 'Success')
                 navigate(`/recipes/details/${recipe._id}`)
-                
             })
-
+            .catch(error => {
+                console.log(error);
+            });
         e.currentTarget.reset();
     }
-
-
 
     const addIngredientHandler = (e) => {
         e.preventDefault();
@@ -152,8 +141,6 @@ export default function Edit() {
         if (oldStateIsValid()) {
             setIngredientInputs(oldState => [...oldState, ingredientInputState]);
         }
-
-
     };
 
     const onChangeIngredients = (index, event) => {
@@ -231,7 +218,6 @@ export default function Edit() {
                                                 defaultValue={recipe?.description}
                                             >
                                             </textarea>
-
 
                                             {
                                                 ingredientInputs.map((x, index) => (

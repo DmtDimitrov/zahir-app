@@ -68,6 +68,9 @@ export default function RecipeCreate() {
 
                 setCategory(categories)
             })
+            .catch(error => {
+                console.log(error);
+            })
     }, []);
 
     const addCategoryHandler = (e) => {
@@ -103,6 +106,9 @@ export default function RecipeCreate() {
             .then(result => {
                 addNotification('You created new recipe successfully', types.success, 'Success')
                 navigate(`/recipes/catalog`)
+            })
+            .catch(error => {
+                console.log(error);
             })
 
         e.currentTarget.reset();
