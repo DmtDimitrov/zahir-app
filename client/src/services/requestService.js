@@ -1,4 +1,4 @@
-import { USER_TOKEN } from '../constants'
+import { USER_LOCAL_STORAGE_KEY_NAME } from '../constants'
 
 export const request = async (method, url, data, isAuthorized, skipResult) => {
     try {
@@ -42,7 +42,7 @@ export const request = async (method, url, data, isAuthorized, skipResult) => {
 
 function getToken() {
     try {
-        let userItem = localStorage.getItem(USER_TOKEN);
+        let userItem = localStorage.getItem(USER_LOCAL_STORAGE_KEY_NAME);
 
         if (!userItem) {
             throw { message: 'You are not authenticated!' }
