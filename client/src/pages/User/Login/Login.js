@@ -5,10 +5,12 @@ import styles from './Login.module.css';
 import * as authService from '../../../services/authService';
 
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import Subheader from '../../../components/Subheader';
 
 export default function Login() {
     const { login } = useAuthContext();
+    const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
 
     const onLoginHandler = (e) => {
@@ -30,7 +32,7 @@ export default function Login() {
         authService.login(userData)
             .then((authData) => {
                 login(authData);
-
+                addNotification('You logged in successfully', types.success)
                 navigate('/home');
             })
             .catch(error => {
