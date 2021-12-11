@@ -17,18 +17,18 @@ import CategoriesBarTop from '../../../components/CategoriesBarTop';
 import RecentRecipes from '../../../components/Recipes/RecentRecipes';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { RecipeContext } from '../../../contexts/RecipeContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import Page from '../../Page';
-
 
 export default function RecipeDetails() {
     const { user } = useAuthContext();
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useRecipeState(recipeId);
     const [show, setShow] = useState(false);
+    const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
 
     const handleClose = () => {
-
         setShow(false);
     }
     const handleShow = () => setShow(true);
@@ -39,14 +39,16 @@ export default function RecipeDetails() {
         recipeService.deleteOne(recipeId, user.accessToken)
             .then(() => {
                 navigate('/recipes/catalog');
+            })
+            .catch(error => {
+                console.log(error);
             });
     }
 
     const likeButtonClickHandler = () => {
         console.log('Like');
         if (recipe.likes.includes(user._id)) {
-            //TODO: add notificaton
-
+            addNotification('You already liked this recipe', types.warning, 'Warning')
             console.log(recipe);
             console.log('User already liked');
             return;
@@ -54,18 +56,17 @@ export default function RecipeDetails() {
         let likes = [...recipe.likes, user._id]
         recipeService.like(recipe._id, likes, user.accessToken)
             .then((responseData) => {
-                console.log('RecipeDetails(likeButtonClickHandler): responseData');
-                console.log(responseData);
+                addNotification('You liked this recipe successfully', types.success, 'Success')
                 setRecipe(state => ({
                     ...state,
                     likes,
 
                 }));
             })
+            .catch(error => {
+                console.log(error);
+            })
     };
-
-
-
 
     return (
         <Page>
