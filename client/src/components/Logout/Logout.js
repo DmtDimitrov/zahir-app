@@ -16,6 +16,9 @@ export default function Logout() {
             addNotification('You logged out successfully', types.success, 'Success')
             navigate('/login');
         })
+        .catch(error => {
+            console.log(error);
+        })
     }, [user.accessToken, logout, navigate])
     return null;
 
