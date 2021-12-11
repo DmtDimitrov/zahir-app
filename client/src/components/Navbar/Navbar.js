@@ -25,7 +25,7 @@ const NavbarMenu = () => {
     let userAuthNav = (
         <>
             <Nav.Link as={Link} to={"/logout"}>Logout</Nav.Link>
-            <Navbar.Text><a href="#login">{user.email}</a></Navbar.Text>
+            <Navbar.Text><a href="#login">{user?.email}</a></Navbar.Text>
         </>
     );
 
@@ -55,14 +55,14 @@ const NavbarMenu = () => {
                         <NavDropdown title="Recipes" id="navbarScrollingDropdown">
                             <NavDropdown.Item as={Link} to={"/recipes/catalog"}>Catalog</NavDropdown.Item>
                             {
-                                user.email
+                                user?.email
                                     ? userNav
                                     : ''
                             }
 
                         </NavDropdown>
                         {
-                            user.email
+                            user?.email
                                 ? userAuthNav
                                 : guestAuthNav
                         }

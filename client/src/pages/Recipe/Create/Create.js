@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import styles from './Create.module.css';
@@ -12,7 +12,7 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 export default function RecipeCreate() {
 
     const { user } = useAuthContext();
-
+    let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
 
@@ -98,7 +98,7 @@ export default function RecipeCreate() {
 
         recipeService.create(data, user.accessToken)
             .then(result => {
-                <Navigate to="/" />
+                navigate(`/recipes/catalog`)
             })
 
         e.currentTarget.reset();
@@ -166,7 +166,6 @@ export default function RecipeCreate() {
                                         <span>Add Recipe</span>
                                         <hr />
 
-                                      
 
                                         <form onSubmit={onRecipeCreate} method="POST">
                                             <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />

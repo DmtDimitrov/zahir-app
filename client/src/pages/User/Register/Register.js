@@ -23,13 +23,15 @@ export default function Register() {
         let password = formData.get('password');
         let repeatPassword = formData.get('repeatPassword');
 
-        authService.register({
+        let userData = {
             firstName,
             lastName,
             email,
             password,
             repeatPassword
-        })
+        }
+
+        authService.register(userData)
             .then(() => {
                 navigate('/login');
             })
