@@ -314,7 +314,7 @@ export default function Edit() {
                                             <label htmlFor="method">Method</label>
                                             <textarea name="method" rows="6" className="area-text" placeholder="Method..." defaultValue={recipe?.method}></textarea>
                                             <div className="text-center">
-                                                <input type="submit" value="send mesage" className={styles['submit-btn']} />
+                                                <input type="submit" value="save" className={styles['submit-btn']} />
                                             </div>
                                         </form>
                                     </div>
