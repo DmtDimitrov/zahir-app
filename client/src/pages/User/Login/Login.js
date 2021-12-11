@@ -6,6 +6,7 @@ import * as authService from '../../../services/authService';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import Subheader from '../../../components/Subheader';
+import Page from '../../Page';
 
 export default function Login() {
     const { login } = useAuthContext();
@@ -31,7 +32,7 @@ export default function Login() {
         authService.login(userData)
             .then((authData) => {
                 login(authData);
-                addNotification('You logged in successfully', types.success)
+                addNotification('You logged in successfully', types.success, 'Success')
                 navigate('/recipes/my-recipes');
             })
             .catch(error => {
@@ -41,7 +42,7 @@ export default function Login() {
 
     }
     return (
-        <>
+        <Page>
             <Subheader
                 title="Login"
             />
@@ -65,6 +66,6 @@ export default function Login() {
                 </div>
             </div>
 
-        </>
+        </Page>
     );
 }

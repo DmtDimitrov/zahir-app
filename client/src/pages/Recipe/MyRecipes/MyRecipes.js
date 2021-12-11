@@ -10,7 +10,8 @@ import RecipesCard from '../components/CatalogCard';
 // import SearchBar from '../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';
-import { AuthContext } from '../../../contexts/AuthContext'; 
+import { AuthContext } from '../../../contexts/AuthContext';
+import Page from '../../Page'; 
 
 
 export default function MyRecipes() {
@@ -28,7 +29,7 @@ export default function MyRecipes() {
 console.log('recipes');
 console.log(recipes);
     return (
-        <>
+        <Page>
             <Subheader
                 title="My Recipes"
             />
@@ -63,7 +64,7 @@ console.log(recipes);
 
             <Pagination />
 
-        </>
+        </Page>
 
     );
 }

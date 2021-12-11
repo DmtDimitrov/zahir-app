@@ -13,7 +13,8 @@ export const types = {
 const initialNotificationState = {
     show: false,
     message: '',
-    type: types.error
+    type: types.error,
+    title:'',
 };
 
 
@@ -22,8 +23,8 @@ export const NotificationProvider = ({
 }) => {
     const [notification, setNotification] = useState(initialNotificationState);
 
-    const addNotification = useCallback((message, type = types.error) => {
-        setNotification({ show: true, message, type });
+    const addNotification = useCallback((message, type = types.error, title) => {
+        setNotification({ show: true, message, type, title });
 
         setTimeout(() => {
             setNotification(initialNotificationState)

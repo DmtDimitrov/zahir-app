@@ -7,6 +7,7 @@ import * as authService from '../../../services/authService';
 
 import Subheader from '../../../components/Subheader';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
+import Page from '../../Page';
 
 export default function Register() {
 
@@ -42,7 +43,7 @@ export default function Register() {
             })
     }
     return (
-        <>
+        <Page>
             <Subheader
                 title="Register"
             />
@@ -70,6 +71,6 @@ export default function Register() {
                 </div>
             </div>
 
-        </>
+        </Page>
     );
 }

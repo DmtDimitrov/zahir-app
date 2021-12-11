@@ -17,6 +17,7 @@ import CategoriesBarTop from '../../../components/CategoriesBarTop';
 import RecentRecipes from '../../../components/Recipes/RecentRecipes';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { RecipeContext } from '../../../contexts/RecipeContext';
+import Page from '../../Page';
 
 
 export default function RecipeDetails() {
@@ -67,43 +68,45 @@ export default function RecipeDetails() {
 
 
     return (
-        <RecipeContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
-            <Subheader
-                title="Recipe Details"
-            />
+        <Page>
+            <RecipeContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
+                <Subheader
+                    title="Recipe Details"
+                />
 
-            <div className={`${styles['main-container']} ${styles['recipe-container']}`}>
-                <div className={styles['inside-container']}>
-                    <div className="row">
+                <div className={`${styles['main-container']} ${styles['recipe-container']}`}>
+                    <div className={styles['inside-container']}>
+                        <div className="row">
 
-                        <CategoriesBarTop />
+                            <CategoriesBarTop />
 
-                        <div className=" col-lg-8 " >
+                            <div className=" col-lg-8 " >
 
-                            {recipe && <RecipeDetailsContentCard />}
+                                {recipe && <RecipeDetailsContentCard />}
 
-                            <Comments />
+                                <Comments />
 
-                            <AddComment />
+                                <AddComment />
 
-                        </div>
+                            </div>
 
-                        <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
+                            <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                            <SearchBar />
+                                <SearchBar />
 
-                            <CategoriesBar />
+                                <CategoriesBar />
 
-                            <RecentRecipes {...recipe} />
+                                <RecentRecipes {...recipe} />
 
-                            <PopularTags
-                                title="Popular Tags"
-                            />
+                                <PopularTags
+                                    title="Popular Tags"
+                                />
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </RecipeContext.Provider>
+            </RecipeContext.Provider>
+        </Page>
     );
 }

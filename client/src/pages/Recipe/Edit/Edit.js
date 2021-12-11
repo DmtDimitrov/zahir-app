@@ -9,6 +9,8 @@ import { useRecipeState } from '../../../hooks/useRecipeState';
 import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import Page from '../../Page';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 
 export default function Edit() {
     const { recipeId } = useParams();
@@ -16,6 +18,7 @@ export default function Edit() {
     const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
+    const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
 
     if (!ingredientInputs.length > 0 && recipe) {
@@ -123,6 +126,7 @@ export default function Edit() {
 
         recipeService.edit(recipe._id, data, user.accessToken)
             .then(() => {
+                addNotification('You edited this recipe successfully', types.success, 'Success')
                 navigate(`/recipes/details/${recipe._id}`)
                 
             })
@@ -185,7 +189,7 @@ export default function Edit() {
         console.log(e.target.value);
     }
     return (
-        <>
+        <Page>
             <Subheader
                 title="Edit Recipe"
             />
@@ -325,6 +329,6 @@ export default function Edit() {
                 </div>
             </div>
 
-        </>
+        </Page>
     );
 }

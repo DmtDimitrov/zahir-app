@@ -9,6 +9,7 @@ import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 
 export default function RecipeCreate() {
 
@@ -16,6 +17,7 @@ export default function RecipeCreate() {
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
+    const { addNotification } = useNotificationContext();
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -99,6 +101,7 @@ export default function RecipeCreate() {
 
         recipeService.create(data, user.accessToken)
             .then(result => {
+                addNotification('You created new recipe successfully', types.success, 'Success')
                 navigate(`/recipes/catalog`)
             })
 
