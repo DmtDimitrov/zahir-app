@@ -1,8 +1,8 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useCallback } from 'react';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-import {RECIPE_LOCAL_STORAGE_KEY_NAME} from '../constants';
+import { RECIPE_LOCAL_STORAGE_KEY_NAME } from '../constants';
 
 export const RecipeContext = createContext();
 
@@ -26,15 +26,15 @@ export const RecipeProvider = ({
 }) => {
 
     const [recipe, setRecipe] = useLocalStorage(RECIPE_LOCAL_STORAGE_KEY_NAME, initialRecipeState);
- 
-    const setRecipeContext = (recipeData) => {
+
+    const setRecipeContext = useCallback((recipeData) => {
         setRecipe(recipeData);
-    };
+    }, [setRecipe]);
 
     const resetRecipeContext = () => {
         setRecipe(initialRecipeState);
     };
-    return(
+    return (
         <RecipeContext.Provider value={{ recipe, setRecipeContext, resetRecipeContext }}>
             {children}
         </RecipeContext.Provider>
