@@ -26,8 +26,11 @@ export const AuthProvider = ({
         setUser(initialAuthState);
     };
 
+    const isAuthenticated = Boolean(user.email)
+
+
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
             {children}
         </AuthContext.Provider>
     );
@@ -38,3 +41,4 @@ export const useAuthContext = () => {
 
     return authState;
 }
+

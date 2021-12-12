@@ -5,6 +5,7 @@ import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
 import { RecipeProvider } from './contexts/RecipeContext';
 import { NotificationProvider } from './contexts/NotificationContext'
+import { RouteGuards } from './pages/Routes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -25,7 +26,9 @@ function App() {
     return (
         <AuthProvider>
             <NotificationProvider>
-
+<div>
+    
+</div>
                 <Navbar />
 
                 <RecipeProvider>
@@ -33,15 +36,19 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/recipes/catalog" element={<RecipeCatalog />} />
-                        <Route path="/recipes/my-recipes" element={<MyRecipes />} />
-                        <Route path="/recipes/create" element={<RecipeCreate />} />
-                        <Route path="/recipes/edit/:recipeId" element={<Edit />} />
                         <Route path="/recipes/details/:recipeId" element={<RecipeDetails />} />
                         <Route path="/chefs" element={<RecipeCreate />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/logout" element={<Logout />} />
+
+
+                        <Route element={<RouteGuards />}>
+                            <Route path="/recipes/my-recipes" element={<MyRecipes />} />
+                            <Route path="/recipes/create" element={<RecipeCreate />} />
+                            <Route path="/recipes/edit/:recipeId" element={<Edit />} />
+                        </Route>
                     </Routes>
                 </RecipeProvider>
 
