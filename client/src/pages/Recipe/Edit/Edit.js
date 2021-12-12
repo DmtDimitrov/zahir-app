@@ -34,7 +34,7 @@ export default function Edit() {
                     Quantity: null,
                 }
             };
-            initialIngredientInputState.push(initialIngredientInput)
+           return initialIngredientInputState.push(initialIngredientInput)
         })
 
         setIngredientInputs(initialIngredientInputState);
