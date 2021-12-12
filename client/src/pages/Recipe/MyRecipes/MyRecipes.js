@@ -17,7 +17,7 @@ import Page from '../../Page';
 export default function MyRecipes() {
     const [recipes, setRecipes] = useState(null);
     const { user } = useContext(AuthContext);
-
+   
     useEffect(() => {
         recipeService.getMy(user.accessToken)
             .then(result => {
@@ -29,8 +29,6 @@ export default function MyRecipes() {
     }, [user.accessToken]);
 
 
-    console.log('recipes');
-    console.log(recipes);
     return (
         <Page>
             <Subheader
