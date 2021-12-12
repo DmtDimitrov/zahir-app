@@ -45,7 +45,7 @@ function getToken() {
         let userItem = localStorage.getItem(USER_LOCAL_STORAGE_KEY_NAME);
 
         if (!userItem) {
-            throw { message: 'You are not authenticated!' }
+            throw new Error('You are not authenticated!') 
         };
 
         let user = JSON.parse(userItem);
