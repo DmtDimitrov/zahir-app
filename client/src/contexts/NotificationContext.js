@@ -14,7 +14,7 @@ const initialNotificationState = {
     show: false,
     message: '',
     type: types.error,
-    title:'',
+    title: '',
 };
 
 
@@ -31,7 +31,9 @@ export const NotificationProvider = ({
         }, 4000);
     }, []);
 
-    const hideNotification = useCallback(() => setNotification(initialNotificationState))
+    const hideNotification = useCallback(() => {
+        setNotification(initialNotificationState)
+    }, [])
 
     return (
         <NotificationContext.Provider value={{ notification, addNotification, hideNotification }}>
