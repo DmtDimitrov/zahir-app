@@ -14,6 +14,8 @@ import { useNotificationContext, types } from '../../../contexts/NotificationCon
 export default function RecipeCreate() {
 
     const { user } = useAuthContext();
+    console.log('user');
+    console.log(user);
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category, setCategory] = useState([]);
