@@ -33,7 +33,7 @@ export default function Login() {
             .then((authData) => {
                 login(authData);
                 addNotification('You logged in successfully', types.success, 'Success')
-                navigate('/recipes/my-recipes');
+                navigate('/home');
             })
             .catch(error => {
                 console.log(error);
