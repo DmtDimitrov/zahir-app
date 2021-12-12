@@ -19,7 +19,7 @@ export default function Logout() {
         .catch(error => {
             console.log(error);
         })
-    }, [user.accessToken, logout, navigate])
+    }, [user.accessToken, logout, navigate, addNotification])
     return null;
 
     // onLogout();
