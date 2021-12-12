@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import styles from './Page.module.css';
 import Notification from '../components/Common/Notification';
 import { useNotificationContext } from '../contexts/NotificationContext';
 
@@ -10,7 +11,7 @@ const Page = (props) => {
     }, [notification]);
 
     return (
-        <main>
+        <main className={styles['page-container']}>
             <Notification />
             {props.children}
         </main>
