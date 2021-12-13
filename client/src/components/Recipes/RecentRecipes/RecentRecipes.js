@@ -1,6 +1,6 @@
 import styles from './RecentRecipes.module.css';
 import RecentRecipeCard from './RecentRecipeCard';
-import { useRecipesState } from '../../../hooks/useRecipesState'
+import { useRecipesState } from '../../../hooks/RecepeHooks/useRecipesState'
 
 
 

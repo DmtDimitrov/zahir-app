@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styles from './Details.module.css';
 
 import * as recipeService from '../../../services/recipeService';
-import { useRecipeState } from '../../../hooks/useRecipeState';
+import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 
 import Subheader from '../../../components/Subheader';
 import Comments from '../../../components/Comments';
