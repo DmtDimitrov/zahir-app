@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
 import { RecipeProvider } from './contexts/RecipeContext';
-import { NotificationProvider } from './contexts/NotificationContext'
+import { NotificationProvider } from './contexts/NotificationContext';
 import { RouteGuards } from './pages/Routes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

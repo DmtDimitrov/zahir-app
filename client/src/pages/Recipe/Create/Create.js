@@ -10,11 +10,14 @@ import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import { useCategoryState} from '../../../hooks/RecepeHooks/useCategoryState';
+// import { useIngredientContext } from '../../../contexts/IngredientContext';
+import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
+// import { IngredientProvider } from '../../../contexts/IngredientContext';
 
 export default function RecipeCreate() {
 
     const { user } = useAuthContext();
+    // const { ingredientInputs, oldStateIsValid, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler } = useIngredientContext();
 
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
@@ -144,143 +147,145 @@ export default function RecipeCreate() {
         setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
     }
     return (
-        <Page>
-            <Subheader
-                title="Own Recipe"
-            />
-            <div className={`${styles['main-container']} ${styles['blog-container']}`}>
-                <div className={styles['inside-container']}>
+       
+            <Page>
+                <Subheader
+                    title="Own Recipe"
+                />
+                <div className={`${styles['main-container']} ${styles['blog-container']}`}>
+                    <div className={styles['inside-container']}>
 
-                    <div className="row">
-                        <div className="col-md-12  ">
-                            <div className={styles['add-recipe-container']}>
-                                <span>Add Recipe</span>
-                                <hr />
-
-
-                                <form onSubmit={onRecipeCreate} method="POST">
-                                    <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
-                                    <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
-
-                                    <div className="row">
-                                        <div className="col-sm-9">
-                                            <select name="category" id="" placeholder="Select category" className={styles['sb-input']}>
-                                                <option default>Select category</option>
-                                                {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
-
-                                            </select>
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <input onClick={addCategoryHandler}
-                                                type="submit"
-                                                value="add category"
-                                                className={styles['submit-btn']} />
-                                        </div>
-
-                                    </div>
-
-                                    <textarea name="description"
-                                        rows="3"
-                                        className="area-text"
-                                        placeholder="Short description...">
-                                    </textarea>
+                        <div className="row">
+                            <div className="col-md-12  ">
+                                <div className={styles['add-recipe-container']}>
+                                    <span>Add Recipe</span>
+                                    <hr />
 
 
-                                    {
-                                        ingredientInputs.map((x, index) => (
-                                            <div className="row mt-3" key={`ingredient-${index}`}>
-                                                <div className="col-sm-6">
-                                                    <input onChange={(e) => onChangeIngredients(index, e)}
-                                                        type="text"
-                                                        name="Ingredient"
-                                                        placeholder="Ingredient Name"
-                                                        value={x.Ingredient}
-                                                        className={
-                                                            x.errors.Ingredient
-                                                                ? `${styles['sm-input']} form-control is-invalid`
-                                                                : `${styles['sm-input']} form-control`
-                                                        }
-                                                    />
-                                                    {x.errors.Ingredient && (
-                                                        <div className="invalid-feedback">
-                                                            {x.errors.Ingredient}
-                                                        </div>
-                                                    )}
-                                                </div>
+                                    <form onSubmit={onRecipeCreate} method="POST">
+                                        <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
+                                        <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
 
+                                        <div className="row">
+                                            <div className="col-sm-9">
+                                                <select name="category" id="" placeholder="Select category" className={styles['sb-input']}>
+                                                    <option default>Select category</option>
+                                                    {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
 
-                                                <div className="col-sm-2">
-                                                    <input onChange={(e) => onChangeIngredients(index, e)}
-                                                        type="text"
-                                                        name="Unit"
-                                                        placeholder="Unit"
-                                                        value={x.Unit}
-                                                        className={
-                                                            x.errors.Unit
-                                                                ? `${styles['sm-input']} form-control is-invalid`
-                                                                : `${styles['sm-input']} form-control`
-                                                        }
-                                                    />
-                                                    {x.errors.Unit && (
-                                                        <div className="invalid-feedback">
-                                                            {x.errors.Unit}
-                                                        </div>
-                                                    )}
-                                                </div>
-
-
-                                                <div className="col-sm-3">
-                                                    <input onChange={(e) => onChangeIngredients(index, e)}
-                                                        type="text"
-                                                        name="Quantity"
-                                                        placeholder="Quantity"
-                                                        value={x.Quantity}
-                                                        className={
-                                                            x.errors.Quantity
-                                                                ? `${styles['sm-input']} form-control is-invalid`
-                                                                : `${styles['sm-input']} form-control`
-                                                        }
-                                                    />
-                                                    {x.errors.Quantity && (
-                                                        <div className="invalid-feedback">
-                                                            {x.errors.Quantity}
-                                                        </div>
-                                                    )}
-                                                </div>
-
-
-                                                <div className="col-sm-1">
-                                                    <button className="btn btn-warning"
-                                                        onClick={(e) => removeIngredientInputHandler(e, index)}>X</button>
-                                                </div>
+                                                </select>
                                             </div>
-                                        ))
-                                    }
+                                            <div className="col-sm-3">
+                                                <input onClick={addCategoryHandler}
+                                                    type="submit"
+                                                    value="add category"
+                                                    className={styles['submit-btn']} />
+                                            </div>
 
-                                    <div className="row">
-                                        <div className="col-sm-6 text-center">
-                                            <input type="submit" value="add group heading" className={styles['submit-btn']} />
                                         </div>
-                                        <div className="col-sm-6 text-center">
-                                            <input onClick={addIngredientHandler}
-                                                type="submit"
-                                                value="add next ingredient"
-                                                className={styles['submit-btn']} />
+
+                                        <textarea name="description"
+                                            rows="3"
+                                            className="area-text"
+                                            placeholder="Short description...">
+                                        </textarea>
+
+
+                                        {
+                                            ingredientInputs.map((x, index) => (
+                                                <div className="row mt-3" key={`ingredient-${index}`}>
+                                                    <div className="col-sm-6">
+                                                        <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            type="text"
+                                                            name="Ingredient"
+                                                            placeholder="Ingredient Name"
+                                                            value={x.Ingredient}
+                                                            className={
+                                                                x.errors.Ingredient
+                                                                    ? `${styles['sm-input']} form-control is-invalid`
+                                                                    : `${styles['sm-input']} form-control`
+                                                            }
+                                                        />
+                                                        {x.errors.Ingredient && (
+                                                            <div className="invalid-feedback">
+                                                                {x.errors.Ingredient}
+                                                            </div>
+                                                        )}
+                                                    </div>
+
+
+                                                    <div className="col-sm-2">
+                                                        <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            type="text"
+                                                            name="Unit"
+                                                            placeholder="Unit"
+                                                            value={x.Unit}
+                                                            className={
+                                                                x.errors.Unit
+                                                                    ? `${styles['sm-input']} form-control is-invalid`
+                                                                    : `${styles['sm-input']} form-control`
+                                                            }
+                                                        />
+                                                        {x.errors.Unit && (
+                                                            <div className="invalid-feedback">
+                                                                {x.errors.Unit}
+                                                            </div>
+                                                        )}
+                                                    </div>
+
+
+                                                    <div className="col-sm-3">
+                                                        <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            type="text"
+                                                            name="Quantity"
+                                                            placeholder="Quantity"
+                                                            value={x.Quantity}
+                                                            className={
+                                                                x.errors.Quantity
+                                                                    ? `${styles['sm-input']} form-control is-invalid`
+                                                                    : `${styles['sm-input']} form-control`
+                                                            }
+                                                        />
+                                                        {x.errors.Quantity && (
+                                                            <div className="invalid-feedback">
+                                                                {x.errors.Quantity}
+                                                            </div>
+                                                        )}
+                                                    </div>
+
+
+                                                    <div className="col-sm-1">
+                                                        <button className="btn btn-warning"
+                                                            onClick={(e) => removeIngredientInputHandler(e, index)}>X</button>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+
+                                        <div className="row">
+                                            <div className="col-sm-6 text-center">
+                                                <input type="submit" value="add group heading" className={styles['submit-btn']} />
+                                            </div>
+                                            <div className="col-sm-6 text-center">
+                                                <input onClick={addIngredientHandler}
+                                                    type="submit"
+                                                    value="add next ingredient"
+                                                    className={styles['submit-btn']} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <label htmlFor="method">Method</label>
-                                    <textarea name="method" rows="6" className="area-text" placeholder="Method..."></textarea>
-                                    <div className="text-center">
-                                        <input type="submit" value="create" className={styles['submit-btn']} />
-                                    </div>
-                                </form>
+                                        <label htmlFor="method">Method</label>
+                                        <textarea name="method" rows="6" className="area-text" placeholder="Method..."></textarea>
+                                        <div className="text-center">
+                                            <input type="submit" value="create" className={styles['submit-btn']} />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-        </Page>
+            </Page>
+       
     );
 }
