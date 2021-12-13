@@ -26,9 +26,7 @@ function App() {
     return (
         <AuthProvider>
             <NotificationProvider>
-<div>
-    
-</div>
+
                 <Navbar />
 
                 <RecipeProvider>
