@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import styles from './Page.module.css';
-import Notification from '../components/Common/Notification';
+import Notification from '../components/common/Notification';
 import { useNotificationContext } from '../contexts/NotificationContext';
 
 const Page = (props) => {
