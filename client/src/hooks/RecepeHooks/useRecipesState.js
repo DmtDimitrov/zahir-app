@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import * as recipeService from '../services/recipeService';
+import * as recipeService from '../../services/recipeService';
 
 export const useRecipesState = () => {
     const [recipes, setRecipes] = useState(null);
@@ -24,4 +24,4 @@ export const useRecipesState = () => {
     ]
 };
 
-// export default useRecipeState;
+
