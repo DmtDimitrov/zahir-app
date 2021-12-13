@@ -10,15 +10,15 @@ import Subheader from '../../../components/Subheader';
 // import IngredientInputs from './IngredientInputs';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
+import { useCategoryState} from '../../../hooks/RecepeHooks/useCategoryState';
 
 export default function RecipeCreate() {
 
     const { user } = useAuthContext();
-    console.log('user');
-    console.log(user);
+
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [category, setCategory] = useState([]);
+    const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
 
     const oldStateIsValid = () => {
@@ -54,26 +54,6 @@ export default function RecipeCreate() {
 
         return !someEmpty;
     }
-
-    useEffect(() => {
-        categoryService.getAll()
-            .then(result => {
-                let categoryResult = Object.values(result);
-
-                let categories = categoryResult.reduce((a, x) => {
-                    if (!a[x.name]) {
-                        a[x.name] = [];
-                    }
-                    a[x.name].push(x);
-                    return a
-                }, {});
-
-                setCategory(categories)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
 
     const addCategoryHandler = (e) => {
 
@@ -132,7 +112,6 @@ export default function RecipeCreate() {
         if (oldStateIsValid()) {
             setIngredientInputs(oldState => [...oldState, ingredientInputState]);
         }
-
 
     };
 

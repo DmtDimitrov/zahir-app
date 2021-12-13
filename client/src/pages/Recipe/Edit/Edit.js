@@ -4,19 +4,20 @@ import { useEffect, useState } from 'react';
 import styles from './Edit.module.css';
 import * as recipeService from '../../../services/recipeService';
 import * as categoryService from '../../../services/categoryService';
-import { useRecipeState } from '../../../hooks/useRecipeState';
+import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 
 import Subheader from '../../../components/Subheader';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
+import { useCategoryState} from '../../../hooks/RecepeHooks/useCategoryState';
 
 export default function Edit() {
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useRecipeState(recipeId)
     const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [category, setCategory] = useState([]);
+    const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
 
@@ -73,21 +74,7 @@ export default function Edit() {
         return !someEmpty;
     }
 
-    useEffect(() => {
-        categoryService.getAll()
-            .then(result => {
-                let categoryResult = Object.values(result);
 
-                let categories = categoryResult.reduce((a, x) => {
-                    if (!a[x.name]) {
-                        a[x.name] = [];
-                    }
-                    a[x.name].push(x);
-                    return a
-                }, {});
-                setCategory(categories)
-            })
-    }, []);
     const addCategoryHandler = (e) => {
     }
 
