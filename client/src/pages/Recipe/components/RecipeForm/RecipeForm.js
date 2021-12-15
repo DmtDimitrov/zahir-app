@@ -16,7 +16,6 @@ export default function RecipeForm({
     // const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
 
 console.log(category);
-console.log(category);
     return (
         <div className={styles['add-recipe-container']}>
             <span>Add Recipe</span>
@@ -89,7 +88,7 @@ console.log(category);
                             </div>
 
                             <div className="col-sm-3">
-                                <input onChange={(e) => onChangeIngredients(index, e)}
+                                <input onChange={(e) => onChangeIngredients(e, index)}
                                     type="text"
                                     name="Quantity"
                                     placeholder="Quantity"
