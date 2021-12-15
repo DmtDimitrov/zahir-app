@@ -83,7 +83,7 @@ export default function Edit() {
                                                 <div className="col-sm-9">
                                                     <select name="category" id="" placeholder="Select category" className={styles['sb-input']} value={recipe?.category} onChange={(e) => setRecipe(s => ({ ...s, category: e.target.value }))}>
                                                         <option default>Select category</option>
-                                                        {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
+                                                        {Object.keys(category).map(x => <option key={x._id} value={x}>{x}</option>)}
 
                                                     </select>
                                                 </div>
@@ -106,9 +106,9 @@ export default function Edit() {
 
                                             {
                                                 ingredientInputs.map((x, index) => (
-                                                    <div className="row mt-3" key={`ingredient-${index}`}>
+                                                    <div className="row mt-3" key={x._id}>
                                                         <div className="col-sm-6">
-                                                            <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            <input onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Ingredient"
                                                                 placeholder="Ingredient Name"
@@ -127,7 +127,7 @@ export default function Edit() {
                                                         </div>
 
                                                         <div className="col-sm-2">
-                                                            <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            <input onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Unit"
                                                                 placeholder="Unit"
@@ -147,7 +147,7 @@ export default function Edit() {
 
 
                                                         <div className="col-sm-3">
-                                                            <input onChange={(e) => onChangeIngredients(index, e)}
+                                                            <input onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Quantity"
                                                                 placeholder="Quantity"
