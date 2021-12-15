@@ -1,5 +1,7 @@
 import styles from './RecipeForm.module.css';
 
+// import { useIngredientsState } from '../../../hooks/RecepeHooks/useIngredientsState';
+
 
 export default function RecipeForm({
     category,
@@ -10,6 +12,10 @@ export default function RecipeForm({
     addCategoryHandler,
     addIngredientHandler
 }) {
+
+    // const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
+
+console.log(category);
 console.log(category);
     return (
         <div className={styles['add-recipe-container']}>
@@ -43,7 +49,7 @@ console.log(category);
 
                 {
                     ingredientInputs.map((x, index) => (
-                        <div className="row mt-3" key={`ingredient-${index}`}>
+                        <div className="row mt-3" key={x._id}>
                             <div className="col-sm-6">
                                 <input onChange={(e) => onChangeIngredients(index, e)}
                                     type="text"
@@ -114,7 +120,7 @@ console.log(category);
                         <input type="submit" value="add group heading" className={styles['submit-btn']} />
                     </div>
                     <div className="col-sm-6 text-center">
-                        <input onClick={addIngredientHandler}
+                        <input onClick={(e) => addIngredientHandler(e)}
                             type="submit"
                             value="add next ingredient"
                             className={styles['submit-btn']} />
