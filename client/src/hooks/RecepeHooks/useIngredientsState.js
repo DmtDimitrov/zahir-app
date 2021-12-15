@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-
-
+import { useState } from "react";
 
 export const useIngredientsState = () => {
     const [ingredientInputs, setIngredientInputs] = useState([]);
-
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -36,10 +33,8 @@ export const useIngredientsState = () => {
                 return setIngredientInputs(allOldState);
             });
         }
-
         return !someEmpty;
     }
-
 
     const addIngredientHandler = (e) => {
         e.preventDefault();
@@ -82,13 +77,11 @@ export const useIngredientsState = () => {
         });
     };
 
-
     const removeIngredientInputHandler = (e, index) => {
         e.preventDefault();
 
         setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
     }
-
 
     return [
         ingredientInputs,
