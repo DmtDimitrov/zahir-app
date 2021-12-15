@@ -1,9 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 import styles from './Edit.module.css';
 import * as recipeService from '../../../services/recipeService';
-import * as categoryService from '../../../services/categoryService';
 import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 
 import Subheader from '../../../components/Subheader';
@@ -17,65 +15,10 @@ export default function Edit() {
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useRecipeState(recipeId)
     const { user } = useAuthContext();
-    // const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState(e, index)
+    const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
     const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
-
-    if (!ingredientInputs.length > 0 && recipe) {
-        let initialIngredientInputState = [];
-        recipe?.ingredients.map(x => {
-
-            let initialIngredientInput = {
-                Ingredient: x.name,
-                Unit: x.unit,
-                Quantity: x.quantity,
-                errors: {
-                    Ingredient: null,
-                    Unit: null,
-                    Quantity: null,
-                }
-            };
-           return initialIngredientInputState.push(initialIngredientInput)
-        })
-
-        setIngredientInputs(initialIngredientInputState);
-    }
-
-    // const oldStateIsValid = () => {
-    //     if (ingredientInputs.length === 0) {
-    //         return true;
-    //     };
-
-    //     const someEmpty = ingredientInputs.some((item) =>
-    //         item.Ingredient === ''
-    //         || item.Unit === ''
-    //         || item.Quantity === ''
-    //     );
-
-    //     if (someEmpty) {
-    //         ingredientInputs.map((item, index) => {
-    //             const allOldState = [...ingredientInputs];
-
-    //             if (ingredientInputs[index].Ingredient === '') {
-    //                 allOldState[index].errors.Ingredient = 'Ingredient is required';
-    //             }
-
-    //             if (ingredientInputs[index].Unit === '') {
-    //                 allOldState[index].errors.Unit = 'Unit is required';
-    //             }
-
-    //             if (ingredientInputs[index].Quantity === '') {
-    //                 allOldState[index].errors.Quantity = 'Quantity is required';
-    //             }
-
-    //             return setIngredientInputs(allOldState);
-    //         });
-    //     }
-    //     return !someEmpty;
-    // }
-
 
     const addCategoryHandler = (e) => {
     }
@@ -114,53 +57,6 @@ export default function Edit() {
         e.currentTarget.reset();
     }
 
-    // const addIngredientHandler = (e) => {
-    //     e.preventDefault();
-    //     const ingredientInputState = {
-    //         Ingredient: '',
-    //         Unit: '',
-    //         Quantity: '',
-    //         errors: {
-    //             Ingredient: null,
-    //             Unit: null,
-    //             Quantity: null,
-    //         }
-    //     };
-
-    //     if (oldStateIsValid()) {
-    //         setIngredientInputs(oldState => [...oldState, ingredientInputState]);
-    //     }
-    // };
-
-    // const onChangeIngredients = (index, event) => {
-    //     event.preventDefault();
-    //     event.persist();
-
-    //     setIngredientInputs(oldState => {
-    //         return oldState.map((item, i) => {
-
-    //             if (i !== index) {
-    //                 return item;
-    //             };
-
-    //             return {
-    //                 ...item,
-    //                 [event.target.name]: event.target.value,
-    //                 errors: {
-    //                     ...item.errors,
-    //                     [event.target.name]: event.target.value.length > 0 ? null : [event.target.name] + ' Is required',
-    //                 }
-    //             };
-    //         });
-    //     });
-    // };
-
-    // const removeIngredientInputHandler = (e, index) => {
-    //     e.preventDefault();
-
-    //     setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
-    // }
-
     const titleChangeHandler = (e) => {
         console.log(e.target.value);
     }
@@ -180,7 +76,7 @@ export default function Edit() {
                                         <hr />
 
                                         <form onSubmit={onRecipeEdit} method="POST">
-                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title} onBlur={titleChangeHandler} />
+                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title} onBlur={(e) => titleChangeHandler(e)} />
                                             <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} defaultValue={recipe?.image} />
 
                                             <div className="row">
@@ -192,7 +88,7 @@ export default function Edit() {
                                                     </select>
                                                 </div>
                                                 <div className="col-sm-3">
-                                                    <input onClick={addCategoryHandler}
+                                                    <input onClick={(e) => addCategoryHandler(e)}
                                                         type="submit"
                                                         value="add category"
                                                         className={styles['submit-btn']} />
@@ -229,7 +125,6 @@ export default function Edit() {
                                                                 </div>
                                                             )}
                                                         </div>
-
 
                                                         <div className="col-sm-2">
                                                             <input onChange={(e) => onChangeIngredients(index, e)}
@@ -284,7 +179,7 @@ export default function Edit() {
                                                     <input type="submit" value="add group heading" className={styles['submit-btn']} />
                                                 </div>
                                                 <div className="col-sm-6 text-center">
-                                                    <input onClick={addIngredientHandler}
+                                                    <input onClick={(e) => addIngredientHandler(e)}
                                                         type="submit"
                                                         value="add next ingredient"
                                                         className={styles['submit-btn']} />
