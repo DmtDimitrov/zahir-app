@@ -54,7 +54,7 @@ export const useIngredientsState = () => {
         }
     };
 
-    const onChangeIngredients = (index, event) => {
+    const onChangeIngredients = (event, index) => {
         event.preventDefault();
         event.persist();
 
