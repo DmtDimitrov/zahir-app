@@ -11,51 +11,51 @@ import RecipeForm from '../components/RecipeForm';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
-import { useIngredientsState } from '../../../hooks/RecepeHooks/useIngredientsState';
+// import { useIngredientsState } from '../../../hooks/RecepeHooks/useIngredientsState';
 
 export default function RecipeCreate() {
 
     const { user } = useAuthContext();
 
     let navigate = useNavigate();
-    // const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
+    const [ingredientInputs, setIngredientInputs] = useState([]);
+    // const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
     const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
 
-    // const oldStateIsValid = () => {
-    //     if (ingredientInputs.length === 0) {
-    //         return true;
-    //     };
+    const oldStateIsValid = () => {
+        if (ingredientInputs.length === 0) {
+            return true;
+        };
 
-    //     const someEmpty = ingredientInputs.some((item) =>
-    //         item.Ingredient === ''
-    //         || item.Unit === ''
-    //         || item.Quantity === ''
-    //     );
+        const someEmpty = ingredientInputs.some((item) =>
+            item.Ingredient === ''
+            || item.Unit === ''
+            || item.Quantity === ''
+        );
 
-    //     if (someEmpty) {
-    //         ingredientInputs.map((item, index) => {
-    //             const allOldState = [...ingredientInputs];
+        if (someEmpty) {
+            ingredientInputs.map((item, index) => {
+                const allOldState = [...ingredientInputs];
 
-    //             if (ingredientInputs[index].Ingredient === '') {
-    //                 allOldState[index].errors.Ingredient = 'Ingredient is required';
-    //             }
+                if (ingredientInputs[index].Ingredient === '') {
+                    allOldState[index].errors.Ingredient = 'Ingredient is required';
+                }
 
-    //             if (ingredientInputs[index].Unit === '') {
-    //                 allOldState[index].errors.Unit = 'Unit is required';
-    //             }
+                if (ingredientInputs[index].Unit === '') {
+                    allOldState[index].errors.Unit = 'Unit is required';
+                }
 
-    //             if (ingredientInputs[index].Quantity === '') {
-    //                 allOldState[index].errors.Quantity = 'Quantity is required';
-    //             }
+                if (ingredientInputs[index].Quantity === '') {
+                    allOldState[index].errors.Quantity = 'Quantity is required';
+                }
 
-    //             return setIngredientInputs(allOldState);
-    //         });
-    //     }
+                return setIngredientInputs(allOldState);
+            });
+        }
 
-    //     return !someEmpty;
-    // }
+        return !someEmpty;
+    }
 
     const addCategoryHandler = (e) => {
 
@@ -94,52 +94,52 @@ export default function RecipeCreate() {
         e.currentTarget.reset();
     }
 
-    // const addIngredientHandler = (e) => {
-    //     e.preventDefault();
-    //     const ingredientInputState = {
-    //         Ingredient: '',
-    //         Unit: '',
-    //         Quantity: '',
-    //         errors: {
-    //             Ingredient: null,
-    //             Unit: null,
-    //             Quantity: null,
-    //         }
-    //     };
+    const addIngredientHandler = (e) => {
+        e.preventDefault();
+        const ingredientInputState = {
+            Ingredient: '',
+            Unit: '',
+            Quantity: '',
+            errors: {
+                Ingredient: null,
+                Unit: null,
+                Quantity: null,
+            }
+        };
 
-    //     if (oldStateIsValid()) {
-    //         setIngredientInputs(oldState => [...oldState, ingredientInputState]);
-    //     }
-    // };
+        if (oldStateIsValid()) {
+            setIngredientInputs(oldState => [...oldState, ingredientInputState]);
+        }
+    };
 
-    // const onChangeIngredients = (index, event) => {
-    //     event.preventDefault();
-    //     event.persist();
+    const onChangeIngredients = (event, index) => {
+        event.preventDefault();
+        event.persist();
 
-    //     setIngredientInputs(oldState => {
-    //         return oldState.map((item, i) => {
+        setIngredientInputs(oldState => {
+            return oldState.map((item, i) => {
 
-    //             if (i !== index) {
-    //                 return item;
-    //             };
+                if (i !== index) {
+                    return item;
+                };
 
-    //             return {
-    //                 ...item,
-    //                 [event.target.name]: event.target.value,
-    //                 errors: {
-    //                     ...item.errors,
-    //                     [event.target.name]: event.target.value.length > 0 ? null : [event.target.name] + ' Is required',
-    //                 }
-    //             };
-    //         });
-    //     });
-    // };
+                return {
+                    ...item,
+                    [event.target.name]: event.target.value,
+                    errors: {
+                        ...item.errors,
+                        [event.target.name]: event.target.value.length > 0 ? null : [event.target.name] + ' Is required',
+                    }
+                };
+            });
+        });
+    };
 
-    // const removeIngredientInputHandler = (e, index) => {
-    //     e.preventDefault();
+    const removeIngredientInputHandler = (e, index) => {
+        e.preventDefault();
 
-    //     setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
-    // }
+        setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
+    }
     return (
         <Page>
             <Subheader
@@ -158,7 +158,7 @@ export default function RecipeCreate() {
                                 ingredientInputs={ingredientInputs}
                                 onChangeIngredients={onChangeIngredients}
                                 removeIngredientInputHandler={removeIngredientInputHandler}
-                                onRecipeCreate={onRecipeCreate}
+                                onFormSubmit={onRecipeCreate}
                                 addCategoryHandler={addCategoryHandler}
                                 addIngredientHandler={addIngredientHandler}
                                 />

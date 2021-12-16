@@ -8,7 +8,7 @@ export default function RecipeForm({
     ingredientInputs,
     onChangeIngredients,
     removeIngredientInputHandler,
-    onRecipeCreate,
+    onFormSubmit,
     addCategoryHandler,
     addIngredientHandler
 }) {
@@ -17,11 +17,8 @@ export default function RecipeForm({
 
 console.log(category);
     return (
-        <div className={styles['add-recipe-container']}>
-            <span>Add Recipe</span>
-            <hr />
-
-            <form onSubmit={onRecipeCreate} method="POST">
+    
+            <form onSubmit={onFormSubmit} method="POST">
                 <input type="text" name="title" placeholder="Title" className={styles['sb-input']} />
                 <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} />
 
@@ -50,7 +47,7 @@ console.log(category);
                     ingredientInputs.map((x, index) => (
                         <div className="row mt-3" key={x._id}>
                             <div className="col-sm-6">
-                                <input onChange={(e) => onChangeIngredients(index, e)}
+                                <input onChange={(e) => onChangeIngredients(e, index)}
                                     type="text"
                                     name="Ingredient"
                                     placeholder="Ingredient Name"
@@ -69,7 +66,7 @@ console.log(category);
                             </div>
 
                             <div className="col-sm-2">
-                                <input onChange={(e) => onChangeIngredients(index, e)}
+                                <input onChange={(e) => onChangeIngredients(e, index)}
                                     type="text"
                                     name="Unit"
                                     placeholder="Unit"
@@ -131,6 +128,5 @@ console.log(category);
                     <input type="submit" value="create" className={styles['submit-btn']} />
                 </div>
             </form>
-        </div>
     );
 }
