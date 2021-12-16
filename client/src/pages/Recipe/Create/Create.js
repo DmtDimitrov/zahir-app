@@ -6,20 +6,16 @@ import * as recipeService from '../../../services/recipeService';
 
 import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
-import RecipeForm from '../components/RecipeForm';
+import CreateForm from './CreateForm';
 
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
-// import { useIngredientsState } from '../../../hooks/RecepeHooks/useIngredientsState';
 
 export default function RecipeCreate() {
-
     const { user } = useAuthContext();
-
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
-    // const [ingredientInputs, setIngredientInputs, addIngredientHandler, onChangeIngredients, removeIngredientInputHandler] = useIngredientsState();
     const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
 
@@ -53,7 +49,6 @@ export default function RecipeCreate() {
                 return setIngredientInputs(allOldState);
             });
         }
-
         return !someEmpty;
     }
 
@@ -147,13 +142,12 @@ export default function RecipeCreate() {
             />
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
-
                     <div className="row">
                         <div className="col-md-12  ">
                             <div className={styles['add-recipe-container']}>
                                 <span>Add Recipe</span>
                                 <hr />
-                                <RecipeForm
+                                <CreateForm
                                 category={category}
                                 ingredientInputs={ingredientInputs}
                                 onChangeIngredients={onChangeIngredients}
