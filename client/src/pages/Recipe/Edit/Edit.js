@@ -10,7 +10,7 @@ import Subheader from '../../../components/Subheader';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import { useCategoryState} from '../../../hooks/RecepeHooks/useCategoryState';
+import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
 
 export default function Edit() {
     const { recipeId } = useParams();
@@ -35,7 +35,7 @@ export default function Edit() {
                     Quantity: null,
                 }
             };
-           return initialIngredientInputState.push(initialIngredientInput)
+            return initialIngredientInputState.push(initialIngredientInput)
         })
 
         setIngredientInputs(initialIngredientInputState);
@@ -178,27 +178,49 @@ export default function Edit() {
                                         <hr />
 
                                         <form onSubmit={onRecipeEdit} method="POST">
-                                            <input type="text" name="title" placeholder="Title" className={styles['sb-input']} defaultValue={recipe?.title} onBlur={titleChangeHandler} />
-                                            <input type="text" name="image" placeholder="imageUrl" className={styles['sb-input']} defaultValue={recipe?.image} />
+                                            <input
+                                                type="text"
+                                                name="title"
+                                                placeholder="Title"
+                                                className={styles['sb-input']}
+                                                defaultValue={recipe?.title}
+                                                onBlur={titleChangeHandler}
+                                            />
+                                            <input
+                                                type="text"
+                                                name="image"
+                                                placeholder="imageUrl"
+                                                className={styles['sb-input']}
+                                                defaultValue={recipe?.image}
+                                            />
 
                                             <div className="row">
                                                 <div className="col-sm-9">
-                                                    <select name="category" id="" placeholder="Select category" className={styles['sb-input']} value={recipe?.category} onChange={(e) => setRecipe(s => ({ ...s, category: e.target.value }))}>
+                                                    <select
+                                                        name="category"
+                                                        id=""
+                                                        placeholder="Select category"
+                                                        className={styles['sb-input']}
+                                                        value={recipe?.category}
+                                                        onChange={(e) => setRecipe(s => ({ ...s, category: e.target.value }))}
+                                                    >
                                                         <option default>Select category</option>
                                                         {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
-
                                                     </select>
                                                 </div>
                                                 <div className="col-sm-3">
-                                                    <input onClick={addCategoryHandler}
+                                                    <input
+                                                        onClick={addCategoryHandler}
                                                         type="submit"
                                                         value="add category"
-                                                        className={styles['submit-btn']} />
+                                                        className={styles['submit-btn']}
+                                                    />
                                                 </div>
 
                                             </div>
 
-                                            <textarea name="description"
+                                            <textarea
+                                                name="description"
                                                 rows="3"
                                                 className="area-text"
                                                 placeholder="Short description..."
@@ -210,7 +232,8 @@ export default function Edit() {
                                                 ingredientInputs.map((x, index) => (
                                                     <div className="row mt-3" key={x._id}>
                                                         <div className="col-sm-6">
-                                                            <input onChange={(e) => onChangeIngredients(e, index)}
+                                                            <input
+                                                                onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Ingredient"
                                                                 placeholder="Ingredient Name"
@@ -230,7 +253,8 @@ export default function Edit() {
 
 
                                                         <div className="col-sm-2">
-                                                            <input onChange={(e) => onChangeIngredients(e, index)}
+                                                            <input
+                                                                onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Unit"
                                                                 placeholder="Unit"
@@ -250,7 +274,8 @@ export default function Edit() {
 
 
                                                         <div className="col-sm-3">
-                                                            <input onChange={(e) => onChangeIngredients(e, index)}
+                                                            <input
+                                                                onChange={(e) => onChangeIngredients(e, index)}
                                                                 type="text"
                                                                 name="Quantity"
                                                                 placeholder="Quantity"
@@ -270,8 +295,10 @@ export default function Edit() {
 
 
                                                         <div className="col-sm-1">
-                                                            <button className="btn btn-warning"
-                                                                onClick={(e) => removeIngredientInputHandler(e, index)}>X</button>
+                                                            <button
+                                                                className="btn btn-warning"
+                                                                onClick={(e) => removeIngredientInputHandler(e, index)}
+                                                            >X</button>
                                                         </div>
                                                     </div>
                                                 ))
@@ -279,19 +306,35 @@ export default function Edit() {
 
                                             <div className="row">
                                                 <div className="col-sm-6 text-center">
-                                                    <input type="submit" value="add group heading" className={styles['submit-btn']} />
+                                                    <input
+                                                        type="submit"
+                                                        value="add group heading"
+                                                        className={styles['submit-btn']}
+                                                    />
                                                 </div>
                                                 <div className="col-sm-6 text-center">
-                                                    <input onClick={addIngredientHandler}
+                                                    <input
+                                                        onClick={addIngredientHandler}
                                                         type="submit"
                                                         value="add next ingredient"
-                                                        className={styles['submit-btn']} />
+                                                        className={styles['submit-btn']}
+                                                    />
                                                 </div>
                                             </div>
                                             <label htmlFor="method">Method</label>
-                                            <textarea name="method" rows="6" className="area-text" placeholder="Method..." defaultValue={recipe?.method}></textarea>
+                                            <textarea
+                                                name="method"
+                                                rows="6"
+                                                className="area-text"
+                                                placeholder="Method..."
+                                                defaultValue={recipe?.method}
+                                            ></textarea>
                                             <div className="text-center">
-                                                <input type="submit" value="save" className={styles['submit-btn']} />
+                                                <input
+                                                    type="submit"
+                                                    value="save"
+                                                    className={styles['submit-btn']}
+                                                />
                                             </div>
                                         </form>
                                     </div>
