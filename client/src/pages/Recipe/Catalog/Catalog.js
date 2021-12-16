@@ -37,7 +37,6 @@ console.log(recipes);
                 title="Recipes"
             />
 
-
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
                     <div className="row">

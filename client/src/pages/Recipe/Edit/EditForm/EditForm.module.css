@@ -1,0 +1,75 @@
+
+.add-recipe-container{
+    margin-top: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    padding: 35px 30px;
+    border-radius: 10px;
+    border: 1px solid #EDECF5;
+    box-shadow: 0 3px 9px rgb(100 95 136 / 15%);
+}
+.add-recipe-container span {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+}
+.add-recipe-container hr{
+    border: 2px solid #f65aa7;
+    width: 65px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.sb-input{
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    min-height: 50px;
+    background-color: #f9f9f9;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    color: #777777;
+}
+.sm-input{
+    width: 100%;
+   min-height: 50px;
+  
+   margin-bottom: 20px;
+   padding: 0 20px;
+   background-color: #f9f9f9;
+   border: 1px solid #ececec;
+   font-size: 14px;
+   font-family: 'Open Sans';
+   color: #777777;
+}
+
+.sm-input:first-child{
+    
+    margin-right: 20px;
+}
+.submit-btn{
+    font-size: 14px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+}
+.submit-btn:hover{
+    background-color: #f65aa7;
+    color: #ffffff;
+}
+textarea{
+    padding: 15px 20px;
+    width:100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ececec;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    color: #777777;
+}
