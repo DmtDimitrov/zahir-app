@@ -6,31 +6,20 @@ import styles from './Catalog.module.css';
 import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
-import RecentRecipes from '../../../components/Recipes/RecentRecipes';
+import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
+import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 import RecipesCard from '../components/CatalogCard';
 import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';
+import { useRecipesState } from '../../../hooks/RecepeHooks/useRecipesState';
 
 
 export default function RecipeCatalog() {
-    const [recipes, setRecipes] = useState(null);
+    const [recipes, setRecipes] = useRecipesState();
 
-    useEffect(() => {
-        recipeService.getAll()
-            .then(result => {
-                console.log(result);
-                setRecipes(result)
-            })
-            .catch(err => {
-                console.log('Recipe catalog: err');
-                console.log(err);
-            })
-    }, []);
-
-   
-console.log('recipes');
-console.log(recipes);
+    console.log('recipes');
+    console.log(recipes);
     return (
         <Page>
             <Subheader
@@ -42,19 +31,21 @@ console.log(recipes);
                     <div className="row">
                         <div className="col-lg-8 " >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
-                                { recipes && recipes.map(x => <RecipesCard key={x._id} recipe={x} />)}
+                                {recipes && recipes.map(x => <RecipesCard key={x._id} recipe={x} />)}
 
                             </div>
                         </div>
-                        
+
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                            <SearchBar/>
+                            <SearchBar />
 
-                            <CategoriesBar/>
+                            <CategoriesBar />
 
-                            <RecentRecipes/>
-                            
+                            <RecentRecipes />
+
+                            <TopRecipes />
+
                             <PopularTags
                                 title="Popular Tags"
                             />

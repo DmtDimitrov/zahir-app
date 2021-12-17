@@ -34,7 +34,7 @@ export default function CreateForm({
                         className={styles['sb-input']}
                     >
                         <option default>Select category</option>
-                        {Object.keys(category).map(x => <option key={x._id} value={x}>{x}</option>)}
+                        {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
                     </select>
                 </div>
                 <div className="col-sm-3">

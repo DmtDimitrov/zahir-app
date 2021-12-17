@@ -1,6 +1,19 @@
 import styles from './SearchBar.module.css';
 
+import { useRecipesState } from '../../hooks/RecepeHooks/useRecipesState';
+import { useState } from 'react';
+
+
 export default function SearchBar() {
+
+    const [recipes, setRecipes] = useRecipesState();
+    const [text, setText] = useState();
+    console.log(recipes);
+    const searchHandler = (e) => {
+        setText(e.target.value);
+        let filtered = recipes.filter((x) => x.title.includes(e.target.value)); 
+        setRecipes(filtered);
+    }
 
     return (
         <div className="row">
@@ -13,9 +26,9 @@ export default function SearchBar() {
                 </div>
 
                 <div className="input-group">
-                    <input className={styles['form-control']} type="search" placeholder="Type And Hit Enter" aria-label="Search" />
+                    <input onBlur={searchHandler} className={styles['form-control']} type="search" placeholder="Type And Hit Enter" aria-label="Search" />
                     <div className="input-group-append">
-                        <span className={`input-group-text ${styles['search-loop']}`} id="basic-text1"><i className="fas fa-search text-white " aria-hidden="true"></i></span>
+                        <span onClick={(e) => searchHandler} className={`input-group-text ${styles['search-loop']}`} id="basic-text1"><i className="fas fa-search text-white " aria-hidden="true"></i></span>
                     </div>
                 </div>
 

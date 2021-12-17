@@ -67,7 +67,7 @@ export default function EditForm({
 
             {
                 ingredientInputs.map((x, index) => (
-                    <div className="row mt-3" key={x._id}>
+                    <div className="row mt-3" key={index}>
                         <div className="col-sm-6">
                             <input
                                 onChange={(e) => onChangeIngredients(e, index)}

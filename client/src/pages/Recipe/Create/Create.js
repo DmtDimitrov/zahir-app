@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Create.module.css';
 import * as recipeService from '../../../services/recipeService';
@@ -11,6 +11,7 @@ import CreateForm from './CreateForm';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
+import { useRecipeContext } from '../../../contexts/RecipeContext';
 
 export default function RecipeCreate() {
     const { user } = useAuthContext();
@@ -18,6 +19,11 @@ export default function RecipeCreate() {
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
+    const { resetRecipeContext } = useRecipeContext();
+
+    useEffect(() => {
+        resetRecipeContext()
+    }, [])
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -148,13 +154,13 @@ export default function RecipeCreate() {
                                 <span>Add Recipe</span>
                                 <hr />
                                 <CreateForm
-                                category={category}
-                                ingredientInputs={ingredientInputs}
-                                onChangeIngredients={onChangeIngredients}
-                                removeIngredientInputHandler={removeIngredientInputHandler}
-                                onFormSubmit={onRecipeCreate}
-                                addCategoryHandler={addCategoryHandler}
-                                addIngredientHandler={addIngredientHandler}
+                                    category={category}
+                                    ingredientInputs={ingredientInputs}
+                                    onChangeIngredients={onChangeIngredients}
+                                    removeIngredientInputHandler={removeIngredientInputHandler}
+                                    onFormSubmit={onRecipeCreate}
+                                    addCategoryHandler={addCategoryHandler}
+                                    addIngredientHandler={addIngredientHandler}
                                 />
                             </div>
                         </div>
