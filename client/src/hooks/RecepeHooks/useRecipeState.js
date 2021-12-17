@@ -11,14 +11,12 @@ export const useRecipeState = (recipeId) => {
         recipeService.getOne(recipeId)
             .then(result => {
                 setRecipe(result);
-                
+                setRecipeContext(result)
             })
             .catch(error => {
                 console.log(error);
             })
-            .finally(result => {
-                setRecipeContext(result)
-            })
+         
     }, [recipeId, setRecipeContext]);
 
     return [
@@ -27,4 +25,4 @@ export const useRecipeState = (recipeId) => {
     ]
 };
 
-// export default useRecipeState;
+
