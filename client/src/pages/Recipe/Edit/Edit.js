@@ -20,7 +20,7 @@ export default function Edit() {
     const [category] = useCategoryState();
     const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
-
+// console.log(ingredientInputs);
     useEffect(() => {
         let initialIngredientInputState = [];
         recipe?.ingredients.map(x => {
