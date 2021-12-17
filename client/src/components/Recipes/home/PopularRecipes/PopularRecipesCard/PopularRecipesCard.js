@@ -7,7 +7,7 @@ export default function PopularRecipesCard() {
 
             <div className="overlay">
                 <i className="fas fa-star stars"></i>
-                <i className="fas fa-star stars "></i>
+                <i className="fas fa-star stars"></i>
                 <i className="fas fa-star stars"></i>
                 <i className="fas fa-star stars"></i>
                 <i className="far fa-star stars"></i>
