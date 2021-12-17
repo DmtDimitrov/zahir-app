@@ -5,7 +5,7 @@ import styles from './Catalog.module.css';
 
 import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
-import RecentRecipes from '../../../components/Recipes/RecentRecipes';
+import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import RecipesCard from '../components/CatalogCard';
 // import SearchBar from '../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
