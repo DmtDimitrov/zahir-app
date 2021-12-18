@@ -16,8 +16,6 @@ export default function Login() {
     const onLoginHandler = (e) => {
         e.preventDefault();
 
-        //TODO: Login
-
         let formData = new FormData(e.currentTarget);
 
         let email = formData.get('email')
@@ -28,7 +26,6 @@ export default function Login() {
             password
         }
 
-
         authService.login(userData)
             .then((authData) => {
                 login(authData);
@@ -37,6 +34,8 @@ export default function Login() {
             })
             .catch(error => {
                 console.log(error);
+                addNotification('Wrong username or password', types.error, 'Error')
+                navigate('/login');
             })
 
 
