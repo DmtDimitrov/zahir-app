@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-
+import styles from './BestRecipesCard.module.css';
 
 export default function BestRecipesCard({
     recipe
@@ -8,7 +8,7 @@ export default function BestRecipesCard({
     return (
 
         <div className="col">
-            <div className="card h-100">
+            <div className={`card h-100 ${styles['card-container']}`}>
                 <Link to={`/recipes/details/${recipe._id}`}>
                     <img src={recipe.image} className="card-img-top" alt="..." />
                 </Link>
