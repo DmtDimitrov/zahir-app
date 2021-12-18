@@ -19,6 +19,7 @@ import Register from './pages/User/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
 import MyRecipes from './pages/Recipe/MyRecipes';
+import Chefs from './pages/Chefs';
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
                         <Route path="/home" element={<Home />} />
                         <Route path="/recipes/catalog" element={<RecipeCatalog />} />
                         <Route path="/recipes/details/:recipeId" element={<RecipeDetails />} />
-                        <Route path="/chefs" element={<RecipeCreate />} />
+                        <Route path="/chefs" element={<Chefs />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
