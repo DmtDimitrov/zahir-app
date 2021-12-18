@@ -11,11 +11,11 @@ export default function Home() {
         <Page>
             <Carousel />
 
-            <PopularRecipes />
+            <BestRecipes />
 
             <LatestRecipes />
 
-            <BestRecipes />
+            <PopularRecipes />
         </Page>
     );
 }
