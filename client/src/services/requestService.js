@@ -1,4 +1,4 @@
-import { USER_LOCAL_STORAGE_KEY_NAME } from '../constants'
+import { USER_LOCAL_STORAGE_KEY_NAME } from '../constants';
 
 export const request = async (method, url, data, isAuthorized, skipResult) => {
     try {
@@ -35,7 +35,7 @@ export const request = async (method, url, data, isAuthorized, skipResult) => {
      
         
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 
@@ -52,7 +52,7 @@ function getToken() {
 
         return user.accessToken;
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 }
 
