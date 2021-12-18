@@ -1,14 +1,14 @@
 import User from '../models/User.js';
 import { createToken } from './tokenService.js';
 
-export async function register({ firstName, lastName, email, password }) {
+export async function register({ firstName, lastName, email, password, image }) {
     try {
         let user = await User.findOne({ email });
 
         if (user) {
             throw new Error('An account with this email already exist!');
         }
-        return await User.create({ firstName, lastName, email, password });
+        return await User.create({ firstName, lastName, email, password, image });
     } catch (error) {
         throw new Error(error);
     }
@@ -38,4 +38,6 @@ export async function login({ email, password }) {
         throw new Error(error);
     }
 };
+
+export const getAll = () => User.find().populate('recipes');
 
