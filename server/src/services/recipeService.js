@@ -5,7 +5,37 @@ import User from '../models/User.js';
 export const getAll = () => Recipe.find().populate('ownerId');
 export const getMy = (ownerId) => Recipe.find({ ownerId: ownerId }).populate('ownerId');
 export const getOne = (id) => Recipe.findById(id).populate('ownerId');
-export const create = (recipeData) => Recipe.create(recipeData);
+// export const create = (recipeData) => Recipe.create(recipeData);
+export const create = async (recipeData, userId) => {
+    try {
+
+        // console.log('recipeData');
+        // console.log(recipeData);
+        // console.log('userId');
+        // console.log(userId);
+        let createdRecipe = await Recipe.create(recipeData);
+
+        
+        console.log('createdRecipe');
+        console.log(createdRecipe);
+        
+        let recipeId = createdRecipe._id;
+
+        console.log('createdRecipe._id');
+        console.log(createdRecipe._id);
+        
+        let usersRecipes = await User.findOneAndUpdate(
+            	{ _id: userId },
+            	{
+            		$push: { recipes: recipeId },
+            	},
+            );
+            console.log('Server recipeService user');
+            console.log(usersRecipes);
+    } catch (error) {
+        throw new Error(error);
+    }
+};
 export const update = (recipeId, recipeData) => Recipe.findByIdAndUpdate(recipeId, recipeData);
 export const deleteOne = (id) => Recipe.findByIdAndDelete(id);
 export const getAuthor = async (id) => {
@@ -21,11 +51,6 @@ export const getAuthor = async (id) => {
 
 export const like = async (recipeId, userId) => {
     try {
-
-        console.log('Server recipeService: recipeId');
-        console.log(recipeId);
-        console.log('Server recipeService: userId');
-        console.log(userId);
 
          let likedRecipe = await Recipe.findOneAndUpdate(
             { _id: recipeId },

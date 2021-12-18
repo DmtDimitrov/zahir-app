@@ -9,7 +9,7 @@ import { RouteGuards } from './pages/Routes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-// import ErrorPage from './pages/Error';
+import ErrorPage from './pages/Error';
 import RecipeCatalog from './pages/Recipe/Catalog';
 import RecipeDetails from './pages/Recipe/Details';
 import RecipeCreate from './pages/Recipe/Create';
@@ -19,41 +19,48 @@ import Register from './pages/User/Register';
 import Logout from './components/Logout';
 import Contact from './pages/Contact';
 import MyRecipes from './pages/Recipe/MyRecipes';
+import Chefs from './pages/Chefs';
+import ChefRecipes from './pages/Chefs/ChefRecipes'
+import ErrorBoundary from './components/Common/ErrorBoundary';
 
 
 function App() {
 
     return (
-        <AuthProvider>
-            <NotificationProvider>
+        <ErrorBoundary>
+            <AuthProvider>
+                <NotificationProvider>
 
-                <Navbar />
+                    <Navbar />
 
-                <RecipeProvider>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/recipes/catalog" element={<RecipeCatalog />} />
-                        <Route path="/recipes/details/:recipeId" element={<RecipeDetails />} />
-                        <Route path="/chefs" element={<RecipeCreate />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/logout" element={<Logout />} />
+                    <RecipeProvider>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/recipes/catalog" element={<RecipeCatalog />} />
+                            <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+                            <Route path="/chefs" element={<Chefs />} />
+                            <Route path="/chefs/:chefId" element={<ChefRecipes />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="*" element={<ErrorPage />} />
 
 
-                        <Route element={<RouteGuards />}>
-                            <Route path="/recipes/my-recipes" element={<MyRecipes />} />
-                            <Route path="/recipes/create" element={<RecipeCreate />} />
-                            <Route path="/recipes/edit/:recipeId" element={<Edit />} />
-                        </Route>
-                    </Routes>
-                </RecipeProvider>
+                            <Route element={<RouteGuards />}>
+                                <Route path="/recipes/my-recipes" element={<MyRecipes />} />
+                                <Route path="/recipes/create" element={<RecipeCreate />} />
+                                <Route path="/recipes/edit/:recipeId" element={<Edit />} />
+                            </Route>
+                        </Routes>
+                    </RecipeProvider>
 
-                <Footer />
+                    <Footer />
 
-            </NotificationProvider>
-        </AuthProvider>
+                </NotificationProvider>
+            </AuthProvider>
+        </ErrorBoundary>
     );
 }
 

@@ -52,6 +52,7 @@ const NavbarMenu = () => {
                     >
                         <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
                         <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
+                        <Nav.Link as={Link} to={"/chefs"}>Chefs</Nav.Link>
                         <NavDropdown title="Recipes" id="navbarScrollingDropdown">
                             <NavDropdown.Item as={Link} to={"/recipes/catalog"}>Catalog</NavDropdown.Item>
                             {

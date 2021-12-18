@@ -24,13 +24,15 @@ export default function Register() {
         let email = formData.get('email');
         let password = formData.get('password');
         let repeatPassword = formData.get('repeatPassword');
+        let image = formData.get('image');
 
         let userData = {
             firstName,
             lastName,
             email,
             password,
-            repeatPassword
+            repeatPassword,
+            image
         }
 
         authService.register(userData)
@@ -56,14 +58,55 @@ export default function Register() {
                                 <hr />
                                 <form method="POST" onSubmit={registerSubmitHandler}>
                                     <div className="row">
-                                        <div className="col-sm-6"> <input type="text" name="firstName" placeholder="First Name*" className={styles['sm-input']} /> </div>
-                                        <div className="col-sm-6"> <input type="text" name="lastName" placeholder="Last Name*" className={styles['sm-input']} /> </div>
+                                        <div className="col-sm-6">
+                                            <input
+                                                type="text"
+                                                name="firstName"
+                                                placeholder="First Name*"
+                                                className={styles['sm-input']}
+                                            />
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                placeholder="Last Name*"
+                                                className={styles['sm-input']}
+                                            />
+                                        </div>
                                     </div>
-                                    <input type="email" name="email" placeholder="Your Email*" className={styles['sb-input']} />
-                                    <input type="password" name="password" placeholder="Password" className={styles['sb-input']} />
-                                    <input type="password" name="repeatPassword" placeholder="Confirm Password" className={styles['sb-input']} />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Your Email*"
+                                        className={styles['sb-input']}
+                                    />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        className={styles['sb-input']}
+                                    />
+                                    <input
+                                        type="password"
+                                        name="repeatPassword"
+                                        placeholder="Confirm Password"
+                                        className={styles['sb-input']}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="image"
+                                        placeholder="imageUrl"
+                                        className={styles['sb-input']}
+                                    />
 
-                                    <div className="text-center">  <input type="submit" value="register" className={styles['submit-btn']} /></div>
+                                    <div className="text-center">
+                                        <input
+                                            type="submit"
+                                            value="register"
+                                            className={styles['submit-btn']}
+                                        />
+                                    </div>
                                 </form>
                             </div>
                         </div>

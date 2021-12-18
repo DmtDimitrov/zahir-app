@@ -7,14 +7,14 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
 
     try {
-        let { firstName, lastName, email, password, repeatPassword } = req.body;
+        let { firstName, lastName, email, password, repeatPassword, image } = req.body;
 
         if (password !== repeatPassword) {
             return res.status(400).json({ message: 'Passwords do not match!' })
             // throw new Error('Passwords do not match!');
         }
 
-        let user = await userService.register({ firstName, lastName, email, password });
+        let user = await userService.register({ firstName, lastName, email, password, image });
 
         res.status(201).json({
             _id: user._id,
@@ -56,6 +56,21 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', (req, res) => {
     res.json({ ok: true });
+});
+
+router.get('/', async (req, res) => {
+
+    try {
+        let users = await userService.getAll();
+
+        res.json(users);
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+
 });
 
 export default router;

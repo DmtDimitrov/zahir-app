@@ -9,13 +9,13 @@ import BestRecipes from '../../components/Recipes/home/BestRecipes';
 export default function Home() {
     return (
         <Page>
-            <Carousel />
+            {/* <Carousel /> */}
 
-            <PopularRecipes />
+            <BestRecipes />
 
             <LatestRecipes />
 
-            <BestRecipes />
+            <PopularRecipes />
         </Page>
     );
 }

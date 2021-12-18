@@ -87,19 +87,15 @@ router.get('/:recipeId', async (req, res) => {
 
 router.post('/', isAuth, async (req, res) => {
 
-    console.log('req.user')
-
-    console.log(req?.user)
-    // console.log('req.body');
-    // console.log(req.body);
-    // console.log('req.user');
-    // console.log(req?.user);
+    
 
     let userId = req?.user._id;
+    console.log("req?.user._id")
+    console.log(req?.user._id)
 
     try {
 
-        await recipeService.create({ ...req.body, ownerId: userId });
+        await recipeService.create({ ...req.body, ownerId: userId }, userId);
 
         res.json({ created: true });
     } catch (error) {
