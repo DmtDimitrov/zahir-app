@@ -25,6 +25,17 @@ const userSchema = new mongoose.Schema({
 		required: [true, 'Password is required!'],
 		minlength: [4, 'Password should be more than 4 characters long!'],
 	},
+	recipes: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: 'User',
+		},
+	],
+	image: {
+		type: String,
+		// required: [true, 'Image is required!'],
+		validate: [/^https?:\/\//i, 'Image should starts with http or https!'],
+	},
 
 });
 
