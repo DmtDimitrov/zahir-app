@@ -25,7 +25,7 @@ export default function RecipesCard({
                             </span>
                           
                         </p>}
-                    <Link to={`/recipes/details/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</Link>
+                    <Link to={`/recipes/${recipe._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>Details</Link>
                 </div>
             </div>
         </div >
