@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 
-import * as recipeService from '../../../services/recipeService';
 import styles from './Catalog.module.css';
 
 import Page from '../../Page';
@@ -11,15 +9,13 @@ import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 import RecipesCard from '../components/CatalogCard';
 import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
-import PopularTags from '../../../components/PopularTags';
+
 import { useRecipesState } from '../../../hooks/RecepeHooks/useRecipesState';
 
 
 export default function RecipeCatalog() {
-    const [recipes, setRecipes] = useRecipesState();
+    const [recipes] = useRecipesState();
 
-    console.log('recipes');
-    console.log(recipes);
     return (
         <Page>
             <Subheader
@@ -46,9 +42,6 @@ export default function RecipeCatalog() {
 
                             <TopRecipes />
 
-                            <PopularTags
-                                title="Popular Tags"
-                            />
 
                         </div>
                     </div>
