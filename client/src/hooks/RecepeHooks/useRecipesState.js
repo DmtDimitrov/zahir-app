@@ -9,7 +9,6 @@ export const useRecipesState = () => {
     useEffect(() => {
         recipeService.getAll()
             .then(result => {
-                console.log(result);
                 setRecipes(result)
             })
             .catch(err => {
