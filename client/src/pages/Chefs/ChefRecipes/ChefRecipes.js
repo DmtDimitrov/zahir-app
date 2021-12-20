@@ -1,38 +1,27 @@
-import { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom'
 
-import * as recipeService from '../../../services/recipeService';
 import styles from './ChefRecipes.module.css';
 
+import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
-import CatalogCard from '../../Recipe/components/CatalogCard';
-// import SearchBar from '../../components/SearchBar';
+import ChefRecipeCard from './ChefRecipeCard';
+import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
-import PopularTags from '../../../components/PopularTags';
-import { AuthContext } from '../../../contexts/AuthContext';
-import Page from '../../Page';
+
+import { useChefState } from '../../../hooks/useChefState';
 
 
 export default function ChefRecipes() {
-    const [recipes, setRecipes] = useState(null);
-    const { user } = useContext(AuthContext);
-   
-    useEffect(() => {
-        recipeService.getMy(user.accessToken)
-            .then(result => {
-                setRecipes(result)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, [user.accessToken]);
+    const { chefId } = useParams();
+    const [chef] = useChefState(chefId);
 
-
+    let chefName = chef && `${chef.firstName} ${chef.lastName}`
     return (
         <Page>
             <Subheader
-                title="My Recipes"
+                title={`${chefName} Recipes`}
             />
 
 
@@ -41,22 +30,22 @@ export default function ChefRecipes() {
                     <div className="row">
                         <div className="col-lg-8 " >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
-                                {recipes && recipes.map(x => <CatalogCard key={x._id} recipe={x} />)}
+                                {chef && chef.recipes.map(x => <ChefRecipeCard
+                                    key={x._id}
+                                    recipe={x}
+                                    chefName={chefName}
+                                />)}
 
                             </div>
                         </div>
 
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-
+                            <SearchBar />
 
                             <CategoriesBar />
 
                             <RecentRecipes />
-
-                            <PopularTags
-                                title="Popular Tags"
-                            />
 
                         </div>
                     </div>
