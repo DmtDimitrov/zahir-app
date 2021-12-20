@@ -5,7 +5,6 @@ import { useRecipesState } from '../../../../hooks/RecepeHooks/useRecipesState';
 
 export default function RecentRecipes() {
     const [recipes] = useRecipesState();
-    console.log(recipes);
     
     return (
         <div className={`row ${styles['blog-row-padd']}`}>
