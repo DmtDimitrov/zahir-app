@@ -2,7 +2,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import { useNotificationContext } from '../../../contexts/NotificationContext';
 
-// import './Notification.css';
+import './Notification.css';
 
 
 const Notification = () => {
