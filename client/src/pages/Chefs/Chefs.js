@@ -3,13 +3,13 @@ import styles from './Chefs.module.css';
 import Page from '../Page';
 import Subheader from '../../components/Subheader';
 import ChefsCard from './ChefsCard';
+
 import { useUsersState } from '../../hooks/useUsersState';
 
 export default function Chefs() {
-    const [users, setUsers] = useUsersState();
+    const [users] = useUsersState();
 
-    console.log('users');
-    console.log(users);
+   
     return (
         <Page>
             <Subheader

@@ -9,7 +9,6 @@ export default function CreateForm({
     addCategoryHandler,
     addIngredientHandler
 }) {
-
     return (
         <form onSubmit={onFormSubmit} method="POST">
             <input
@@ -34,7 +33,8 @@ export default function CreateForm({
                         className={styles['sb-input']}
                     >
                         <option default>Select category</option>
-                        {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
+                        {/* {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)} */}
+                        {category && category.map(x => <option key={x._id} value={x.name}>{x.name}</option>)}
                     </select>
                 </div>
                 <div className="col-sm-3">

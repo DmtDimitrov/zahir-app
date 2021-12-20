@@ -7,9 +7,8 @@ import Subheader from '../../../components/Subheader';
 import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import RecipesCard from '../components/CatalogCard';
-// import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
-import PopularTags from '../../../components/PopularTags';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 
@@ -17,7 +16,7 @@ import Page from '../../Page';
 export default function MyRecipes() {
     const [recipes, setRecipes] = useState(null);
     const { user } = useContext(AuthContext);
-   
+
     useEffect(() => {
         recipeService.getMy(user.accessToken)
             .then(result => {
@@ -35,7 +34,6 @@ export default function MyRecipes() {
                 title="My Recipes"
             />
 
-
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
                     <div className="row">
@@ -48,15 +46,11 @@ export default function MyRecipes() {
 
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-
+                            <SearchBar />
 
                             <CategoriesBar />
 
                             <RecentRecipes />
-
-                            <PopularTags
-                                title="Popular Tags"
-                            />
 
                         </div>
                     </div>

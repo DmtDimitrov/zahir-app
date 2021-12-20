@@ -1,5 +1,5 @@
 import Recipe from '../models/Recipe.js';
-
+import Category from '../models/Category.js';
 import User from '../models/User.js';
 
 export const getAll = () => Recipe.find().populate('ownerId');
@@ -9,21 +9,18 @@ export const getOne = (id) => Recipe.findById(id).populate('ownerId');
 export const create = async (recipeData, userId) => {
     try {
 
-        // console.log('recipeData');
-        // console.log(recipeData);
-        // console.log('userId');
-        // console.log(userId);
         let createdRecipe = await Recipe.create(recipeData);
 
-        
-        console.log('createdRecipe');
-        console.log(createdRecipe);
-        
         let recipeId = createdRecipe._id;
 
-        console.log('createdRecipe._id');
-        console.log(createdRecipe._id);
+        let categoryToUpdate = await Category.findOneAndUpdate(
+            { name: createdRecipe.category },
+            {
+                $push: { recipes: recipeId },
+            },
+        );
         
+
         let usersRecipes = await User.findOneAndUpdate(
             	{ _id: userId },
             	{

@@ -5,11 +5,9 @@ import * as authService from '../services/authService';
 export const useUsersState = () => {
     const [users, setUsers] = useState(null);
 
-
     useEffect(() => {
         authService.getAll()
             .then(result => {
-                console.log(result);
                 setUsers(result)
             })
             .catch(err => {

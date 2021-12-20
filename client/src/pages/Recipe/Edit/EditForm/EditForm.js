@@ -43,7 +43,8 @@ export default function EditForm({
                         onChange={(e) => setRecipe(s => ({ ...s, category: e.target.value }))}
                     >
                         <option default>Select category</option>
-                        {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)}
+                        {category && category.map(x => <option key={x._id} value={x.name}>{x.name}</option>)}
+                        {/* {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)} */}
                     </select>
                 </div>
                 <div className="col-sm-3">

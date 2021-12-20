@@ -40,4 +40,6 @@ export async function login({ email, password }) {
 };
 
 export const getAll = () => User.find().populate('recipes');
+export const getOne = (userId) => User.findById(userId).populate('recipes');
+
 

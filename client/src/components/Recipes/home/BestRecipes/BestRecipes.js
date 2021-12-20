@@ -6,7 +6,6 @@ import { useRecipesState } from '../../../../hooks/RecepeHooks/useRecipesState';
 export default function BestRecipes() {
 
     const [recipes] = useRecipesState();
-    console.log(recipes);
 
     let topRecipes = recipes?.sort((a,b) => {
         return b.likes.length - a.likes.length

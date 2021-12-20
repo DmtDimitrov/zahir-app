@@ -5,9 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { RecipeContext } from '../../../../contexts/RecipeContext';
 
 export default function DeleteModal() {
-  const { deleteRecipeHandler, show, handleClose, handleShow} = useContext(RecipeContext);
-
-  
+  const { deleteRecipeHandler, show, handleClose, handleShow } = useContext(RecipeContext);
 
   return (
     <>

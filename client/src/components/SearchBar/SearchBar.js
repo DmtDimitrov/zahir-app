@@ -7,8 +7,7 @@ import { useState } from 'react';
 export default function SearchBar() {
 
     const [recipes, setRecipes] = useRecipesState();
-    const [text, setText] = useState();
-    console.log(recipes);
+    const [ setText] = useState();
     const searchHandler = (e) => {
         setText(e.target.value);
         let filtered = recipes.filter((x) => x.title.includes(e.target.value)); 

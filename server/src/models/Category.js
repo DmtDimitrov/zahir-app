@@ -5,7 +5,7 @@ const categorySchema = mongoose.Schema({
 		type: String,
 		required: [true, 'Name is required!'],
 	},
-	recipe: {
+	recipes: {
 		type: mongoose.Types.ObjectId,
 		ref: 'Recipe',
 	},
