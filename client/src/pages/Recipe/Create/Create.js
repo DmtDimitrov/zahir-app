@@ -10,14 +10,14 @@ import CreateForm from './CreateForm';
 
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
+import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 import { useRecipeContext } from '../../../contexts/RecipeContext';
 
 export default function RecipeCreate() {
     const { user } = useAuthContext();
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [category] = useCategoryState();
+    const [categories] = useCategoriesState();
     const { addNotification } = useNotificationContext();
     const { resetRecipeContext } = useRecipeContext();
 
@@ -73,7 +73,6 @@ export default function RecipeCreate() {
         let method = formData.get('method');
 
         let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
-        console.log(ingredientData);
 
         let data = {
             title,
@@ -87,7 +86,7 @@ export default function RecipeCreate() {
         recipeService.create(data, user.accessToken)
             .then(result => {
                 addNotification('You created new recipe successfully', types.success, 'Success')
-                navigate(`/recipes/catalog`)
+                navigate(`/recipes/my-recipes`)
             })
             .catch(error => {
                 console.log(error);
@@ -154,7 +153,7 @@ export default function RecipeCreate() {
                                 <span>Add Recipe</span>
                                 <hr />
                                 <CreateForm
-                                    category={category}
+                                    category={categories}
                                     ingredientInputs={ingredientInputs}
                                     onChangeIngredients={onChangeIngredients}
                                     removeIngredientInputHandler={removeIngredientInputHandler}
