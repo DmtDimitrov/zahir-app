@@ -6,8 +6,7 @@ export const login = async (userData) => {
     try {
 
         let loginResult =  await request.post(`${HOST}/users/login`, userData);
-        console.log('loginResult');
-        console.log(loginResult);
+ 
         return loginResult;
     } catch (error) {
         throw error;
@@ -16,6 +15,7 @@ export const login = async (userData) => {
 export const register = async (userData) => await request.post(`${HOST}/users/register`, userData);
 export const logout = async () => await request.get(`${HOST}/users/logout`, undefined, true, true);
 export const getAll = async () => await request.get(`${HOST}/users`);
+export const getOne = async (chefId) => await request.get(`${HOST}/users/${chefId}`, undefined);
 
 // export function logout(token) {
 //     return fetch(`${HOST}/users/logout`, {
