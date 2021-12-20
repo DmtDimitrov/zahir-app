@@ -10,17 +10,16 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 import EditForm from './EditForm';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import { useCategoryState } from '../../../hooks/RecepeHooks/useCategoryState';
+import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 
 export default function Edit() {
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useRecipeState(recipeId)
     const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
-    const [category] = useCategoryState();
+    const [categories] = useCategoriesState();
     const { addNotification } = useNotificationContext();
     let navigate = useNavigate();
-// console.log(ingredientInputs);
     useEffect(() => {
         let initialIngredientInputState = [];
         recipe?.ingredients.map(x => {
@@ -103,7 +102,7 @@ export default function Edit() {
         recipeService.edit(recipe._id, data, user.accessToken)
             .then(() => {
                 addNotification('You edited this recipe successfully', types.success, 'Success')
-                navigate(`/recipes/details/${recipe._id}`)
+                navigate(`/recipes/${recipe._id}`)
             })
             .catch(error => {
                 console.log(error);
@@ -178,7 +177,7 @@ export default function Edit() {
 
                                         <EditForm
                                             recipe={recipe}
-                                            category={category}
+                                            category={categories}
                                             ingredientInputs={ingredientInputs}
                                             onChangeIngredients={onChangeIngredients}
                                             removeIngredientInputHandler={removeIngredientInputHandler}
