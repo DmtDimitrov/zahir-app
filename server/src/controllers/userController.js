@@ -73,4 +73,22 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/:chefId', async (req, res) => {
+    try {
+
+        let chef = await userService.getOne(req.params.chefId);
+
+        let chefData = await chef.toObject();
+
+
+        res.json({ ...chefData });
+
+    } catch (error) {
+        res.json({
+            type: 'error',
+            message: error.message
+        })
+    }
+});
+
 export default router;
