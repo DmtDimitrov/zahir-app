@@ -38,7 +38,7 @@ export default function RecipeDetails() {
         setShow(false);
         recipeService.deleteOne(recipeId, user.accessToken)
             .then(() => {
-                navigate('/recipes/catalog');
+                navigate('/recipes/my-recipes');
             })
             .catch(error => {
                 console.log(error);
@@ -46,7 +46,6 @@ export default function RecipeDetails() {
     }
 
     const likeButtonClickHandler = () => {
-        console.log('Like');
         if (recipe.likes.includes(user._id)) {
             addNotification('You already liked this recipe', types.warning, 'Warning')
             console.log(recipe);
