@@ -4,7 +4,6 @@ import styles from './ChefRecipes.module.css';
 
 import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
-import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import ChefRecipeCard from './ChefRecipeCard';
 import SearchBar from '../../../components/SearchBar';
@@ -51,8 +50,6 @@ export default function ChefRecipes() {
                     </div>
                 </div>
             </div>
-
-            <Pagination />
 
         </Page>
 

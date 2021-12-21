@@ -9,12 +9,10 @@ import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 import Subheader from '../../../components/Subheader';
 import Comments from './Comments';
 import AddComment from './AddComment';
-import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
-import PopularTags from '../../../components/PopularTags';
 import RecipeDetailsContentCard from './DetailsContentCard';
-import CategoriesBarTop from '../../../components/CategoriesBarTop';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
+import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { RecipeContext } from '../../../contexts/RecipeContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -78,7 +76,6 @@ export default function RecipeDetails() {
                     <div className={styles['inside-container']}>
                         <div className="row">
 
-                            <CategoriesBarTop />
 
                             <div className=" col-lg-8 " >
 
@@ -95,15 +92,11 @@ export default function RecipeDetails() {
 
                             <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                                <SearchBar />
-
                                 <CategoriesBar />
 
-                                <RecentRecipes {...recipe} />
+                                <RecentRecipes />
 
-                                <PopularTags
-                                    title="Popular Tags"
-                                />
+                                <TopRecipes />
 
                             </div>
                         </div>
