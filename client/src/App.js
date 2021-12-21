@@ -29,34 +29,35 @@ function App() {
         <ErrorBoundary>
             <AuthProvider>
                 <NotificationProvider>
+                    <div className="app-container">
+                        <Navbar />
 
-                    <Navbar />
-
-                    <RecipeProvider>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/home" element={<Home />} />
-                            <Route path="/recipes/catalog" element={<RecipeCatalog />} />
-                            <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-                            <Route path="/chefs" element={<Chefs />} />
-                            <Route path="/chefs/:chefId" element={<ChefRecipes />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                            <Route path="/logout" element={<Logout />} />
-                            <Route path="*" element={<ErrorPage />} />
+                        <RecipeProvider>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/home" element={<Home />} />
+                                <Route path="/recipes/catalog" element={<RecipeCatalog />} />
+                                <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+                                <Route path="/chefs" element={<Chefs />} />
+                                <Route path="/chefs/:chefId" element={<ChefRecipes />} />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+                                <Route path="/logout" element={<Logout />} />
+                                <Route path="*" element={<ErrorPage />} />
 
 
-                            <Route element={<RouteGuards />}>
-                                <Route path="/recipes/my-recipes" element={<MyRecipes />} />
-                                <Route path="/recipes/create" element={<RecipeCreate />} />
-                                <Route path="/recipes/edit/:recipeId" element={<Edit />} />
-                            </Route>
-                        </Routes>
-                    </RecipeProvider>
+                                <Route element={<RouteGuards />}>
+                                    <Route path="/recipes/my-recipes" element={<MyRecipes />} />
+                                    <Route path="/recipes/create" element={<RecipeCreate />} />
+                                    <Route path="/recipes/edit/:recipeId" element={<Edit />} />
+                                </Route>
+                            </Routes>
+                        </RecipeProvider>
 
-                    <Footer />
+                        <Footer />
 
+                    </div>
                 </NotificationProvider>
             </AuthProvider>
         </ErrorBoundary>
