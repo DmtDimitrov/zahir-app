@@ -1,6 +1,6 @@
 // import styles from './RecentRecipes.module.css';
 import styles from '../css/RecipesBar.module.css';
-import RecentRecipeCard from '../RecentRecipeCard';
+import RecentRecipeCard from '../BarRecipeCard';
 import { useRecipesState } from '../../../../hooks/RecepeHooks/useRecipesState';
 
 export default function RecentRecipes() {
