@@ -14,6 +14,27 @@
     padding: 0 15px;
     width: 100%;
 }
+.content-container{
+    /* background-color:hotpink; */
+    
+}
+.catalog-info{
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 10px;
+    border: 1px solid #EDECF5;
+    box-shadow: 0 3px 9px rgb(100 95 136 / 15%);
+    
+    flex: 0 0 auto;
+    width: 100%;
+    /* text-transform: uppercase; */
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+}
+.catalog-info h3{
+    
+    text-align: center;
+}
 .side-bar-colon{
     padding-left: 50px;
 }

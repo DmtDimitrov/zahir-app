@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 
 import * as recipeService from '../../../services/recipeService';
-import styles from './Catalog.module.css';
+import styles from './MyRecipes.module.css';
 
 import Subheader from '../../../components/Subheader';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
@@ -36,21 +36,19 @@ export default function MyRecipes() {
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
                     <div className="row">
-                        <div className="col-lg-8 " >
+                        <div className={`col-lg-8 ${styles['content-container']}`} >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
                                 {recipes && recipes.length > 0
                                     ? recipes.map(x => <RecipesCard key={x._id} recipe={x} />)
                                     :
-                                    <div className="catalog-info">
+                                    <div className={styles['catalog-info']}>
                                         <h3>There is no recipes yet...</h3>
                                     </div>
                                 }
 
                             </div>
                         </div>
-
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
-
 
                             <CategoriesBar />
 
