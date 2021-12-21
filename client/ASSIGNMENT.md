@@ -6,11 +6,11 @@ The application should have:
 - [x] Public Part (Accessible without authentication) 
 - [x] Private Part (Available for Registered Users)
 
-### [x] 1.1 Public Part
-The public part of your projects should be visible **without authentication.** This public part could be the application start page, the user login, and user registration forms, as well as the public data of the users, e.g., the blog posts in a blog system, the public offers in a bid system, the products in an e-commerce system, etc.
+### 1.1 Public Part
+-  [x] The public part of your projects should be visible **without authentication.** This public part could be the application start page, the user login, and user registration forms, as well as the public data of the users, e.g., the blog posts in a blog system, the public offers in a bid system, the products in an e-commerce system, etc.
 
-### 1.2 [x] Private Part (User Area)
-Registered users should have a personal area in the web application **accessible after successful login.** This area could hold for example the user's profiles management functionality, the user's offers in a bid system, the user's posts in a blog system, the user's photos in a photo-sharing system, the user's contacts in a social network, etc.
+### 1.2 Private Part (User Area)
+[x] Registered users should have a personal area in the web application **accessible after successful login.** This area could hold for example the user's profiles management functionality, the user's offers in a bid system, the user's posts in a blog system, the user's photos in a photo-sharing system, the user's contacts in a social network, etc.
 
 ## 2.General Requirements
 Your Web application should use the following technologies, frameworks, and development techniques:
