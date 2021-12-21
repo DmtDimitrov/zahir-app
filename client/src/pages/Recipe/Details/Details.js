@@ -36,7 +36,9 @@ export default function RecipeDetails() {
         setShow(false);
         recipeService.deleteOne(recipeId, user.accessToken)
             .then(() => {
+                addNotification('You successfully deleted this this recipe', types.success, 'Success')
                 navigate('/recipes/my-recipes');
+
             })
             .catch(error => {
                 console.log(error);
