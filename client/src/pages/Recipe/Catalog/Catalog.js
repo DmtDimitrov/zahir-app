@@ -3,11 +3,9 @@ import styles from './Catalog.module.css';
 
 import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
-import Pagination from '../../../components/Pagination';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 import RecipesCard from '../components/CatalogCard';
-import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
 
 import { useRecipesState } from '../../../hooks/RecepeHooks/useRecipesState';
@@ -34,8 +32,6 @@ export default function RecipeCatalog() {
 
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                            <SearchBar />
-
                             <CategoriesBar />
 
                             <RecentRecipes />
@@ -47,8 +43,6 @@ export default function RecipeCatalog() {
                     </div>
                 </div>
             </div>
-
-            <Pagination />
 
         </Page>
 
