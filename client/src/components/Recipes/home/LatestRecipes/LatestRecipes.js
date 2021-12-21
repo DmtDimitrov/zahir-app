@@ -1,4 +1,5 @@
 import styles from './LatestRecipes.module.css';
+import LatestRecipesCard from './LatestRecipesCard';
 
 export default function LatestRecipes() {
     return (
@@ -8,20 +9,22 @@ export default function LatestRecipes() {
                     <div className={`col-12 ${styles['our-header']} ${styles['prom-padd']}`}>
                         <h2>latest recipes</h2>
                         <div className="text-center">
-                        <hr/> <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
-                        <hr/>
+                            <hr /> <i className={`far fa-square ${styles['rotate-45']}`}></i> <i className={`far fa-square ${styles['rotate-45']}`}></i>
+                            <hr />
                         </div>
 
-                        <div className={`${styles['linker-work']} js-filter button`}>
-                            <button data-filter="*" >All Recipes</button>   
-                            <button data-filter=".business"> Cakes</button>   
-                            <button data-filter=".postcard"> Brownies</button>   
+                        {/* <div className={`${styles['linker-work']} js-filter button`}>
+                            <button data-filter="*" >All Recipes</button>
+                            <button data-filter=".business"> Cakes</button>
+                            <button data-filter=".postcard"> Brownies</button>
                             <button data-filter=".brocher"> Cupcakes</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
-            <div className="row grid-gallery">
+
+            <LatestRecipesCard />
+            {/* <div className="row grid-gallery">
                 <div className="col-12">
                     <div className="row gallery-height">
                         <div className="col-lg-3 col-1-height col1-height col-over gallery-item brocher">
@@ -160,7 +163,7 @@ export default function LatestRecipes() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
