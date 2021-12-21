@@ -28,7 +28,6 @@ export const RecipeProvider = ({
     const [recipe, setRecipe] = useLocalStorage(RECIPE_LOCAL_STORAGE_KEY_NAME, initialRecipeState);
 
 
-
     const setRecipeContext = useCallback((recipeData) => {
         setRecipe(recipeData);
     }, [initialRecipeState]);
