@@ -3,14 +3,16 @@ import { useEffect, useState } from 'react';
 
 import styles from './Edit.module.css';
 import * as recipeService from '../../../services/recipeService';
+import { emptyFieldsChecker } from '../../../helpers/fieldsChecker';
+
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
+import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 
 import Subheader from '../../../components/Subheader';
-import { useAuthContext } from '../../../contexts/AuthContext';
 import Page from '../../Page';
 import EditForm from './EditForm';
-import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 
 export default function Edit() {
     const { recipeId } = useParams();
@@ -97,6 +99,10 @@ export default function Edit() {
             ingredients: ingredientData,
             method,
             image,
+        }
+
+        if (!emptyFieldsChecker(data)) {
+            return addNotification('All fields are required!', types.warning, 'Warning');
         }
 
         recipeService.edit(recipe._id, data, user.accessToken)
