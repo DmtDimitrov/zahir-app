@@ -3,38 +3,38 @@ Your task is to **design** and **implement** a web application using React.js. U
 
 ## 1.Application Structure
 The application should have:
-- [] Public Part (Accessible without authentication) 
-- [] Private Part (Available for Registered Users)
+- [x] Public Part (Accessible without authentication) 
+- [x] Private Part (Available for Registered Users)
 
-### [] 1.1 Public Part
+### [x] 1.1 Public Part
 The public part of your projects should be visible **without authentication.** This public part could be the application start page, the user login, and user registration forms, as well as the public data of the users, e.g., the blog posts in a blog system, the public offers in a bid system, the products in an e-commerce system, etc.
 
-### [] 1.2 Private Part (User Area)
+### [x] 1.2 Private Part (User Area)
 Registered users should have a personal area in the web application **accessible after successful login.** This area could hold for example the user's profiles management functionality, the user's offers in a bid system, the user's posts in a blog system, the user's photos in a photo-sharing system, the user's contacts in a social network, etc.
 
 ## 2.General Requirements
 Your Web application should use the following technologies, frameworks, and development techniques:
-- [] At least 3 different **dynamic pages** (pages like about, contacts, etc. do not count towards that figure)
+- [x] At least 3 different **dynamic pages** (pages like about, contacts, etc. do not count towards that figure)
 - [] Must have specific **views:**
-1. [] **Catalog** – list of all created records
-2. [] **Details** – information about a specific record
-- [] At least one collection, different from the User collection, with all CRUD operations (create, read, update, delete)
-1. [] **Logged in users** – create records and request to the REST API, interaction with the records (via Likes, Dislikes, Comments, etc.)
-2. [] **Logged in (author)** – to be able to Edit / Delete their records
-3. [] A **Guest** should have **access** to basic website **information** (catalog, details), but **not** to the functional **activities**
-- [] Use React.js for the **client-side**
-- [] Communicate to a **remote service** (via REST, sockets, GraphQL, or a similar client-server technique)
-- [] Implement **authentication**
-- [] Implement **client-side routing**
-- [] Demonstrate use of programming concepts, **specific to the React library:** stateless and state full components, bound forms, synthetic events, Component Styling, etc.
-- [] Use a **source control system,** like GitHub
-- [] **It is required to have committed in GitHub for at least 3 days**
+1. [x] **Catalog** – list of all created records
+2. [x] **Details** – information about a specific record
+- [x] At least one collection, different from the User collection, with all CRUD operations (create, read, update, delete)
+1. [x] **Logged in users** – create records and request to the REST API, interaction with the records (via Likes, Dislikes, Comments, etc.)
+2. [x] **Logged in (author)** – to be able to Edit / Delete their records
+3. [x] A **Guest** should have **access** to basic website **information** (catalog, details), but **not** to the functional **activities**
+- [x] Use React.js for the **client-side**
+- [x] Communicate to a **remote service** (via REST, sockets, GraphQL, or a similar client-server technique)
+- [x] Implement **authentication**
+- [x] Implement **client-side routing**
+- [x] Demonstrate use of programming concepts, **specific to the React library:** stateless and state full components, bound forms, synthetic events, Component Styling, etc.
+- [x] Use a **source control system,** like GitHub
+- [x] **It is required to have committed in GitHub for at least 3 days**
 
 ## 3.Other requirements
 - [] Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
-- [] The application should be divided into **components** with **separate CSS files.**
+- [x] The application should be divided into **components** with **separate CSS files.**
 - [] Brief **documentation** on the project and project architecture (as .md file)
-- [] Demonstrate use of programming concepts - React Hooks, Context API
+- [x] Demonstrate use of programming concepts - React Hooks, Context API
 
 ## 4.Public Project Defense
 Each student will have to deliver a **public defense** of their work in front of the other students, trainers, and assistants. Students will have **only 20 minutes** for the following:
