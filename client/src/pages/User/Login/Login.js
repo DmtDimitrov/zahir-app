@@ -28,7 +28,7 @@ export default function Login() {
         }
 
         if (!emptyFieldsChecker(userData)) {
-            return addNotification('All fields are required!', types.error, 'Error');
+            return addNotification('All fields are required!', types.warning, 'Warning');
         }
 
         authService.login(userData)
