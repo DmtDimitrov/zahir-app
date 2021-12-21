@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 
 import * as authService from '../../../services/authService';
-import { emptyFieldsChecker, passwordMatchChecker } from '../../../helpers/fieldsChecker';
+import { emptyFieldsChecker, validatePasswords } from '../../../helpers/fieldsChecker';
 
 import Subheader from '../../../components/Subheader';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -35,10 +35,10 @@ export default function Register() {
         }
         
         if (!emptyFieldsChecker(userData)) {
-            return addNotification('All fields are required!', types.error, 'Error');
+            return addNotification('All fields are required!', types.warning, 'Warning');
         }
 
-        if(!passwordMatchChecker(userData)){
+        if(!validatePasswords(userData)){
             return addNotification('Passwords do not match!', types.error, 'Error');
         }
 
