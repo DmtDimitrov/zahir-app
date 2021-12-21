@@ -59,7 +59,7 @@ export default function RecipeDetailsContentCard() {
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> <i className="far fa-heart"></i> {recipe?.likes.length} Likes </span>
                                     <span className={styles['spc-line']}> |</span>
-                                    <span className={styles['info-over']}> <i className="far fa-comment"></i> 55 comments </span>
+                                    <span className={styles['info-over']}> <i className="far fa-comment"></i> {recipe?.comments.length} comments </span>
                                 </p>
                             </div>
 
