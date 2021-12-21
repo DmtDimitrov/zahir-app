@@ -8,7 +8,8 @@ export const getOne = async (recipeId) => await request.get(`${HOST}/recipes/${r
 export const create = async (recipeData) => await request.post(`${HOST}/recipes`, recipeData, true);
 export const edit = async (recipeId, recipeData) => await request.put(`${HOST}/recipes/${recipeId}`, recipeData, true);
 export const deleteOne = async (recipeId) => await request.del(`${HOST}/recipes/${recipeId}`, undefined, true);
-export const like = async (recipeId, likes) => await request.patch(`${HOST}/recipes/${recipeId}`, likes, true);
+export const like = async (recipeId, likes) => await request.patch(`${HOST}/recipes/${recipeId}/like`, likes, true);
+
 
 
 // export function getAll() {

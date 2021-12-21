@@ -8,13 +8,12 @@ import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 import CreateForm from './CreateForm';
 
-import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 import { useRecipeContext } from '../../../contexts/RecipeContext';
 
 export default function RecipeCreate() {
-    const { user } = useAuthContext();
+    
     let navigate = useNavigate();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [categories] = useCategoriesState();
@@ -83,7 +82,7 @@ export default function RecipeCreate() {
             image,
         }
 
-        recipeService.create(data, user.accessToken)
+        recipeService.create(data)
             .then(result => {
                 addNotification('You created new recipe successfully', types.success, 'Success')
                 navigate(`/recipes/my-recipes`)

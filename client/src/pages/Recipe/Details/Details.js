@@ -7,8 +7,8 @@ import * as recipeService from '../../../services/recipeService';
 import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 
 import Subheader from '../../../components/Subheader';
-import Comments from '../../../components/Comments';
-import AddComment from '../../../components/Comments/AddComment';
+import Comments from './Comments';
+import AddComment from './AddComment';
 import SearchBar from '../../../components/SearchBar';
 import CategoriesBar from '../../../components/CategoriesBar';
 import PopularTags from '../../../components/PopularTags';
@@ -85,8 +85,11 @@ export default function RecipeDetails() {
                                 {recipe && <RecipeDetailsContentCard />}
 
                                 <Comments />
+                                {user?._id
+                                    ? <AddComment recipeId={recipeId} />
+                                    : ""
+                                }
 
-                                <AddComment />
 
                             </div>
 

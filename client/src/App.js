@@ -23,7 +23,6 @@ import Chefs from './pages/Chefs';
 import ChefRecipes from './pages/Chefs/ChefRecipes'
 import ErrorBoundary from './components/Common/ErrorBoundary';
 
-
 function App() {
 
     return (

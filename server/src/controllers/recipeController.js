@@ -73,6 +73,7 @@ router.post('/', isAuth, async (req, res) => {
     }
 });
 
+
 router.delete('/:recipeId', async (req, res) => {
     try {
 
@@ -88,7 +89,7 @@ router.delete('/:recipeId', async (req, res) => {
     }
 });
 
-router.patch('/:recipeId', isAuth, async (req, res) => {
+router.patch('/:recipeId/like', isAuth, async (req, res) => {
 
     let userId = req?.user._id;
     let recipeId = req.params.recipeId;
@@ -104,6 +105,8 @@ router.patch('/:recipeId', isAuth, async (req, res) => {
         })
     }
 });
+
+
 
 router.put('/:recipeId', isAuth, async (req, res) => {
 
