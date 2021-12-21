@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
 import * as authService from '../../../services/authService';
+import { emptyFieldsChecker } from '../../../helpers/fieldsChecker';
 
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -24,6 +25,10 @@ export default function Login() {
         let userData = {
             email,
             password
+        }
+
+        if (!emptyFieldsChecker(userData)) {
+            return addNotification('All fields are required!', types.error, 'Error');
         }
 
         authService.login(userData)
