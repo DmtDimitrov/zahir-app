@@ -25,7 +25,8 @@
     color: #9fd7ef;
 }
 .card-container{
-    border-radius: 10px;
+    /* padding-top: 10px; */
+    border-radius: 20px;
     border: 1px solid #EDECF5;
     box-shadow: 0 3px 9px rgb(100 95 136 / 15%);
 }
