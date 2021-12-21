@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
-import styles from './RecentRecipeCard.module.css';
+import styles from './BarRecipeCard.module.css';
 
-export default function RecentRecipeCard({ recipe }) {
+export default function BarRecipeCard({ recipe }) {
 
     return (
         <>
