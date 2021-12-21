@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import styles from './Create.module.css';
 import * as recipeService from '../../../services/recipeService';
+import { emptyFieldsChecker, validateImageUrl } from '../../../helpers/fieldsChecker';
+
 
 import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
@@ -80,6 +82,14 @@ export default function RecipeCreate() {
             ingredients: ingredientData,
             method,
             image,
+        }
+
+        if (!emptyFieldsChecker(data)) {
+            return addNotification('All fields are required!', types.warning, 'Warning');
+        }
+
+        if (!validateImageUrl(image)) {
+            return addNotification('Image URL should starts with http or https!', types.warning);
         }
 
         recipeService.create(data)
