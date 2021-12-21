@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 
 import * as authService from '../../../services/authService';
+import { emptyFieldsChecker, passwordMatchChecker } from '../../../helpers/fieldsChecker';
 
 import Subheader from '../../../components/Subheader';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -19,12 +20,11 @@ export default function Register() {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-        let firstName = formData.get('firstName')
-        let lastName = formData.get('lastName');
-        let email = formData.get('email');
-        let password = formData.get('password');
-        let repeatPassword = formData.get('repeatPassword');
-        let image = formData.get('image');
+        let firstName = formData.get('firstName').trim();
+        let lastName = formData.get('lastName').trim();
+        let email = formData.get('email').trim();
+        let password = formData.get('password').trim();
+        let repeatPassword = formData.get('repeatPassword').trim();
 
         let userData = {
             firstName,
@@ -32,16 +32,25 @@ export default function Register() {
             email,
             password,
             repeatPassword,
-            image
         }
+        
+        if (!emptyFieldsChecker(userData)) {
+            return addNotification('All fields are required!', types.error, 'Error');
+        }
+
+        if(!passwordMatchChecker(userData)){
+            return addNotification('Passwords do not match!', types.error, 'Error');
+        }
+
 
         authService.register(userData)
             .then(() => {
-                addNotification('You have registered successfully', types.light);
+                addNotification('You have registered successfully', types.success, 'Success');
                 navigate('/login');
             })
             .catch(error => {
                 console.log(error);
+                
             })
     }
     return (
@@ -91,12 +100,6 @@ export default function Register() {
                                         type="password"
                                         name="repeatPassword"
                                         placeholder="Confirm Password"
-                                        className={styles['sb-input']}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="image"
-                                        placeholder="imageUrl"
                                         className={styles['sb-input']}
                                     />
 
