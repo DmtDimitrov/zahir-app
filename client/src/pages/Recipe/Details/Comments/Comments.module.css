@@ -19,3 +19,16 @@
     margin-right: 0;
     
 }
+.comment-link button{
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    padding: 10px 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    min-width: 115px;
+}
+.comment-link button:hover{
+    background-color: #f65aa7;
+    color: #ffffff;
+}
