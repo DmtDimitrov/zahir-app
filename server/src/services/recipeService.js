@@ -4,8 +4,19 @@ import User from '../models/User.js';
 
 export const getAll = () => Recipe.find().populate('ownerId');
 export const getMy = (ownerId) => Recipe.find({ ownerId: ownerId }).populate('ownerId');
-export const getOne = (id) => Recipe.findById(id).populate('ownerId');
-// export const create = (recipeData) => Recipe.create(recipeData);
+// export const getOne = (id) => Recipe.findById(id).populate('ownerId').populate('comments');
+export const getOne = (id) => {
+    return Recipe
+        .findById(id)
+        .populate('ownerId')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'author',
+                model: 'User'
+            }
+        })
+};
 export const create = async (recipeData, userId) => {
     try {
 
@@ -19,16 +30,16 @@ export const create = async (recipeData, userId) => {
                 $push: { recipes: recipeId },
             },
         );
-        
+
 
         let usersRecipes = await User.findOneAndUpdate(
-            	{ _id: userId },
-            	{
-            		$push: { recipes: recipeId },
-            	},
-            );
-            console.log('Server recipeService user');
-            console.log(usersRecipes);
+            { _id: userId },
+            {
+                $push: { recipes: recipeId },
+            },
+        );
+        console.log('Server recipeService user');
+        console.log(usersRecipes);
     } catch (error) {
         throw new Error(error);
     }
@@ -49,7 +60,7 @@ export const getAuthor = async (id) => {
 export const like = async (recipeId, userId) => {
     try {
 
-         let likedRecipe = await Recipe.findOneAndUpdate(
+        let likedRecipe = await Recipe.findOneAndUpdate(
             { _id: recipeId },
             {
                 $push: { likes: userId },
@@ -65,20 +76,13 @@ export const like = async (recipeId, userId) => {
 export const edit = async (recipeId, recipeData) => {
     try {
 
-        console.log('Server recipeService: recipeId');
-        console.log(recipeId);
-        console.log('Server recipeService: recipeData');
-        console.log(recipeData);
+
 
         let result = await Recipe.findByIdAndUpdate(recipeId, recipeData);
-        console.log('Server recipeService: result');
-        console.log(result);
-return result;
-     
+
+        return result;
+
     } catch (error) {
         throw new Error(error);
     }
 };
-
-
-
