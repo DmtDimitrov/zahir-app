@@ -1,9 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './AddComment.module.css';
 
 import * as commentService from '../../../../services/commentService';
-import * as recipeService from '../../../../services/recipeService';
 import { useNotificationContext, types } from '../../../../contexts/NotificationContext';
 
 
@@ -11,7 +10,6 @@ export default function AddComment({ recipeId }) {
     const { addNotification } = useNotificationContext();
 
     let navigate = useNavigate();
-    console.log('recipe');
 
     const commentSubmitHandler = (e) => {
         e.preventDefault();
