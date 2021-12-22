@@ -45,12 +45,6 @@ export default function AddComment({ recipeId }) {
                     <hr />
 
                     <form method="POST" onSubmit={commentSubmitHandler}>
-                        <input
-                            type="text"
-                            name="subject"
-                            placeholder="Subject"
-                            className={styles['sb-input']}
-                        />
                         <textarea
                             rows="6"
                             className={styles['area-text']}
