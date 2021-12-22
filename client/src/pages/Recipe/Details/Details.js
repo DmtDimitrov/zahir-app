@@ -81,9 +81,12 @@ export default function RecipeDetails() {
 
                             <div className=" col-lg-8 " >
 
-                                {recipe && <RecipeDetailsContentCard />}
+                                {recipe && <RecipeDetailsContentCard
+                                    recipe={recipe}
+                                    likeButtonClickHandler={likeButtonClickHandler}
+                                />}
 
-                                <Comments />
+                                <Comments recipeId={recipeId} />
                                 {user?._id
                                     ? <AddComment recipeId={recipeId} />
                                     : ""
