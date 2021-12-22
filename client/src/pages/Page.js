@@ -7,7 +7,10 @@ import { useNotificationContext } from '../contexts/NotificationContext';
 const Page = (props) => {
     const { notification } = useNotificationContext()
     useEffect(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
     }, [notification]);
 
     return (
