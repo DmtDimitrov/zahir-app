@@ -24,9 +24,15 @@
 .btn i:hover{
     color: #9fd7ef;
 }
+.card-img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: 290px;
+}
 .card-container{
     /* padding-top: 10px; */
-    border-radius: 20px;
+    border-radius: 15px;
     border: 1px solid #EDECF5;
     box-shadow: 0 3px 9px rgb(100 95 136 / 15%);
 }

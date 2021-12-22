@@ -99,15 +99,10 @@ export default function RecipeDetailsContentCard({
                                 <h5>Ingredients:</h5>
                                 <ul className="list-group">
                                     {recipe?.ingredients.map(x => (
-
                                         <li className="list-group-item" key={x._id}>{x.quantity} {x.unit} {x.name}</li>
-
                                     ))}
-
                                 </ul>
-
                             </div>
-
                         </div>
 
                         <div>
