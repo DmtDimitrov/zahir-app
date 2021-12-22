@@ -74,7 +74,7 @@ export default function RecipeDetailsContentCard({
                                 <p>
                                     <span className={styles['info-over']}>
                                         <i className="far fa-user"></i>
-                                        By {recipe?.ownerId.firstName}
+                                        By {`${recipe?.ownerId.firstName} ${recipe?.ownerId.lastName}`}
                                     </span>
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> {date}</span>

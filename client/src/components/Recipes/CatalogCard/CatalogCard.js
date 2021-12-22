@@ -10,7 +10,7 @@ export default function CatalogCard({
     return (
         <div className="col-sm-6 col-lg-4 mb-3">
             <div className={`card h-100 ${styles['card-container']}`}>
-                <img src={recipe.image} className="card-img-top" alt="..." />
+                <img src={recipe.image} className={`card-img-top ${styles['card-img']}`} alt="..." />
                 <div className={`${styles['card-body']} ${styles['post-info']} card-body`}>
                     <h5 className="card-title">{recipe.title}</h5>
                     {recipe.ownerId &&
@@ -27,7 +27,6 @@ export default function CatalogCard({
         </div >
     );
 }
-
 
 
 

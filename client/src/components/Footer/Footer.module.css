@@ -50,7 +50,7 @@
     color: #ffffff;
     text-transform: uppercase;
 }
-.pop-col hr{
+.pop-col hr {
     border: 1px solid #f65aa7;
     width: 65px;
     margin-left: 0;
@@ -63,6 +63,11 @@
     font-family: 'Open Sans'; 
     color: #dedede;
     display: flex;
+    text-decoration: none;
+}
+.pop-link a:hover{
+   
+    text-decoration: underline;
 }
 .contact-row-margin{
     margin-top: 20px;
@@ -89,4 +94,14 @@
 .copyright-text a:hover {
     color: #f65aa7;
     text-decoration:none;
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    opacity: 1.25;
+    background-color: #f65aa7;
+    border-radius: 20px;
 }
