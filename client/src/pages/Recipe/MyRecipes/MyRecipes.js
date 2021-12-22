@@ -38,7 +38,11 @@ export default function MyRecipes() {
                         <div className={`col-lg-8 ${styles['content-container']}`} >
                             <div className="row row-cols-1 row-cols-md-3 g-4">
                                 {recipes && recipes.length > 0
-                                    ? recipes.map(x => <CatalogCard key={x._id} recipe={x} />)
+                                    ? recipes.map(x => <CatalogCard 
+                                        key={x._id} 
+                                        recipe={x} 
+                                        chefName={`${x.ownerId.firstName} ${x.ownerId.lastName}`}
+                                        />)
                                     :
                                     <div className={styles['catalog-info']}>
                                         <h3>There is no recipes yet...</h3>
