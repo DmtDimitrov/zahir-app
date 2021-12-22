@@ -42,7 +42,6 @@ export default function RecipeDetailsContentCard({
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <button>Cook</button>
         </>
     );
 
