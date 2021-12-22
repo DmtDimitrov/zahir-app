@@ -15,14 +15,7 @@ export default function ChefsCard({
                 </Link>
                 <div className={`${styles['card-body']} ${styles['post-info']} card-body`}>
                     <h5 className="card-title">{user && `${user.firstName} ${user.lastName}`}</h5>
-                    {/* {user?.recipes &&
-                        <p className={styles['card-text']}>
-                            <span className={styles['info-over']}>
-                                <i className="far fa-user"></i>
-                                By {`${recipe.ownerId.firstName} ${recipe.ownerId.lastName}`}
-                            </span>
-                          
-                        </p>} */}
+                    <Link to={`/chefs/${user?._id}`} className={`${styles['btn']} ${styles['btn-primary']}`}>View recipes</Link>
                 </div>
             </div>
         </div >
