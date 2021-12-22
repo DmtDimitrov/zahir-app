@@ -17,11 +17,9 @@ export default function AddComment({ recipeId }) {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-        let subject = formData.get('subject')
         let message = formData.get('message');
 
         let commentData = {
-            subject,
             message,
             recipe: recipeId,
 
