@@ -15,7 +15,7 @@ The application should have:
 ## 2.General Requirements
 Your Web application should use the following technologies, frameworks, and development techniques:
 - [x] At least 3 different **dynamic pages** (pages like about, contacts, etc. do not count towards that figure)
-- [] Must have specific **views:**
+- [x] Must have specific **views:**
 1. [x] **Catalog** – list of all created records
 2. [x] **Details** – information about a specific record
 - [x] At least one collection, different from the User collection, with all CRUD operations (create, read, update, delete)
@@ -31,7 +31,7 @@ Your Web application should use the following technologies, frameworks, and deve
 - [x] **It is required to have committed in GitHub for at least 3 days**
 
 ## 3.Other requirements
-- [] Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
+- [x] Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
 - [x] The application should be divided into **components** with **separate CSS files.**
 - [] Brief **documentation** on the project and project architecture (as .md file)
 - [x] Demonstrate use of programming concepts - React Hooks, Context API
