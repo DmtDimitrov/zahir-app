@@ -2,14 +2,11 @@ import { useContext } from 'react';
 
 import styles from './Comments.module.css';
 import CommentCard from './CommentCard';
-import { useToggle } from '../../../../hooks/useToggle';
-import { useRecipeState } from '../../../../hooks/RecepeHooks/useRecipeState';
+import { RecipeContext } from '../../../../contexts/RecipeContext';
+import { useToggle } from '../../../../hooks/useToggle'
 
-
-
-export default function Comments({recipeId}) {
-  
-    const [recipe, setRecipe] = useRecipeState(recipeId);
+export default function Comments() {
+    const { recipe } = useContext(RecipeContext);
     const [show, setShow] = useToggle(false);
  
     const toggleComments = () => {
