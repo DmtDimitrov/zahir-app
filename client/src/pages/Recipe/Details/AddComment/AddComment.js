@@ -27,7 +27,7 @@ export default function AddComment({ recipeId }) {
 
         commentService.create(commentData, recipeId)
             .then(() => {
-                addNotification('You have registered successfully', types.light);
+                addNotification('You have added a comment', types.success);
                 navigate(`/recipes/${recipeId}`);
             })
             .catch(error => {
