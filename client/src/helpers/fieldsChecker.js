@@ -15,7 +15,4 @@ export function validateImageUrl(image) {
 
         return isValid;
 
-        
-    
 };
-// /^https?:\/\//i

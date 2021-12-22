@@ -1,4 +1,7 @@
-// import './Header.css';
+import { Link } from "react-router-dom";
+import './Carousel.css';
+
+
 
 export default function Carousel() {
     return (
@@ -13,8 +16,8 @@ export default function Carousel() {
                                         <h1>Handmade <span className="second">pastries</span> and <span className="bs-card"> cakes</span></h1>
                                         <p>Тake a look at our recipe suggestions.</p>
                                         <div className="butns">
-                                            <button className="about-btn">about us </button>
-                                            <button className="work-btn">recipes</button>
+                                            <Link to={`/chefs`} className="about-btn"> chefs</Link>
+                                            <Link to={`/recipes/catalog`} className="work-btn"> recipes</Link>
                                         </div>
                                     </div>
                                 </div>

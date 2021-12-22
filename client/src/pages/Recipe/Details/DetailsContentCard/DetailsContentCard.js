@@ -5,16 +5,43 @@ import styles from './DetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../../constants';
 import { useAuthContext } from '../../../../contexts/AuthContext';
 
-import DeleteModal from '../Modal';
 
-export default function RecipeDetailsContentCard({ recipe, likeButtonClickHandler }) {
+import '../Modal/DeleteModal.css'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+export default function RecipeDetailsContentCard({ 
+    recipe, 
+    likeButtonClickHandler,
+    handleShow,
+    show,
+    handleClose,
+    deleteRecipeHandler
+ }) {
     const { user } = useAuthContext()
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
 
     const ownerButtons = (
         <>
             <Link to={`/recipes/edit/${recipe._id}`} className={styles['btn-icon-a']}> Edit</Link>
-            <DeleteModal />
+            <Button variant="primary" onClick={handleShow}>
+                Delete
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Recipe</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this recipe?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Go back
+                    </Button>
+                    <Button variant="primary" onClick={(e) => deleteRecipeHandler(e)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <button>Cook</button>
         </>
     );

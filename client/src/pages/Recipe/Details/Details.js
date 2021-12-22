@@ -2,21 +2,20 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import styles from './Details.module.css';
-
 import * as recipeService from '../../../services/recipeService';
-import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 
+import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
+import RecipeDetailsContentCard from './DetailsContentCard';
 import Comments from './Comments';
 import AddComment from './AddComment';
 import CategoriesBar from '../../../components/CategoriesBar';
-import RecipeDetailsContentCard from './DetailsContentCard';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
+
+import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 import { useAuthContext } from '../../../contexts/AuthContext';
-import { RecipeContext } from '../../../contexts/RecipeContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
-import Page from '../../Page';
 
 export default function RecipeDetails() {
     const { user } = useAuthContext();
@@ -48,8 +47,6 @@ export default function RecipeDetails() {
     const likeButtonClickHandler = () => {
         if (recipe.likes.includes(user._id)) {
             addNotification('You already liked this recipe', types.warning, 'Warning')
-            console.log(recipe);
-            console.log('User already liked');
             return;
         }
         let likes = [...recipe.likes, user._id]
@@ -69,7 +66,7 @@ export default function RecipeDetails() {
 
     return (
         <Page>
-            <RecipeContext.Provider value={{ recipe, deleteRecipeHandler, show, handleShow, handleClose, likeButtonClickHandler }}>
+           
                 <Subheader
                     title="Recipe Details"
                 />
@@ -84,6 +81,10 @@ export default function RecipeDetails() {
                                 {recipe && <RecipeDetailsContentCard
                                     recipe={recipe}
                                     likeButtonClickHandler={likeButtonClickHandler}
+                                    deleteRecipeHandler={deleteRecipeHandler}
+                                    show={show}
+                                    handleShow={handleShow}
+                                    handleClose={handleClose}
                                 />}
 
                                 <Comments recipeId={recipeId} />
@@ -107,7 +108,6 @@ export default function RecipeDetails() {
                         </div>
                     </div>
                 </div>
-            </RecipeContext.Provider>
         </Page>
     );
 }

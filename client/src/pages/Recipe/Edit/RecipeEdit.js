@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import styles from './Edit.module.css';
+import styles from './RecipeEdit.module.css';
 import * as recipeService from '../../../services/recipeService';
 import { emptyFieldsChecker } from '../../../helpers/fieldsChecker';
 
@@ -14,7 +14,7 @@ import Subheader from '../../../components/Subheader';
 import Page from '../../Page';
 import EditForm from './EditForm';
 
-export default function Edit() {
+export default function RecipeEdit() {
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useRecipeState(recipeId)
     const { user } = useAuthContext();

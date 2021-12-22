@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 import './Navbar.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 import Navbar from 'react-bootstrap/Navbar';
