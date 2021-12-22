@@ -6,8 +6,7 @@ import Page from '../../Page';
 import Subheader from '../../../components/Subheader';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import CatalogCard from '../../../components/Recipes/CatalogCard';
-import CategoriesBar from '../../../components/CategoriesBar';
-
+import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 import { useChefState } from '../../../hooks/useChefState';
 
 
@@ -39,9 +38,9 @@ export default function ChefRecipes() {
 
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
 
-                            <CategoriesBar />
-
                             <RecentRecipes />
+
+                            <TopRecipes />
 
                         </div>
                     </div>
