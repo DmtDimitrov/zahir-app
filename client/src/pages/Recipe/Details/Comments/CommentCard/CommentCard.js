@@ -21,7 +21,7 @@ export default function CommentCard({ comment }) {
                     <p>
                         {comment?.message}
                     </p>
-                    <p className={styles['reply']}> <i className="fas fa-reply"></i> Reply </p>
+                    {/* <p className={styles['reply']}> <i className="fas fa-reply"></i> Reply </p> */}
                 </div>
             </div>
             <hr className={styles['comment-line']} />
