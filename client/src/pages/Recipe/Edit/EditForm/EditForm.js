@@ -13,7 +13,6 @@ export default function EditForm({
     setRecipe
 }) {
 
-    console.log(category);
     return (
         <form onSubmit={onRecipeEdit} method="POST">
             <input
