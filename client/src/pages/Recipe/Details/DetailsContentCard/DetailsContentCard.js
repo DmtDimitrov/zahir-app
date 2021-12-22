@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './DetailsContentCard.module.css';
@@ -6,18 +5,14 @@ import styles from './DetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../../constants';
 import { useAuthContext } from '../../../../contexts/AuthContext';
 
-import { RecipeContext } from '../../../../contexts/RecipeContext';
 import DeleteModal from '../Modal';
 
-export default function RecipeDetailsContentCard() {
+export default function RecipeDetailsContentCard({ recipe, likeButtonClickHandler }) {
     const { user } = useAuthContext()
-    const { recipe, likeButtonClickHandler } = useContext(RecipeContext);
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
-
 
     const ownerButtons = (
         <>
-            {/* <Link to="/recipes/edit" className={styles['btn-icon-a']}> Edit</Link> */}
             <Link to={`/recipes/edit/${recipe._id}`} className={styles['btn-icon-a']}> Edit</Link>
             <DeleteModal />
             <button>Cook</button>
