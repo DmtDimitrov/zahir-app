@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import styles from './Create.module.css';
 import * as recipeService from '../../../services/recipeService';
@@ -12,7 +12,6 @@ import CreateForm from './CreateForm';
 
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
 import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
-import { useRecipeContext } from '../../../contexts/RecipeContext';
 
 export default function RecipeCreate() {
     
@@ -20,11 +19,7 @@ export default function RecipeCreate() {
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [categories] = useCategoriesState();
     const { addNotification } = useNotificationContext();
-    const { resetRecipeContext } = useRecipeContext();
 
-    useEffect(() => {
-        resetRecipeContext()
-    }, [])
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
