@@ -1,9 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './AddComment.module.css';
 
 import * as commentService from '../../../../services/commentService';
-import * as recipeService from '../../../../services/recipeService';
 import { useNotificationContext, types } from '../../../../contexts/NotificationContext';
 
 
@@ -11,17 +10,14 @@ export default function AddComment({ recipeId }) {
     const { addNotification } = useNotificationContext();
 
     let navigate = useNavigate();
-    console.log('recipe');
 
     const commentSubmitHandler = (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-        let subject = formData.get('subject')
         let message = formData.get('message');
 
         let commentData = {
-            subject,
             message,
             recipe: recipeId,
 
@@ -29,7 +25,7 @@ export default function AddComment({ recipeId }) {
 
         commentService.create(commentData, recipeId)
             .then(() => {
-                addNotification('You have registered successfully', types.light);
+                addNotification('You have added a comment', types.success);
                 navigate(`/recipes/${recipeId}`);
             })
             .catch(error => {
@@ -45,12 +41,6 @@ export default function AddComment({ recipeId }) {
                     <hr />
 
                     <form method="POST" onSubmit={commentSubmitHandler}>
-                        <input
-                            type="text"
-                            name="subject"
-                            placeholder="Subject"
-                            className={styles['sb-input']}
-                        />
                         <textarea
                             rows="6"
                             className={styles['area-text']}

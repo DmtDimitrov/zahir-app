@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Footer.module.css';
 
 
@@ -25,10 +27,11 @@ export default function Footer() {
                         <hr />
                         <div className="row">
                             <div className={`col-6 ${styles['pop-link']}`}>
-                                <a href="/#">About Us</a>
-                                <a href="/#">contact us </a>
-                                <a href="/#">recipes</a>
-                                <a href="/#">Chefs</a>
+                                <Link to={"/home"}>home </Link>
+                                <Link to={"/contact"}>contact us </Link>
+                                <Link to={"/recipes/catalog"}>recipes </Link>
+                                <Link to={"/chefs"}>Chefs </Link>
+                                
                             </div>
     
                         </div>

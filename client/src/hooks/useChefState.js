@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import * as authService from '../services/authService';
 
-
 export const useChefState = (chefId) => {
     const [chef, setChef] = useState(null);
 
@@ -22,5 +21,3 @@ export const useChefState = (chefId) => {
         setChef
     ]
 };
-
-

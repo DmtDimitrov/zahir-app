@@ -1,25 +1,46 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import styles from './Create.module.css';
+import styles from './RecipeEdit.module.css';
 import * as recipeService from '../../../services/recipeService';
-import { emptyFieldsChecker, validateImageUrl } from '../../../helpers/fieldsChecker';
+import { emptyFieldsChecker } from '../../../helpers/fieldsChecker';
 
-
-import Page from '../../Page';
-import Subheader from '../../../components/Subheader';
-import CreateForm from './CreateForm';
-
+import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
+import { useRecipeState } from '../../../hooks/RecepeHooks/useRecipeState';
 import { useCategoriesState } from '../../../hooks/RecepeHooks/useCategoriesState';
 
-export default function RecipeCreate() {
-    
-    let navigate = useNavigate();
+import Subheader from '../../../components/Subheader';
+import Page from '../../Page';
+import EditForm from './EditForm';
+
+export default function RecipeEdit() {
+    const { recipeId } = useParams();
+    const [recipe, setRecipe] = useRecipeState(recipeId)
+    const { user } = useAuthContext();
     const [ingredientInputs, setIngredientInputs] = useState([]);
     const [categories] = useCategoriesState();
     const { addNotification } = useNotificationContext();
+    let navigate = useNavigate();
+    useEffect(() => {
+        let initialIngredientInputState = [];
+        recipe?.ingredients.map(x => {
 
+            let initialIngredientInput = {
+                Ingredient: x.name,
+                Unit: x.unit,
+                Quantity: x.quantity,
+                errors: {
+                    Ingredient: null,
+                    Unit: null,
+                    Quantity: null,
+                }
+            };
+            return initialIngredientInputState.push(initialIngredientInput)
+        })
+
+        setIngredientInputs(initialIngredientInputState);
+    }, [recipe?.ingredients]);
 
     const oldStateIsValid = () => {
         if (ingredientInputs.length === 0) {
@@ -55,11 +76,11 @@ export default function RecipeCreate() {
     }
 
     const addCategoryHandler = (e) => {
-
     }
 
-    const onRecipeCreate = (e) => {
+    const onRecipeEdit = (e) => {
         e.preventDefault();
+
         let formData = new FormData(e.currentTarget);
 
         let title = formData.get('title');
@@ -69,6 +90,7 @@ export default function RecipeCreate() {
         let method = formData.get('method');
 
         let ingredientData = ingredientInputs.map(x => ({ name: x.Ingredient, unit: x.Unit, quantity: x.Quantity }))
+        console.log(ingredientData);
 
         let data = {
             title,
@@ -83,18 +105,14 @@ export default function RecipeCreate() {
             return addNotification('All fields are required!', types.warning, 'Warning');
         }
 
-        if (!validateImageUrl(image)) {
-            return addNotification('Image URL should starts with http or https!', types.warning);
-        }
-
-        recipeService.create(data)
-            .then(result => {
-                addNotification('You created new recipe successfully', types.success, 'Success')
-                navigate(`/recipes/my-recipes`)
+        recipeService.edit(recipe._id, data, user.accessToken)
+            .then(() => {
+                addNotification('You edited this recipe successfully', types.success, 'Success')
+                navigate(`/recipes/${recipe._id}`)
             })
             .catch(error => {
                 console.log(error);
-            })
+            });
         e.currentTarget.reset();
     }
 
@@ -144,27 +162,39 @@ export default function RecipeCreate() {
 
         setIngredientInputs(oldState => oldState.filter((item) => item !== oldState[index]))
     }
+
+    const titleChangeHandler = (e) => {
+        console.log(e.target.value);
+    }
     return (
         <Page>
             <Subheader
-                title="Own Recipe"
+                title="Edit Recipe"
             />
             <div className={`${styles['main-container']} ${styles['blog-container']}`}>
                 <div className={styles['inside-container']}>
                     <div className="row">
-                        <div className="col-md-12  ">
-                            <div className={styles['add-recipe-container']}>
-                                <span>Add Recipe</span>
-                                <hr />
-                                <CreateForm
-                                    category={categories}
-                                    ingredientInputs={ingredientInputs}
-                                    onChangeIngredients={onChangeIngredients}
-                                    removeIngredientInputHandler={removeIngredientInputHandler}
-                                    onFormSubmit={onRecipeCreate}
-                                    addCategoryHandler={addCategoryHandler}
-                                    addIngredientHandler={addIngredientHandler}
-                                />
+                        <div className=" col-lg-8 " >
+                            <div className="row">
+                                <div className="col-md-12  ">
+                                    <div className={styles['add-recipe-container']}>
+                                        <span>Edit Recipe</span>
+                                        <hr />
+
+                                        <EditForm
+                                            recipe={recipe}
+                                            category={categories}
+                                            ingredientInputs={ingredientInputs}
+                                            onChangeIngredients={onChangeIngredients}
+                                            removeIngredientInputHandler={removeIngredientInputHandler}
+                                            onRecipeEdit={onRecipeEdit}
+                                            addCategoryHandler={addCategoryHandler}
+                                            addIngredientHandler={addIngredientHandler}
+                                            titleChangeHandler={titleChangeHandler}
+                                            setRecipe={setRecipe}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

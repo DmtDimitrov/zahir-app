@@ -9,7 +9,7 @@ export default function BestRecipesCard({
 
         <div className="col">
             <div className={`card h-100 ${styles['card-container']}`}>
-                <Link to={`/recipes/details/${recipe._id}`}>
+                <Link to={`/recipes/${recipe._id}`}>
                     <img src={recipe.image} className="card-img-top" alt="..." />
                 </Link>
                 <div className="card-body">

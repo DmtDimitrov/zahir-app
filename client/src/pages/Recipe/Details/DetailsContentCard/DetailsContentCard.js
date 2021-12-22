@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './DetailsContentCard.module.css';
@@ -6,20 +5,43 @@ import styles from './DetailsContentCard.module.css';
 import { DATE_OPTIONS } from '../../../../constants';
 import { useAuthContext } from '../../../../contexts/AuthContext';
 
-import { RecipeContext } from '../../../../contexts/RecipeContext';
-import DeleteModal from '../Modal';
 
-export default function RecipeDetailsContentCard() {
+import '../Modal/DeleteModal.css'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+export default function RecipeDetailsContentCard({ 
+    recipe, 
+    likeButtonClickHandler,
+    handleShow,
+    show,
+    handleClose,
+    deleteRecipeHandler
+ }) {
     const { user } = useAuthContext()
-    const { recipe, likeButtonClickHandler } = useContext(RecipeContext);
     let date = new Date(recipe?.createdAt).toLocaleDateString('en-US', DATE_OPTIONS);
-
 
     const ownerButtons = (
         <>
-            {/* <Link to="/recipes/edit" className={styles['btn-icon-a']}> Edit</Link> */}
             <Link to={`/recipes/edit/${recipe._id}`} className={styles['btn-icon-a']}> Edit</Link>
-            <DeleteModal />
+            <Button variant="primary" onClick={handleShow}>
+                Delete
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Recipe</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this recipe?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Go back
+                    </Button>
+                    <Button variant="primary" onClick={(e) => deleteRecipeHandler(e)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <button>Cook</button>
         </>
     );
@@ -59,7 +81,7 @@ export default function RecipeDetailsContentCard() {
                                     <span className={styles['spc-line']}> |</span>
                                     <span className={styles['info-over']}> <i className="far fa-heart"></i> {recipe?.likes.length} Likes </span>
                                     <span className={styles['spc-line']}> |</span>
-                                    <span className={styles['info-over']}> <i className="far fa-comment"></i> 55 comments </span>
+                                    <span className={styles['info-over']}> <i className="far fa-comment"></i> {recipe?.comments.length} comments </span>
                                 </p>
                             </div>
 

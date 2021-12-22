@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
 
 const commentSchema = mongoose.Schema({
-	subject: {
-		type: String,
-		required: [true, 'Subject is required!'],
-	},
+	
 	message: {
 		type: String,
 		required: [true, 'message is required!'],

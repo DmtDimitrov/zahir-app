@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import './DeleteModal.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { RecipeContext } from '../../../../contexts/RecipeContext';
@@ -20,7 +21,7 @@ export default function DeleteModal() {
         <Modal.Body>Are you sure you want to delete this recipe?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Go back
           </Button>
           <Button variant="primary" onClick={(e) => deleteRecipeHandler(e)}>
             Delete

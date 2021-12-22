@@ -7,14 +7,14 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
 
     try {
-        let { firstName, lastName, email, password, repeatPassword, image } = req.body;
+        let { firstName, lastName, email, password, repeatPassword } = req.body;
 
         if (password !== repeatPassword) {
             return res.status(400).json({ message: 'Passwords do not match!' })
             // throw new Error('Passwords do not match!');
         }
 
-        let user = await userService.register({ firstName, lastName, email, password, image });
+        let user = await userService.register({ firstName, lastName, email, password });
 
         res.status(201).json({
             _id: user._id,

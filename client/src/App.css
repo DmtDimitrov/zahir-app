@@ -1,0 +1,12 @@
+.app-container{
+    background-color: #f9f9f9;
+    /* display: grid;
+    gap: 10px;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: 
+    "navbar navbar"
+    "navbar main"
+    "footer footer" */
+    ;
+}
