@@ -8,9 +8,7 @@ import { useToggle } from '../../../../hooks/useToggle'
 export default function Comments() {
     const { recipe } = useContext(RecipeContext);
     const [show, setShow] = useToggle(false);
-    console.log('recipe');
-    console.log(recipe);
-
+ 
     const toggleComments = () => {
         setTimeout(() => {
             setShow(!show);
