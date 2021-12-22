@@ -9,7 +9,6 @@ import Subheader from '../../../components/Subheader';
 import RecipeDetailsContentCard from './DetailsContentCard';
 import Comments from './Comments';
 import AddComment from './AddComment';
-import CategoriesBar from '../../../components/CategoriesBar';
 import RecentRecipes from '../../../components/Recipes/Bar/RecentRecipes';
 import TopRecipes from '../../../components/Recipes/Bar/TopRecipes';
 
@@ -97,8 +96,6 @@ export default function RecipeDetails() {
                             </div>
 
                             <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
-
-                                <CategoriesBar />
 
                                 <RecentRecipes />
 

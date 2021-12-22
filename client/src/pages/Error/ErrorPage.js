@@ -2,7 +2,6 @@ import styles from './ErrorPage.module.css';
 
 import Page from '../Page';
 import Subheader from '../../components/Subheader';
-import CategoriesBar from '../../components/CategoriesBar';
 import RecentRecipes from '../../components/Recipes/Bar/RecentRecipes';
 import TopRecipes from '../../components/Recipes/Bar/TopRecipes';
 
@@ -31,8 +30,6 @@ export default function ErrorPage({
                         </div>
 
                         <div className={`col-lg-4 ${styles['side-bar-colon']}`} >
-
-                            <CategoriesBar />
 
                             <RecentRecipes />
 
