@@ -127,13 +127,13 @@ export default function CreateForm({
             }
 
             <div className="row">
-                <div className="col-sm-6 text-center">
+                {/* <div className="col-sm-6 text-center">
                     <input
                         type="submit"
                         value="add group heading"
                         className={styles['submit-btn']}
                     />
-                </div>
+                </div> */}
                 <div className="col-sm-6 text-center">
                     <input
                         onClick={addIngredientHandler}
