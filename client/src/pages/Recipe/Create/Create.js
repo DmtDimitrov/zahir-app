@@ -54,9 +54,9 @@ export default function RecipeCreate() {
         return !someEmpty;
     }
 
-    const addCategoryHandler = (e) => {
+    // const addCategoryHandler = (e) => {
 
-    }
+    // }
 
     const onRecipeCreate = (e) => {
         e.preventDefault();
@@ -162,7 +162,7 @@ export default function RecipeCreate() {
                                     onChangeIngredients={onChangeIngredients}
                                     removeIngredientInputHandler={removeIngredientInputHandler}
                                     onFormSubmit={onRecipeCreate}
-                                    addCategoryHandler={addCategoryHandler}
+                                    // addCategoryHandler={addCategoryHandler}
                                     addIngredientHandler={addIngredientHandler}
                                 />
                             </div>
