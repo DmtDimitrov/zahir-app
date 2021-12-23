@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import styles from './RecipeEdit.module.css';
 import * as recipeService from '../../../services/recipeService';
-import { emptyFieldsChecker } from '../../../helpers/fieldsChecker';
+import { emptyFieldsChecker,validateImageUrl } from '../../../helpers/fieldsChecker';
 
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../../contexts/NotificationContext';
@@ -103,6 +103,10 @@ export default function RecipeEdit() {
 
         if (!emptyFieldsChecker(data)) {
             return addNotification('All fields are required!', types.warning, 'Warning');
+        }
+
+        if (!validateImageUrl(image)) {
+            return addNotification('Image URL should starts with http or https!', types.warning);
         }
 
         recipeService.edit(recipe._id, data, user.accessToken)
