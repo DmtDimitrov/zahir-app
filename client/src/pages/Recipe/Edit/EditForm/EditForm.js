@@ -7,7 +7,7 @@ export default function EditForm({
     onChangeIngredients,
     removeIngredientInputHandler,
     onRecipeEdit,
-    addCategoryHandler,
+    // addCategoryHandler,
     addIngredientHandler,
     titleChangeHandler,
     setRecipe
