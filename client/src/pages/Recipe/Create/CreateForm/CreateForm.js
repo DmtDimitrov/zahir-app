@@ -134,7 +134,7 @@ export default function CreateForm({
                         className={styles['submit-btn']}
                     />
                 </div> */}
-                <div className="col-sm-6 text-center">
+                <div className="text-center">
                     <input
                         onClick={addIngredientHandler}
                         type="submit"
