@@ -6,7 +6,7 @@ export default function CreateForm({
     onChangeIngredients,
     removeIngredientInputHandler,
     onFormSubmit,
-    addCategoryHandler,
+    // addCategoryHandler,
     addIngredientHandler
 }) {
     return (
@@ -25,7 +25,7 @@ export default function CreateForm({
             />
 
             <div className="row">
-                <div className="col-sm-9">
+                <div className="col-sm-12">
                     <select
                         name="category"
                         id=""
@@ -37,14 +37,14 @@ export default function CreateForm({
                         {category && category.map(x => <option key={x._id} value={x.name}>{x.name}</option>)}
                     </select>
                 </div>
-                <div className="col-sm-3">
+                {/* <div className="col-sm-3">
                     <input
                         onClick={addCategoryHandler}
                         type="submit"
                         value="add category"
                         className={styles['submit-btn']}
                     />
-                </div>
+                </div> */}
             </div>
 
             <textarea
