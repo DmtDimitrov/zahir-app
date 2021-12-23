@@ -61,5 +61,8 @@
 }
 .comment-line{
     width: 95%!important;
-    border: 0.5px solid #999999!important;
+    border: 0.01px solid #f65aa7!important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    opacity: 1.25;
 }
