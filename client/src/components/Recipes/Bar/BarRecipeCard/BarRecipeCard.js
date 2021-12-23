@@ -8,7 +8,7 @@ export default function BarRecipeCard({ recipe }) {
         <>
             <div className={`row ${styles['ltl-blog']}`}>
                 <div className="col-4">
-                    <NavLink to={`/recipes/details/${recipe._id}`}>
+                    <NavLink to={`/recipes/${recipe._id}`}>
                         <img src={recipe?.image} alt="" className={`${styles['recent-img']} img-fluid`} />
                     </NavLink>
                 </div>
