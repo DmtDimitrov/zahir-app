@@ -46,14 +46,14 @@ export default function EditForm({
                         {/* {Object.keys(category).map(x => <option key={x} value={x}>{x}</option>)} */}
                     </select>
                 </div>
-                <div className="col-sm-3">
+                {/* <div className="col-sm-3">
                     <input
                         onClick={addCategoryHandler}
                         type="submit"
                         value="add category"
                         className={styles['submit-btn']}
                     />
-                </div>
+                </div> */}
 
             </div>
 
@@ -139,14 +139,14 @@ export default function EditForm({
             }
 
             <div className="row">
-                <div className="col-sm-6 text-center">
+                {/* <div className="col-sm-6 text-center">
                     <input
                         type="submit"
                         value="add group heading"
                         className={styles['submit-btn']}
                     />
-                </div>
-                <div className="col-sm-6 text-center">
+                </div> */}
+                <div className="text-center">
                     <input
                         onClick={addIngredientHandler}
                         type="submit"
